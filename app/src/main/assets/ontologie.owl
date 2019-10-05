@@ -1,0 +1,2131 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:ns="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Ontology rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48"/>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandPerePaternel">
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandeMerePaternelle"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandParentPaternel"/>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandParentPaternel"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tanteMaternelle">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#mere"/>
+        </owl:onClass>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minQualifiedCardinality>
+        <owl:onProperty>
+          <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tante"/>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#mere"/>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tante"/>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#mere"/>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#niece">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction>
+                <owl:someValuesFrom>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncle"/>
+                </owl:someValuesFrom>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel"/>
+                </owl:onProperty>
+              </owl:Restriction>
+              <owl:Restriction>
+                <owl:someValuesFrom>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tante"/>
+                </owl:someValuesFrom>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle"/>
+                </owl:onProperty>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#frere"/>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#soeur"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousine">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncle"/>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tante"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#fille">
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#fils"/>
+    </owl:disjointWith>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#enfant"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#neveu">
+    <owl:disjointWith rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#niece"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction>
+                <owl:someValuesFrom>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncle"/>
+                </owl:someValuesFrom>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel"/>
+                </owl:onProperty>
+              </owl:Restriction>
+              <owl:Restriction>
+                <owl:someValuesFrom>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tante"/>
+                </owl:someValuesFrom>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle"/>
+                </owl:onProperty>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#frere"/>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#soeur"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction>
+                <owl:someValuesFrom>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncle"/>
+                </owl:someValuesFrom>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel"/>
+                </owl:onProperty>
+              </owl:Restriction>
+              <owl:Restriction>
+                <owl:someValuesFrom>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tante"/>
+                </owl:someValuesFrom>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle"/>
+                </owl:onProperty>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#frere"/>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#soeur"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petiteFillePaternelle">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petitEnfantPaternel"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petitEnfantPaternel"/>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petitEnfantPaternel"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandParentPaternel"/>
+      <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+    </owl:intersectionOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petiteFilleMaternelle">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petitEnfantMaternel"/>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petitEnfantMaternel"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandParentMaternel">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#mere"/>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent"/>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFille"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Sexe">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#feminin">
+            <rdf:type>
+              <owl:Class>
+                <owl:oneOf rdf:parseType="Collection">
+                  <rdf:Description rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#feminin">
+                    <rdf:type rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Sexe"/>
+                    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+                  </rdf:Description>
+                  <rdf:Description rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#masculin">
+                    <rdf:type>
+                      <owl:Class>
+                        <owl:oneOf rdf:parseType="Collection">
+                          <rdf:Description rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#feminin"/>
+                          <rdf:Description rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#masculin">
+                            <rdf:type rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Sexe"/>
+                            <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+                          </rdf:Description>
+                        </owl:oneOf>
+                      </owl:Class>
+                    </rdf:type>
+                  </rdf:Description>
+                </owl:oneOf>
+              </owl:Class>
+            </rdf:type>
+          </rdf:Description>
+          <rdf:Description rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#masculin"/>
+        </owl:oneOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#frere"/>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#soeur"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:onClass>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minQualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#neveu"/>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#onclePaternel"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tantePaternelle"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:intersectionOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousine-paternelle">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#onclePaternel"/>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tantePaternelle"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:onClass>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minQualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousine"/>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#onclePaternel"/>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tantePaternelle"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousine"/>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#onclePaternel"/>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tantePaternelle"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction>
+                <owl:someValuesFrom>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncle"/>
+                </owl:someValuesFrom>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel"/>
+                </owl:onProperty>
+              </owl:Restriction>
+              <owl:Restriction>
+                <owl:someValuesFrom>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tante"/>
+                </owl:someValuesFrom>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle"/>
+                </owl:onProperty>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#frere"/>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#soeur"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#neveu"/>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#onclePaternel"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tantePaternelle"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:intersectionOf>
+  </owl:Class>
+  <owl:Class>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#frere"/>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#soeur"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:onClass>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minQualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#niece"/>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#onclePaternel"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tantePaternelle"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:intersectionOf>
+  </owl:Class>
+  <owl:Class>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent"/>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent"/>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent"/>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent"/>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:intersectionOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#onclePaternel">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#pere"/>
+        </owl:onClass>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minQualifiedCardinality>
+        <owl:onProperty>
+          <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncle"/>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#pere"/>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncle"/>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#pere"/>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousinMaternel">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncleMaternel"/>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tanteMaternelle"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:onClass>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minQualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousin"/>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncleMaternel"/>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tanteMaternelle"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousin"/>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncleMaternel"/>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tanteMaternelle"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petitFilsMaternel">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petitEnfantMaternel"/>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petitEnfantMaternel"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petitEnfantPaternel">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandParentPaternel"/>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#masculin"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSexe"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#collegue">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCollegue"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tantePaternelle">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#pere"/>
+        </owl:onClass>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minQualifiedCardinality>
+        <owl:onProperty>
+          <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tante"/>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#pere"/>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tante"/>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#pere"/>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#mere">
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#pere"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent"/>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#niece"/>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#niece"/>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncleMaternel"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tanteMaternelle"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:intersectionOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandeMerePaternelle">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class>
+            <owl:intersectionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+              <owl:Restriction>
+                <owl:onClass>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent"/>
+                </owl:onClass>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+                >1</owl:minQualifiedCardinality>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils"/>
+                </owl:onProperty>
+              </owl:Restriction>
+            </owl:intersectionOf>
+          </owl:Class>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#pere"/>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandParentPaternel"/>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandParentPaternel"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#niecePaternelle">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#niece"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#niece"/>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#onclePaternel"/>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel"/>
+                </owl:onProperty>
+              </owl:Restriction>
+              <owl:Restriction>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tantePaternelle"/>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle"/>
+                </owl:onProperty>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandParentPaternel">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#pere"/>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent"/>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#ami">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+            <owl:onProperty>
+              <owl:SymmetricProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourAmi"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandPereMaternel">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandParentMaternel"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandParentMaternel"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+      <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:intersectionOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousine-maternelle">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncleMaternel"/>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tanteMaternelle"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:onClass>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minQualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousine"/>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncleMaternel"/>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tanteMaternelle"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousine"/>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncleMaternel"/>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tanteMaternelle"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#nieceMaternelle">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#niece"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#niece"/>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction>
+                <owl:someValuesFrom>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncleMaternel"/>
+                </owl:someValuesFrom>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel"/>
+                </owl:onProperty>
+              </owl:Restriction>
+              <owl:Restriction>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tanteMaternelle"/>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle"/>
+                </owl:onProperty>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:unionOf rdf:parseType="Collection">
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#mere"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minQualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant"/>
+        </owl:onProperty>
+      </owl:Restriction>
+      <owl:Restriction>
+        <owl:onClass>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent"/>
+        </owl:onClass>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minQualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFille"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:unionOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Restriction>
+            <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandeMereMaternelle">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class>
+            <owl:intersectionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+              <owl:Restriction>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+                >1</owl:minQualifiedCardinality>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFille"/>
+                </owl:onProperty>
+              </owl:Restriction>
+            </owl:intersectionOf>
+          </owl:Class>
+          <owl:Restriction>
+            <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#mere"/>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandParentMaternel"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandParentMaternel"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandParentMaternel"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncleMaternel">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#mere"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minQualifiedCardinality>
+        <owl:onProperty>
+          <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncle"/>
+          <owl:Restriction>
+            <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#mere"/>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncle"/>
+          <owl:Restriction>
+            <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#mere"/>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#neveuMaternel">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#neveu"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#neveu"/>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncleMaternel"/>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel"/>
+                </owl:onProperty>
+              </owl:Restriction>
+              <owl:Restriction>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tanteMaternelle"/>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle"/>
+                </owl:onProperty>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousin">
+    <owl:disjointWith rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousine"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncle"/>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tante"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:onClass>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minQualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncle"/>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tante"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncle"/>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tante"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#pere">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme">
+    <owl:disjointWith rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#feminin"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSexe"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousinPaternel">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#onclePaternel"/>
+              <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tantePaternelle"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:onClass>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minQualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousin"/>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#onclePaternel"/>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tantePaternelle"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousin"/>
+          <owl:Restriction>
+            <owl:onClass>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#onclePaternel"/>
+                  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tantePaternelle"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:onClass>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#neveuPaternel">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#neveu"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#neveu"/>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#onclePaternel"/>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel"/>
+                </owl:onProperty>
+              </owl:Restriction>
+              <owl:Restriction>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tantePaternelle"/>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle"/>
+                </owl:onProperty>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petitFilsPaternel">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petitEnfantPaternel"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petitEnfantPaternel"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#soeur">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+                >1</owl:minQualifiedCardinality>
+                <owl:onProperty>
+                  <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere"/>
+                </owl:onProperty>
+              </owl:Restriction>
+              <owl:Restriction>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+                >1</owl:minQualifiedCardinality>
+                <owl:onProperty>
+                  <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur"/>
+                </owl:onProperty>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:unionOf rdf:parseType="Collection">
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#pere"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minQualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant"/>
+        </owl:onProperty>
+      </owl:Restriction>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent"/>
+        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minQualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:unionOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tante">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+                >1</owl:minQualifiedCardinality>
+                <owl:onProperty>
+                  <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere"/>
+                </owl:onProperty>
+              </owl:Restriction>
+              <owl:Restriction>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+                >1</owl:minQualifiedCardinality>
+                <owl:onProperty>
+                  <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur"/>
+                </owl:onProperty>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#frere">
+    <owl:disjointWith rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#soeur"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+                >1</owl:minQualifiedCardinality>
+                <owl:onProperty>
+                  <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere"/>
+                </owl:onProperty>
+              </owl:Restriction>
+              <owl:Restriction>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+                >1</owl:minQualifiedCardinality>
+                <owl:onProperty>
+                  <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur"/>
+                </owl:onProperty>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncle">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Restriction>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+                >1</owl:minQualifiedCardinality>
+                <owl:onProperty>
+                  <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere"/>
+                </owl:onProperty>
+              </owl:Restriction>
+              <owl:Restriction>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+                >1</owl:minQualifiedCardinality>
+                <owl:onProperty>
+                  <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur"/>
+                </owl:onProperty>
+              </owl:Restriction>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petitEnfantMaternel">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Restriction>
+            <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandParentMaternel"/>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#fils">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#enfant"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#enfant">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Restriction>
+            <owl:onClass rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+            <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+            >1</owl:minQualifiedCardinality>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousineMaternelle">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent">
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFille">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinMaternel">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandPereMaternel">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentMaternel"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantMaternel">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTanteMaternelle">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpouse">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpoux"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpoux">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinPaternel">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitFilsMaternel">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantMaternel"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantPaternel">
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandMereMaternelle">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentMaternel"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandPerePaternel">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant">
+    <owl:inverseOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveu">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSexe">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Sexe"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel">
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentMaternel">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <owl:inverseOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantMaternel"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetiteFillePaternelle">
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantPaternel"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+    <rdfs:range>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#masculin"/>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSexe"/>
+      </owl:Restriction>
+    </rdfs:range>
+    <rdfs:range>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#feminin"/>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSexe"/>
+      </owl:Restriction>
+    </rdfs:range>
+    <rdfs:range>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#feminin"/>
+            <owl:onProperty rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSexe"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:range>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#masculin"/>
+            <owl:onProperty rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSexe"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitFilsPaternel">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#masculin"/>
+            <owl:onProperty rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSexe"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantPaternel"/>
+    <owl:propertyDisjointWith rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetiteFillePaternelle"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+    <rdfs:range>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#masculin"/>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSexe"/>
+      </owl:Restriction>
+    </rdfs:range>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#feminin"/>
+            <owl:onProperty rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSexe"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+          <owl:Class rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:range>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#feminin"/>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSexe"/>
+      </owl:Restriction>
+    </rdfs:range>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandMerePaternelle">
+    <owl:propertyDisjointWith rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandPerePaternel"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <owl:inverseOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantPaternel"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNiece">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetiteFilleMaternelle">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantMaternel"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#numero3"/>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#numero2"/>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#identifiant">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#email">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#prenom">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#numero1"/>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#nom">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#dateNaissance">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+  </owl:DatatypeProperty>
+  <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCollegue">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:TransitiveProperty>
+  <owl:SymmetricProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourAmi">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:SymmetricProperty>
+  <owl:SymmetricProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:SymmetricProperty>
+  <owl:FunctionalProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourMere">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+  <rdf:Description>
+    <ns:nom></ns:nom>
+  </rdf:Description>
+  <ns:femme rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#5">
+    <ns:estEnRelation>
+      <ns:femme rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#4">
+        <ns:nom>Traore</ns:nom>
+        <ns:identifiant rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >4</ns:identifiant>
+        <ns:prenom>Adjara</ns:prenom>
+        <ns:numero1>5000000</ns:numero1>
+        <ns:dateNaissance>JourMoisAnnee</ns:dateNaissance>
+        <ns:estEnRelation>
+          <ns:homme rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#1">
+            <ns:dateNaissance>JourMoisAnnee</ns:dateNaissance>
+            <ns:numero1>76824499</ns:numero1>
+            <ns:prenom>Ibrahim</ns:prenom>
+            <ns:identifiant rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >1</ns:identifiant>
+            <ns:nom>Traore</ns:nom>
+            <ns:aPourFrere>
+              <ns:homme rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#2">
+                <ns:aPourFrere>
+                  <ns:homme rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#3">
+                    <ns:estEnRelation rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#2"/>
+                    <ns:dateNaissance>JourMoisAnnee</ns:dateNaissance>
+                    <ns:numero1>700000000</ns:numero1>
+                    <ns:prenom>Moussa</ns:prenom>
+                    <ns:identifiant rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                    >3</ns:identifiant>
+                    <ns:nom>Traore</ns:nom>
+                  </ns:homme>
+                </ns:aPourFrere>
+                <ns:nom>Traore</ns:nom>
+                <ns:identifiant rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                >2</ns:identifiant>
+                <ns:prenom>Oumarou</ns:prenom>
+                <ns:numero1>600000000</ns:numero1>
+                <ns:dateNaissance>JourMoisAnnee</ns:dateNaissance>
+                <ns:estEnRelation rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#1"/>
+              </ns:homme>
+            </ns:aPourFrere>
+            <ns:aPourSoeur rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#4"/>
+          </ns:homme>
+        </ns:estEnRelation>
+      </ns:femme>
+    </ns:estEnRelation>
+    <ns:aPourEnfant rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#4"/>
+    <ns:dateNaissance>JourMoisAnnee</ns:dateNaissance>
+    <ns:numero1>40000000</ns:numero1>
+    <ns:prenom>Bintou</ns:prenom>
+    <ns:identifiant rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >5</ns:identifiant>
+    <ns:nom>Ouattara</ns:nom>
+  </ns:femme>
+  <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#numero">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:AnnotationProperty>
+</rdf:RDF>

@@ -1,0 +1,1657 @@
+@prefix : <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48> .
+@prefix ns: <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@base <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48> .
+
+<http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+swrla:isRuleEnabled rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel
+ns:aPourOncleMaternel rdf:type owl:AnnotationProperty ;
+                      rdfs:range ns:homme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#identifiant
+ns:identifiant rdf:type owl:AnnotationProperty ;
+               rdfs:range xsd:int ,
+                          xsd:integer ;
+               rdfs:domain ns:Personne .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#nom
+ns:nom rdf:type owl:AnnotationProperty ;
+       rdfs:range xsd:string ;
+       rdfs:domain ns:Personne .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#numero
+ns:numero rdf:type owl:AnnotationProperty ;
+          rdfs:range xsd:string ;
+          rdfs:domain ns:Personne .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#prenom
+ns:prenom rdf:type owl:AnnotationProperty ;
+          rdfs:range xsd:string ;
+          rdfs:domain ns:Personne .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourAmi
+ns:aPourAmi rdf:type owl:ObjectProperty ,
+                     owl:SymmetricProperty ;
+            rdfs:domain ns:Personne ;
+            rdfs:range ns:Personne .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCollegue
+ns:aPourCollegue rdf:type owl:ObjectProperty ,
+                          owl:SymmetricProperty ,
+                          owl:TransitiveProperty ;
+                 rdfs:domain ns:Personne ;
+                 rdfs:range ns:Personne .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinMaternel
+ns:aPourCousinMaternel rdf:type owl:ObjectProperty ;
+                       rdfs:domain ns:Personne ;
+                       rdfs:range ns:homme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinPaternel
+ns:aPourCousinPaternel rdf:type owl:ObjectProperty ;
+                       rdfs:domain ns:Personne ;
+                       rdfs:range ns:homme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousineMaternelle
+ns:aPourCousineMaternelle rdf:type owl:ObjectProperty ;
+                          rdfs:domain ns:Personne ;
+                          rdfs:range ns:femme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle
+ns:aPourCousinePaternelle rdf:type owl:ObjectProperty ;
+                          rdfs:domain ns:Personne ;
+                          rdfs:range ns:femme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant
+ns:aPourEnfant rdf:type owl:ObjectProperty ;
+               owl:inverseOf ns:aPourParent .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpouse
+ns:aPourEpouse rdf:type owl:ObjectProperty ;
+               owl:inverseOf ns:aPourEpoux ;
+               rdfs:domain ns:Personne ;
+               rdfs:range ns:femme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpoux
+ns:aPourEpoux rdf:type owl:ObjectProperty ;
+              rdfs:domain ns:Personne ;
+              rdfs:range ns:homme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFille
+ns:aPourFille rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf ns:aPourEnfant ;
+              rdfs:domain ns:Personne ;
+              rdfs:range ns:femme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils
+ns:aPourFils rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf ns:aPourEnfant ;
+             rdfs:domain ns:Personne ;
+             rdfs:range ns:homme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere
+ns:aPourFrere rdf:type owl:ObjectProperty ,
+                       owl:TransitiveProperty ;
+              rdfs:domain ns:Personne ;
+              rdfs:range ns:homme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandMereMaternelle
+ns:aPourGrandMereMaternelle rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf ns:aPourGrandParentMaternel ;
+                            rdfs:domain ns:Personne ;
+                            rdfs:range ns:femme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandMerePaternelle
+ns:aPourGrandMerePaternelle rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf ns:aPourGrandParentPaternel ;
+                            rdfs:domain ns:Personne ;
+                            rdfs:range ns:femme ;
+                            owl:propertyDisjointWith ns:aPourGrandPerePaternel .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentMaternel
+ns:aPourGrandParentMaternel rdf:type owl:ObjectProperty ;
+                            owl:inverseOf ns:aPourPetitEnfantMaternel ;
+                            rdfs:domain ns:Personne ;
+                            rdfs:range ns:Personne .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel
+ns:aPourGrandParentPaternel rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf owl:topObjectProperty ;
+                            owl:inverseOf ns:aPourPetitEnfantPaternel ;
+                            rdfs:domain ns:Personne ;
+                            rdfs:range ns:Personne .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandPereMaternel
+ns:aPourGrandPereMaternel rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf ns:aPourGrandParentMaternel ;
+                          rdfs:domain ns:Personne ;
+                          rdfs:range ns:homme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandPerePaternel
+ns:aPourGrandPerePaternel rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf ns:aPourGrandParentPaternel ;
+                          rdfs:domain ns:Personne ;
+                          rdfs:range ns:homme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourMere
+ns:aPourMere rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf ns:aPourParent ;
+             rdf:type owl:FunctionalProperty ;
+             rdfs:domain ns:Personne ;
+             rdfs:range ns:femme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveu
+ns:aPourNeveu rdf:type owl:ObjectProperty ;
+              rdfs:domain ns:Personne ;
+              rdfs:range ns:homme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNiece
+ns:aPourNiece rdf:type owl:ObjectProperty ;
+              rdfs:domain ns:Personne ;
+              rdfs:range ns:femme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel
+ns:aPourOncleMaternel rdf:type owl:ObjectProperty ;
+                      rdfs:domain ns:Personne .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel
+ns:aPourOnclePaternel rdf:type owl:ObjectProperty ;
+                      rdfs:domain ns:Personne ,
+                                  [ rdf:type owl:Class ;
+                                    owl:unionOf ( ns:femme
+                                                  ns:homme
+                                                )
+                                  ] ;
+                      rdfs:range ns:homme ,
+                                 [ rdf:type owl:Class ;
+                                   owl:unionOf ( ns:femme
+                                                 ns:homme
+                                               )
+                                 ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent
+ns:aPourParent rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere
+ns:aPourPere rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf ns:aPourParent ;
+             rdf:type owl:FunctionalProperty ;
+             rdfs:domain ns:Personne ;
+             rdfs:range ns:homme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantMaternel
+ns:aPourPetitEnfantMaternel rdf:type owl:ObjectProperty ;
+                            rdfs:domain ns:Personne ;
+                            rdfs:range ns:Personne .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantPaternel
+ns:aPourPetitEnfantPaternel rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf owl:topObjectProperty ;
+                            rdfs:domain ns:Personne ,
+                                        [ rdf:type owl:Class ;
+                                          owl:unionOf ( ns:femme
+                                                        ns:homme
+                                                      )
+                                        ] ;
+                            rdfs:range ns:Personne ,
+                                       [ rdf:type owl:Class ;
+                                         owl:unionOf ( ns:femme
+                                                       ns:homme
+                                                     )
+                                       ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitFilsMaternel
+ns:aPourPetitFilsMaternel rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf ns:aPourPetitEnfantMaternel ;
+                          rdfs:domain ns:Personne ;
+                          rdfs:range ns:homme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitFilsPaternel
+ns:aPourPetitFilsPaternel rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf ns:aPourPetitEnfantPaternel ;
+                          rdfs:domain ns:Personne ,
+                                      [ rdf:type owl:Class ;
+                                        owl:unionOf ( ns:femme
+                                                      ns:homme
+                                                    )
+                                      ] ;
+                          rdfs:range ns:Personne ,
+                                     ns:femme ,
+                                     ns:homme ,
+                                     [ owl:intersectionOf ( ns:Personne
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty ns:aPourSexe ;
+                                                              owl:hasValue ns:feminin
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ,
+                                     [ owl:intersectionOf ( ns:Personne
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty ns:aPourSexe ;
+                                                              owl:hasValue ns:masculin
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ,
+                                     [ rdf:type owl:Class ;
+                                       owl:unionOf ( ns:femme
+                                                     ns:homme
+                                                   )
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty ns:aPourSexe ;
+                                       owl:hasValue ns:feminin
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty ns:aPourSexe ;
+                                       owl:hasValue ns:masculin
+                                     ] ;
+                          owl:propertyDisjointWith ns:aPourPetiteFillePaternelle .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetiteFilleMaternelle
+ns:aPourPetiteFilleMaternelle rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf ns:aPourPetitEnfantMaternel ;
+                              rdfs:domain ns:Personne ;
+                              rdfs:range ns:femme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetiteFillePaternelle
+ns:aPourPetiteFillePaternelle rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf ns:aPourPetitEnfantPaternel ;
+                              rdfs:domain ns:Personne ,
+                                          [ rdf:type owl:Class ;
+                                            owl:unionOf ( ns:femme
+                                                          ns:homme
+                                                        )
+                                          ] ;
+                              rdfs:range ns:Personne ,
+                                         ns:femme ,
+                                         ns:homme ,
+                                         [ owl:intersectionOf ( ns:Personne
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty ns:aPourSexe ;
+                                                                  owl:hasValue ns:feminin
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] ,
+                                         [ owl:intersectionOf ( ns:Personne
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty ns:aPourSexe ;
+                                                                  owl:hasValue ns:masculin
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] ,
+                                         [ rdf:type owl:Class ;
+                                           owl:unionOf ( ns:femme
+                                                         ns:homme
+                                                       )
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty ns:aPourSexe ;
+                                           owl:hasValue ns:feminin
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty ns:aPourSexe ;
+                                           owl:hasValue ns:masculin
+                                         ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSexe
+ns:aPourSexe rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain ns:Personne ;
+             rdfs:range ns:Sexe .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur
+ns:aPourSoeur rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdf:type owl:TransitiveProperty ;
+              rdfs:domain ns:Personne ;
+              rdfs:range ns:femme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTanteMaternelle
+ns:aPourTanteMaternelle rdf:type owl:ObjectProperty ;
+                        rdfs:domain ns:Personne ;
+                        rdfs:range ns:femme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle
+ns:aPourTantePaternelle rdf:type owl:ObjectProperty ;
+                        rdfs:domain ns:Personne ;
+                        rdfs:range ns:femme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation
+ns:estEnRelation rdf:type owl:ObjectProperty ,
+                          owl:SymmetricProperty ;
+                 rdfs:domain ns:Personne ;
+                 rdfs:range ns:Personne .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#dateNaissance
+ns:dateNaissance rdf:type owl:DatatypeProperty ;
+                 rdfs:domain ns:Personne ;
+                 rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#email
+ns:email rdf:type owl:DatatypeProperty ;
+         rdfs:domain ns:Personne ;
+         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#identifiant
+ns:identifiant rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#nom
+ns:nom rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#numero1
+ns:numero1 rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#numero2
+ns:numero2 rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#numero3
+ns:numero3 rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#prenom
+ns:prenom rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne
+ns:Personne rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Class ;
+                                  owl:unionOf ( ns:femme
+                                                ns:homme
+                                              )
+                                ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Sexe
+ns:Sexe rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Class ;
+                              owl:oneOf ( ns:feminin
+                                          ns:masculin
+                                        )
+                            ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#ami
+ns:ami rdf:type owl:Class ;
+       owl:equivalentClass [ owl:intersectionOf ( ns:Personne
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty ns:aPourAmi ;
+                                                    owl:someValuesFrom ns:Personne
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#collegue
+ns:collegue rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( ns:Personne
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty ns:aPourCollegue ;
+                                                         owl:someValuesFrom ns:Personne
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousin
+ns:cousin rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( ns:Personne
+                                                     ns:homme
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty ns:aPourParent ;
+                                                       owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                       owl:onClass [ rdf:type owl:Class ;
+                                                                     owl:unionOf ( ns:oncle
+                                                                                   ns:tante
+                                                                                 )
+                                                                   ]
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          rdfs:subClassOf [ owl:intersectionOf ( ns:Personne
+                                                 ns:homme
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty ns:aPourParent ;
+                                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                   owl:onClass [ rdf:type owl:Class ;
+                                                                 owl:unionOf ( ns:oncle
+                                                                               ns:tante
+                                                                             )
+                                                               ]
+                                                 ]
+                                               ) ;
+                            rdf:type owl:Class
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty ns:aPourParent ;
+                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass [ rdf:type owl:Class ;
+                                          owl:unionOf ( ns:oncle
+                                                        ns:tante
+                                                      )
+                                        ]
+                          ] ;
+          owl:disjointWith ns:cousine .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousinMaternel
+ns:cousinMaternel rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( ns:cousin
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty ns:aPourParent ;
+                                                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                               owl:onClass [ rdf:type owl:Class ;
+                                                                             owl:unionOf ( ns:oncleMaternel
+                                                                                           ns:tanteMaternelle
+                                                                                         )
+                                                                           ]
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                  rdfs:subClassOf [ owl:intersectionOf ( ns:cousin
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty ns:aPourParent ;
+                                                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                           owl:onClass [ rdf:type owl:Class ;
+                                                                         owl:unionOf ( ns:oncleMaternel
+                                                                                       ns:tanteMaternelle
+                                                                                     )
+                                                                       ]
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty ns:aPourParent ;
+                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass [ rdf:type owl:Class ;
+                                                  owl:unionOf ( ns:oncleMaternel
+                                                                ns:tanteMaternelle
+                                                              )
+                                                ]
+                                  ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousinPaternel
+ns:cousinPaternel rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( ns:cousin
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty ns:aPourParent ;
+                                                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                               owl:onClass [ rdf:type owl:Class ;
+                                                                             owl:unionOf ( ns:onclePaternel
+                                                                                           ns:tantePaternelle
+                                                                                         )
+                                                                           ]
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                  rdfs:subClassOf [ owl:intersectionOf ( ns:cousin
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty ns:aPourParent ;
+                                                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                           owl:onClass [ rdf:type owl:Class ;
+                                                                         owl:unionOf ( ns:onclePaternel
+                                                                                       ns:tantePaternelle
+                                                                                     )
+                                                                       ]
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty ns:aPourParent ;
+                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass [ rdf:type owl:Class ;
+                                                  owl:unionOf ( ns:onclePaternel
+                                                                ns:tantePaternelle
+                                                              )
+                                                ]
+                                  ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousine
+ns:cousine rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( ns:Personne
+                                                      ns:femme
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty ns:aPourParent ;
+                                                        owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                        owl:onClass [ rdf:type owl:Class ;
+                                                                      owl:unionOf ( ns:oncle
+                                                                                    ns:tante
+                                                                                  )
+                                                                    ]
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousine-maternelle
+ns:cousine-maternelle rdf:type owl:Class ;
+                      owl:equivalentClass [ owl:intersectionOf ( ns:cousine
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty ns:aPourParent ;
+                                                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                   owl:onClass [ rdf:type owl:Class ;
+                                                                                 owl:unionOf ( ns:oncleMaternel
+                                                                                               ns:tanteMaternelle
+                                                                                             )
+                                                                               ]
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ;
+                      rdfs:subClassOf [ owl:intersectionOf ( ns:cousine
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty ns:aPourParent ;
+                                                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                               owl:onClass [ rdf:type owl:Class ;
+                                                                             owl:unionOf ( ns:oncleMaternel
+                                                                                           ns:tanteMaternelle
+                                                                                         )
+                                                                           ]
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty ns:aPourParent ;
+                                        owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                        owl:onClass [ rdf:type owl:Class ;
+                                                      owl:unionOf ( ns:oncleMaternel
+                                                                    ns:tanteMaternelle
+                                                                  )
+                                                    ]
+                                      ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#cousine-paternelle
+ns:cousine-paternelle rdf:type owl:Class ;
+                      owl:equivalentClass [ owl:intersectionOf ( ns:cousine
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty ns:aPourParent ;
+                                                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                   owl:onClass [ rdf:type owl:Class ;
+                                                                                 owl:unionOf ( ns:onclePaternel
+                                                                                               ns:tantePaternelle
+                                                                                             )
+                                                                               ]
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ;
+                      rdfs:subClassOf [ owl:intersectionOf ( ns:cousine
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty ns:aPourParent ;
+                                                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                               owl:onClass [ rdf:type owl:Class ;
+                                                                             owl:unionOf ( ns:onclePaternel
+                                                                                           ns:tantePaternelle
+                                                                                         )
+                                                                           ]
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty ns:aPourParent ;
+                                        owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                        owl:onClass [ rdf:type owl:Class ;
+                                                      owl:unionOf ( ns:onclePaternel
+                                                                    ns:tantePaternelle
+                                                                  )
+                                                    ]
+                                      ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#enfant
+ns:enfant rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( ns:Personne
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty ns:aPourParent ;
+                                                       owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                       owl:onClass ns:Personne
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme
+ns:femme rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( ns:Personne
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty ns:aPourSexe ;
+                                                      owl:hasValue ns:feminin
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         owl:disjointWith ns:homme .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#fille
+ns:fille rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( ns:enfant
+                                                    ns:femme
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         owl:disjointWith ns:fils .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#fils
+ns:fils rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( ns:enfant
+                                                   ns:homme
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#frere
+ns:frere rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( ns:Personne
+                                                    ns:homme
+                                                    [ rdf:type owl:Class ;
+                                                      owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty ns:aPourFrere ;
+                                                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                      owl:onClass ns:Personne
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty ns:aPourSoeur ;
+                                                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                      owl:onClass ns:Personne
+                                                                    ]
+                                                                  )
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         owl:disjointWith ns:soeur .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandParentMaternel
+ns:grandParentMaternel rdf:type owl:Class ;
+                       owl:equivalentClass [ rdf:type owl:Class ;
+                                             owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                             owl:onProperty ns:aPourEnfant ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass ns:mere
+                                                           ]
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty ns:aPourFille ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass ns:parent
+                                                           ]
+                                                         )
+                                           ] ;
+                       rdfs:subClassOf ns:Personne .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandParentPaternel
+ns:grandParentPaternel rdf:type owl:Class ;
+                       owl:equivalentClass [ rdf:type owl:Class ;
+                                             owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                             owl:onProperty ns:aPourEnfant ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass ns:pere
+                                                           ]
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty ns:aPourFils ;
+                                                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                             owl:onClass ns:parent
+                                                           ]
+                                                         )
+                                           ] ;
+                       rdfs:subClassOf ns:Personne .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandPereMaternel
+ns:grandPereMaternel rdf:type owl:Class ;
+                     owl:equivalentClass [ owl:intersectionOf ( ns:grandParentMaternel
+                                                                ns:homme
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] ;
+                     rdfs:subClassOf [ owl:intersectionOf ( ns:grandParentMaternel
+                                                            ns:homme
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandPerePaternel
+ns:grandPerePaternel rdf:type owl:Class ;
+                     owl:equivalentClass [ owl:intersectionOf ( ns:grandParentPaternel
+                                                                ns:homme
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] ;
+                     rdfs:subClassOf ns:grandParentPaternel ;
+                     owl:disjointWith ns:grandeMerePaternelle .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandeMereMaternelle
+ns:grandeMereMaternelle rdf:type owl:Class ;
+                        owl:equivalentClass [ owl:intersectionOf ( ns:femme
+                                                                   ns:grandParentMaternel
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ] ;
+                        rdfs:subClassOf ns:grandParentMaternel ,
+                                        [ owl:intersectionOf ( ns:femme
+                                                               ns:grandParentMaternel
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ,
+                                        [ rdf:type owl:Class ;
+                                          owl:unionOf ( ns:femme
+                                                        ns:homme
+                                                      )
+                                        ] ,
+                                        [ rdf:type owl:Class ;
+                                          owl:unionOf ( [ owl:intersectionOf ( ns:Personne
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty ns:aPourFille ;
+                                                                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                 owl:onClass ns:parent
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty ns:aPourEnfant ;
+                                                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                          owl:onClass ns:mere
+                                                        ]
+                                                      )
+                                        ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#grandeMerePaternelle
+ns:grandeMerePaternelle rdf:type owl:Class ;
+                        owl:equivalentClass [ owl:intersectionOf ( ns:femme
+                                                                   ns:grandParentPaternel
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ] ;
+                        rdfs:subClassOf ns:grandParentPaternel ,
+                                        [ rdf:type owl:Class ;
+                                          owl:unionOf ( [ owl:intersectionOf ( ns:Personne
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty ns:aPourFils ;
+                                                                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                 owl:onClass ns:parent
+                                                                               ]
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ]
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty ns:aPourEnfant ;
+                                                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                          owl:onClass ns:pere
+                                                        ]
+                                                      )
+                                        ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme
+ns:homme rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( ns:Personne
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty ns:aPourSexe ;
+                                                      owl:hasValue ns:masculin
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#mere
+ns:mere rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( ns:femme
+                                                   ns:parent
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
+        rdfs:subClassOf ns:parent ;
+        owl:disjointWith ns:pere .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#neveu
+ns:neveu rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( ns:Personne
+                                                    ns:homme
+                                                    [ rdf:type owl:Class ;
+                                                      owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty ns:aPourOnclePaternel ;
+                                                                      owl:someValuesFrom ns:oncle
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty ns:aPourTantePaternelle ;
+                                                                      owl:someValuesFrom ns:tante
+                                                                    ]
+                                                                  )
+                                                    ]
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty ns:aPourParent ;
+                                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                      owl:onClass [ rdf:type owl:Class ;
+                                                                    owl:unionOf ( ns:frere
+                                                                                  ns:soeur
+                                                                                )
+                                                                  ]
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         rdfs:subClassOf [ owl:intersectionOf ( ns:Personne
+                                                ns:homme
+                                                [ rdf:type owl:Class ;
+                                                  owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty ns:aPourOnclePaternel ;
+                                                                  owl:someValuesFrom ns:oncle
+                                                                ]
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty ns:aPourTantePaternelle ;
+                                                                  owl:someValuesFrom ns:tante
+                                                                ]
+                                                              )
+                                                ]
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty ns:aPourParent ;
+                                                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                  owl:onClass [ rdf:type owl:Class ;
+                                                                owl:unionOf ( ns:frere
+                                                                              ns:soeur
+                                                                            )
+                                                              ]
+                                                ]
+                                              ) ;
+                           rdf:type owl:Class
+                         ] ;
+         owl:disjointWith ns:niece .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#neveuMaternel
+ns:neveuMaternel rdf:type owl:Class ;
+                 owl:equivalentClass [ owl:intersectionOf ( ns:neveu
+                                                            [ rdf:type owl:Class ;
+                                                              owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty ns:aPourOnclePaternel ;
+                                                                              owl:someValuesFrom ns:oncleMaternel
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty ns:aPourTantePaternelle ;
+                                                                              owl:someValuesFrom ns:tanteMaternelle
+                                                                            ]
+                                                                          )
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ;
+                 rdfs:subClassOf ns:neveu .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#neveuPaternel
+ns:neveuPaternel rdf:type owl:Class ;
+                 owl:equivalentClass [ owl:intersectionOf ( ns:neveu
+                                                            [ rdf:type owl:Class ;
+                                                              owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty ns:aPourOnclePaternel ;
+                                                                              owl:someValuesFrom ns:onclePaternel
+                                                                            ]
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty ns:aPourTantePaternelle ;
+                                                                              owl:someValuesFrom ns:tantePaternelle
+                                                                            ]
+                                                                          )
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ;
+                 rdfs:subClassOf ns:neveu .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#niece
+ns:niece rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( ns:Personne
+                                                    ns:femme
+                                                    [ rdf:type owl:Class ;
+                                                      owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty ns:aPourOnclePaternel ;
+                                                                      owl:someValuesFrom ns:oncle
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty ns:aPourTantePaternelle ;
+                                                                      owl:someValuesFrom ns:tante
+                                                                    ]
+                                                                  )
+                                                    ]
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty ns:aPourParent ;
+                                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                      owl:onClass [ rdf:type owl:Class ;
+                                                                    owl:unionOf ( ns:frere
+                                                                                  ns:soeur
+                                                                                )
+                                                                  ]
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#nieceMaternelle
+ns:nieceMaternelle rdf:type owl:Class ;
+                   owl:equivalentClass [ owl:intersectionOf ( ns:niece
+                                                              [ rdf:type owl:Class ;
+                                                                owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty ns:aPourOnclePaternel ;
+                                                                                owl:someValuesFrom ns:oncleMaternel
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty ns:aPourTantePaternelle ;
+                                                                                owl:someValuesFrom ns:tanteMaternelle
+                                                                              ]
+                                                                            )
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] ;
+                   rdfs:subClassOf ns:niece .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#niecePaternelle
+ns:niecePaternelle rdf:type owl:Class ;
+                   owl:equivalentClass [ owl:intersectionOf ( ns:niece
+                                                              [ rdf:type owl:Class ;
+                                                                owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty ns:aPourOnclePaternel ;
+                                                                                owl:someValuesFrom ns:onclePaternel
+                                                                              ]
+                                                                              [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty ns:aPourTantePaternelle ;
+                                                                                owl:someValuesFrom ns:tantePaternelle
+                                                                              ]
+                                                                            )
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] ;
+                   rdfs:subClassOf ns:niece .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncle
+ns:oncle rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( ns:homme
+                                                    [ rdf:type owl:Class ;
+                                                      owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty ns:aPourFrere ;
+                                                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                      owl:onClass ns:parent
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty ns:aPourSoeur ;
+                                                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                      owl:onClass ns:parent
+                                                                    ]
+                                                                  )
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         rdfs:subClassOf ns:Personne .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#oncleMaternel
+ns:oncleMaternel rdf:type owl:Class ;
+                 owl:equivalentClass [ owl:intersectionOf ( ns:oncle
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty ns:aPourSoeur ;
+                                                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                              owl:onClass ns:mere
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ;
+                 rdfs:subClassOf [ owl:intersectionOf ( ns:oncle
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty ns:aPourSoeur ;
+                                                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                          owl:onClass ns:mere
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty ns:aPourSoeur ;
+                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass ns:mere
+                                 ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#onclePaternel
+ns:onclePaternel rdf:type owl:Class ;
+                 owl:equivalentClass [ owl:intersectionOf ( ns:oncle
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty ns:aPourFrere ;
+                                                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                              owl:onClass ns:pere
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ;
+                 rdfs:subClassOf [ owl:intersectionOf ( ns:oncle
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty ns:aPourFrere ;
+                                                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                          owl:onClass ns:pere
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty ns:aPourFrere ;
+                                   owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass ns:pere
+                                 ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#parent
+ns:parent rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( ns:Personne
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty ns:aPourEnfant ;
+                                                       owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                       owl:onClass ns:Personne
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#pere
+ns:pere rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( ns:homme
+                                                   ns:parent
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
+        rdfs:subClassOf ns:parent .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petitEnfantMaternel
+ns:petitEnfantMaternel rdf:type owl:Class ;
+                       owl:equivalentClass [ owl:intersectionOf ( ns:Personne
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty ns:aPourGrandParentPaternel ;
+                                                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                    owl:onClass ns:grandParentMaternel
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petitEnfantPaternel
+ns:petitEnfantPaternel rdf:type owl:Class ;
+                       owl:equivalentClass [ owl:intersectionOf ( ns:Personne
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty ns:aPourGrandParentPaternel ;
+                                                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                    owl:onClass ns:grandParentPaternel
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petitFilsMaternel
+ns:petitFilsMaternel rdf:type owl:Class ;
+                     owl:equivalentClass [ owl:intersectionOf ( ns:homme
+                                                                ns:petitEnfantMaternel
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] ;
+                     rdfs:subClassOf ns:petitEnfantMaternel .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petitFilsPaternel
+ns:petitFilsPaternel rdf:type owl:Class ;
+                     owl:equivalentClass [ owl:intersectionOf ( ns:homme
+                                                                ns:petitEnfantPaternel
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] ;
+                     rdfs:subClassOf ns:petitEnfantPaternel .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petiteFilleMaternelle
+ns:petiteFilleMaternelle rdf:type owl:Class ;
+                         owl:equivalentClass [ owl:intersectionOf ( ns:femme
+                                                                    ns:petitEnfantMaternel
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ] ;
+                         rdfs:subClassOf ns:petitEnfantMaternel .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#petiteFillePaternelle
+ns:petiteFillePaternelle rdf:type owl:Class ;
+                         owl:equivalentClass [ owl:intersectionOf ( ns:femme
+                                                                    ns:petitEnfantPaternel
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ] ;
+                         rdfs:subClassOf ns:petitEnfantPaternel ,
+                                         [ owl:intersectionOf ( ns:femme
+                                                                ns:petitEnfantPaternel
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#soeur
+ns:soeur rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( ns:Personne
+                                                    ns:femme
+                                                    [ rdf:type owl:Class ;
+                                                      owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty ns:aPourFrere ;
+                                                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                      owl:onClass ns:Personne
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty ns:aPourSoeur ;
+                                                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                      owl:onClass ns:Personne
+                                                                    ]
+                                                                  )
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tante
+ns:tante rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( ns:femme
+                                                    [ rdf:type owl:Class ;
+                                                      owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty ns:aPourFrere ;
+                                                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                      owl:onClass ns:parent
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty ns:aPourSoeur ;
+                                                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                      owl:onClass ns:parent
+                                                                    ]
+                                                                  )
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+         rdfs:subClassOf ns:Personne .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tanteMaternelle
+ns:tanteMaternelle rdf:type owl:Class ;
+                   owl:equivalentClass [ owl:intersectionOf ( ns:tante
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty ns:aPourSoeur ;
+                                                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                owl:onClass ns:mere
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] ;
+                   rdfs:subClassOf [ owl:intersectionOf ( ns:tante
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty ns:aPourSoeur ;
+                                                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                            owl:onClass ns:mere
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty ns:aPourSoeur ;
+                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass ns:mere
+                                   ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#tantePaternelle
+ns:tantePaternelle rdf:type owl:Class ;
+                   owl:equivalentClass [ owl:intersectionOf ( ns:tante
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty ns:aPourFrere ;
+                                                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                owl:onClass ns:pere
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] ;
+                   rdfs:subClassOf [ owl:intersectionOf ( ns:tante
+                                                          [ rdf:type owl:Restriction ;
+                                                            owl:onProperty ns:aPourFrere ;
+                                                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                            owl:onClass ns:pere
+                                                          ]
+                                                        ) ;
+                                     rdf:type owl:Class
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty ns:aPourFrere ;
+                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass ns:pere
+                                   ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#feminin
+ns:feminin rdf:type owl:NamedIndividual ,
+                    ns:Sexe ,
+                    [ rdf:type owl:Class ;
+                      owl:oneOf ( ns:feminin
+                                  ns:masculin
+                                )
+                    ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#masculin
+ns:masculin rdf:type owl:NamedIndividual ,
+                     ns:Sexe ,
+                     [ rdf:type owl:Class ;
+                       owl:oneOf ( ns:feminin
+                                   ns:masculin
+                                 )
+                     ] .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#1
+ns:1 rdf:type owl:NamedIndividual ,
+              ns:homme ;
+     ns:aPourFrere ns:2 ;
+     ns:aPourSoeur ns:4 ;
+     ns:dateNaissance "JourMoisAnnee" ;
+     ns:numero1 "76824499" ;
+     ns:identifiant "1"^^xsd:int ;
+     ns:nom "Traore" ;
+     ns:prenom "Ibrahim" .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#2
+ns:2 rdf:type owl:NamedIndividual ,
+              ns:homme ;
+     ns:aPourFrere ns:3 ;
+     ns:estEnRelation ns:1 ;
+     ns:dateNaissance "JourMoisAnnee" ;
+     ns:numero1 "600000000" ;
+     ns:identifiant "2"^^xsd:int ;
+     ns:nom "Traore" ;
+     ns:prenom "Oumarou" .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#3
+ns:3 rdf:type owl:NamedIndividual ,
+              ns:homme ;
+     ns:estEnRelation ns:2 ;
+     ns:dateNaissance "JourMoisAnnee" ;
+     ns:numero1 "700000000" ;
+     ns:identifiant "3"^^xsd:int ;
+     ns:nom "Traore" ;
+     ns:prenom "Moussa" .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#4
+ns:4 rdf:type owl:NamedIndividual ,
+              ns:femme ;
+     ns:estEnRelation ns:1 ;
+     ns:dateNaissance "JourMoisAnnee" ;
+     ns:numero1 "5000000" ;
+     ns:identifiant "4"^^xsd:int ;
+     ns:nom "Traore" ;
+     ns:prenom "Adjara" .
+
+
+###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#5
+ns:5 rdf:type owl:NamedIndividual ,
+              ns:femme ;
+     ns:aPourEnfant ns:4 ;
+     ns:estEnRelation ns:4 ;
+     ns:dateNaissance "JourMoisAnnee" ;
+     ns:numero1 "40000000" ;
+     ns:identifiant "5"^^xsd:int ;
+     ns:nom "Ouattara" ;
+     ns:prenom "Bintou" .
+
+
+[ ns:nom ""
+] .
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ owl:intersectionOf ( ns:Personne
+                        ns:femme
+                        [ rdf:type owl:Class ;
+                          owl:unionOf ( [ rdf:type owl:Restriction ;
+                                          owl:onProperty ns:aPourFrere ;
+                                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onClass ns:Personne
+                                        ]
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty ns:aPourSoeur ;
+                                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                          owl:onClass ns:Personne
+                                        ]
+                                      )
+                        ]
+                      ) ;
+   rdf:type owl:Class ;
+   rdfs:subClassOf [ rdf:type owl:Class ;
+                     owl:unionOf ( [ rdf:type owl:Restriction ;
+                                     owl:onProperty ns:aPourFrere ;
+                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass ns:Personne
+                                   ]
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty ns:aPourSoeur ;
+                                     owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass ns:Personne
+                                   ]
+                                 )
+                   ]
+ ] .
+
+
+[ owl:intersectionOf ( ns:femme
+                       [ rdf:type owl:Class ;
+                         owl:unionOf ( [ rdf:type owl:Restriction ;
+                                         owl:onProperty ns:aPourFrere ;
+                                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onClass ns:parent
+                                       ]
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty ns:aPourSoeur ;
+                                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                         owl:onClass ns:parent
+                                       ]
+                                     )
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf [ rdf:type owl:Class ;
+                    owl:unionOf ( [ rdf:type owl:Restriction ;
+                                    owl:onProperty ns:aPourFrere ;
+                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass ns:parent
+                                  ]
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty ns:aPourSoeur ;
+                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass ns:parent
+                                  ]
+                                )
+                  ]
+] .
+
+
+[ owl:intersectionOf ( ns:grandParentPaternel
+                       ns:homme
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf [ rdf:type owl:Class ;
+                    owl:unionOf ( ns:femme
+                                  ns:homme
+                                )
+                  ]
+] .
+
+
+[ owl:intersectionOf ( ns:neveu
+                       [ rdf:type owl:Class ;
+                         owl:unionOf ( [ rdf:type owl:Restriction ;
+                                         owl:onProperty ns:aPourOnclePaternel ;
+                                         owl:someValuesFrom ns:onclePaternel
+                                       ]
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty ns:aPourTantePaternelle ;
+                                         owl:someValuesFrom ns:tantePaternelle
+                                       ]
+                                     )
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf [ owl:intersectionOf ( ns:Personne
+                                         ns:homme
+                                         [ rdf:type owl:Class ;
+                                           owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                           owl:onProperty ns:aPourOnclePaternel ;
+                                                           owl:someValuesFrom ns:oncle
+                                                         ]
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty ns:aPourTantePaternelle ;
+                                                           owl:someValuesFrom ns:tante
+                                                         ]
+                                                       )
+                                         ]
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty ns:aPourParent ;
+                                           owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass [ rdf:type owl:Class ;
+                                                         owl:unionOf ( ns:frere
+                                                                       ns:soeur
+                                                                     )
+                                                       ]
+                                         ]
+                                       ) ;
+                    rdf:type owl:Class
+                  ]
+] .
+
+
+[ owl:intersectionOf ( ns:neveu
+                       [ rdf:type owl:Class ;
+                         owl:unionOf ( [ rdf:type owl:Restriction ;
+                                         owl:onProperty ns:aPourOnclePaternel ;
+                                         owl:someValuesFrom ns:onclePaternel
+                                       ]
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty ns:aPourTantePaternelle ;
+                                         owl:someValuesFrom ns:tantePaternelle
+                                       ]
+                                     )
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                    owl:onProperty ns:aPourParent ;
+                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                    owl:onClass [ rdf:type owl:Class ;
+                                  owl:unionOf ( ns:frere
+                                                ns:soeur
+                                              )
+                                ]
+                  ]
+] .
+
+
+[ owl:intersectionOf ( ns:niece
+                       [ rdf:type owl:Class ;
+                         owl:unionOf ( [ rdf:type owl:Restriction ;
+                                         owl:onProperty ns:aPourOnclePaternel ;
+                                         owl:someValuesFrom ns:oncleMaternel
+                                       ]
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty ns:aPourTantePaternelle ;
+                                         owl:someValuesFrom ns:tanteMaternelle
+                                       ]
+                                     )
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf ns:niece
+] .
+
+
+[ owl:intersectionOf ( ns:niece
+                       [ rdf:type owl:Class ;
+                         owl:unionOf ( [ rdf:type owl:Restriction ;
+                                         owl:onProperty ns:aPourOnclePaternel ;
+                                         owl:someValuesFrom ns:onclePaternel
+                                       ]
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty ns:aPourTantePaternelle ;
+                                         owl:someValuesFrom ns:tantePaternelle
+                                       ]
+                                     )
+                       ]
+                     ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                    owl:onProperty ns:aPourParent ;
+                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                    owl:onClass [ rdf:type owl:Class ;
+                                  owl:unionOf ( ns:frere
+                                                ns:soeur
+                                              )
+                                ]
+                  ]
+] .
+
+
+[ rdf:type owl:Class ;
+  owl:unionOf ( [ rdf:type owl:Restriction ;
+                  owl:onProperty ns:aPourEnfant ;
+                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                  owl:onClass ns:mere
+                ]
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty ns:aPourFille ;
+                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                  owl:onClass ns:parent
+                ]
+              ) ;
+  rdfs:subClassOf [ rdf:type owl:Class ;
+                    owl:unionOf ( ns:femme
+                                  ns:homme
+                                )
+                  ]
+] .
+
+
+[ rdf:type owl:Class ;
+  owl:unionOf ( [ rdf:type owl:Restriction ;
+                  owl:onProperty ns:aPourEnfant ;
+                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                  owl:onClass ns:pere
+                ]
+                [ rdf:type owl:Restriction ;
+                  owl:onProperty ns:aPourFils ;
+                  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                  owl:onClass ns:parent
+                ]
+              ) ;
+  rdfs:subClassOf [ rdf:type owl:Class ;
+                    owl:unionOf ( ns:femme
+                                  ns:homme
+                                )
+                  ]
+] .
+
+
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

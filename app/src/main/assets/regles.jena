@@ -1,0 +1,1112 @@
+
+
+[rule1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)->
+(?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)]
+
+[rule2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)->
+(?A  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)]
+
+[Enfant1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>) (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel> ?C) (?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?D) notEqual
+(?B,?C)->(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?D)]
+
+[Enfant2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>) (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentMaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentMaternel> ?C) (?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?D)
+notEqual(?B,?C)->(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?D)]
+
+[Enfant3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpoux> ?B) (?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant>  ?C)->(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?C)]
+
+[Enfant4: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpouse> ?B) (?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant>  ?C)->(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?C)]
+
+
+[Enfant5: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?B) (?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant>  ?C)->(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?C)]
+
+[Fils1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?B)
+(?B <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils> ?B)]
+
+[Fils2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?B)
+(?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils> ?A)]
+
+[Fille1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?B)
+(?B <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFille> ?B)]
+
+[Fille2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?B)
+(?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFille> ?A)]
+
+[Mere1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?B)
+(?B <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourMere> ?B)]
+
+[Mere2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?B)
+(?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourMere> ?A)]
+
+[Pere1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?B)
+(?B <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere> ?B)]
+
+[Pere2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?B)(?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>) -> (?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere> ?A)]
+
+[Parent1:  (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel> ?B)(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere> ?C) -> (?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?B)]
+
+[Parent2:  (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentMaternel> ?B)(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourMere> ?C)->(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?B)]
+
+[Parent3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?B)(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?C)->(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?C)]
+
+[Parent4: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?B)->(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?A)]
+
+[Parent5: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?C)]
+
+[Frere1: (?A  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne> )
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?C)
+(?C <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)
+notEqual(?B,?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)]
+
+[Frere2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?B)
+(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?B)
+(?C  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)
+notEqual(?A,?C)->(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)]
+
+
+[Frere3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)
+notEqual(?A,?C)->(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)]
+
+
+[Frere7: (?A  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?C)
+notEqual(?B,?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)]
+
+[Frere8: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?C)
+notEqual(?B,?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)]
+
+[Frere9: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere> ?C)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)]
+
+[Frere10: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?C) notEqual(?B,?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)]
+
+[Frere11: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTanteMaternelle> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?C) notEqual(?B,?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)]
+
+[Frere12: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNiecePaternelle> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere> ?C)->
+(?A  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere>  ?C)]
+
+[Frere13: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuPaternel> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)]
+
+
+[Soeur1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?A)]
+
+[Soeur2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?B) (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?C)
+(?C <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)
+notEqual(?B,?C)->(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?C)]
+
+[Soeur3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?B)
+(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?B)
+(?C <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)
+notEqual(?A,?C)->(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?C)]
+
+[Soeur4: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?C)
+notEqual(?A,?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?C)]
+
+[Soeur5: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?A)]
+
+[Soeur6: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourMere> ?C)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?C)]
+
+
+[Soeur7: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle> ?C) notEqual(?B,?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?C)]
+
+[Soeur8: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTanteMaternelle> ?C) notEqual(?B,?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?C)]
+
+[Soeur9: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle> ?C) notEqual(?B,?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?C)]
+
+[Soeur10: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTanteMaternelle>  ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTanteMaternelle> ?C) notEqual(?B,?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur>  ?C)]
+
+[Soeur11: (?A  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourMere> ?C)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTanteMaternelle> ?B) notEqual (?B,?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?C)]
+
+[Soeur12: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNieceMaternelle> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourMere> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?C)]
+
+[Soeur13: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuMaternel> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourMere> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?C)]
+
+
+[oncle1: (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel>  ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncle>  ?B)]
+
+[oncle2: (?A  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncle> ?B)]
+
+[oncleP: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?C)]
+
+[oncleM: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?C)]
+
+[OncleP1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?C)]
+
+[OncleM1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?C)]
+
+[OncleP2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?C)]
+
+[OncleM2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?C)]
+
+[OncleM3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTanteMaternelle> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?C)]
+
+[OncleP3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere> ?D) notEqual(?C,?D)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?C)]
+
+[OncleM4: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?C)]
+
+[OncleP4: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere> ?D)notEqual(?C,?D)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?C)]
+
+[OncleP8: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinPaternel> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere> ?C)
+(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?D)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?D)]
+
+[OncleM8: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinMaternel> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourMere> ?C)
+(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?D)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?D)]
+
+[OncleP9: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere> ?C)
+(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?D)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?D)]
+
+[OncleM9: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousineMaternelle> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourMere> ?C)
+(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?D)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?D)]
+
+[OncleP10: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantPaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils> ?C)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere> ?D) notEqual(?C,?D)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?C)]
+
+[OncleM10: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantMaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils> ?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?C)]
+
+[OncleP11: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuPaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere> ?D)
+notEqual(?C,?D)->(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?C)]
+
+[OncleM11: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuMaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel>  ?C)]
+
+[OncleP12: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNiecePaternelle> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere> ?D)
+notEqual(?C,?D)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?C)]
+
+[OncleM12: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNieceMaternelle> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?C)]
+
+
+[TanteP4: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle> ?C)]
+
+[TanteM4: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?C)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourMere> ?D)
+notEqual(?C,?D)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTanteMaternelle> ?C)]
+
+[TanteM8: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinMaternel> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourMere> ?C)
+(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?D)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTanteMaternelle> ?D)]
+
+[TanteP8: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinPaternel> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere> ?C)
+(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?D)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle> ?D)]
+
+[TanteP9: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere> ?C)
+(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?D)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle> ?D)]
+
+[TanteM9: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousineMaternelle> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourMere> ?C)
+(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?D)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTanteMaternelle> ?D)]
+
+[TanteP10: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantPaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFille> ?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle> ?C)]
+
+[TanteM10: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantMaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFille> ?C)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourMere> ?D)
+notEqual(?C,?D)->(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTanteMaternelle> ?C)]
+
+[TanteP11: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuPaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle> ?C)]
+
+[TanteM11: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuMaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?C)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourMere> ?D)
+notEqual(?C,?D)->(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTanteMaternelle> ?C)]
+
+[TanteP12: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNiecePaternelle> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle> ?C)]
+
+[TanteM12: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNieceMaternelle> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?C)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourMere> ?D)
+notEqual(?C,?D)->(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTanteMaternelle> ?C)]
+
+[neveu1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuPaternel> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveu> ?B)]
+
+[neveu2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuMaternel> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveu> ?B)]
+
+[neveuP: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuPaternel> ?C)]
+
+[neveuM: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuMaternel> ?C)]
+
+[neveuP1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuPaternel> ?A)]
+
+[neveuP2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuPaternel> ?A)]
+
+[neveuM1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuMaternel> ?A)]
+
+[neveuM2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTanteMaternelle> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuMaternel> ?A)]
+
+
+[neveuP3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)
+(?A  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils> ?D)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuPaternel> ?C)
+Equal(?E,notEqual(?C,?D))->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuPaternel> ?E)]
+
+[neveuM3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?B)
+(?A  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils> ?D)
+(?B  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuMaternel> ?C)
+ Equal(?E,notEqual(?C,?D))->
+(?A  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuMaternel> ?E)]
+
+[neveuP4: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils> ?D)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuPaternel> ?C)
+Equal(?E,notEqual(?C,?D))->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuPaternel> ?E)]
+
+[neveuM4: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils> ?D)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuMaternel> ?C)
+Equal(?E,notEqual(?C,?D))->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuMaternel> ?E)]
+
+
+
+[niece1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNiecePaternelle> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNiece> ?B)]
+
+[niece2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNieceMaternelle> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNiece> ?B)]
+
+[nieceP: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFille> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNiecePaternelle> ?C)]
+
+[nieceM: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFille> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNieceMaternelle> ?C)]
+
+[nieceP1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNiecePaternelle> ?A)]
+
+
+[nieceM1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTanteMaternelle> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNieceMaternelle> ?A)]
+
+[GrandParent1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParent> ?B)]
+
+
+[GrandParent2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentMaternel> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParent> ?B)]
+
+[GrandParent3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParent> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpoux> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParent> ?C)]
+
+[GrandParent4: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfant> ?B)->
+(?B  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParent> ?A)]
+
+
+[GrandParentP:(?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantPaternel> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel> ?A)]
+
+[GrandParentM:(?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantMaternel> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentMaternel> ?A)]
+
+[GrandParentP1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel> ?C)]
+
+[GrandParentM1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourMere> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentMaternel> ?C)]
+
+[GrandParentP2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaterne> ?C)]
+
+[GrandParentM2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentMaternel> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentMaternel> ?C)]
+
+[GrandParentP3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel> ?C)]
+
+[GrandParentM3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentMaternel> ?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentMaternel> ?C)]
+
+[GrandPereP1:  (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>aPourGrandParentPaternel> ?B)
+(?B <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandPere> ?B)]
+
+[GrandPereM1:  (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentMaternel> ?B)
+(?B <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandPere> ?B)]
+
+[GrandMereP1:  (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel> ?B)
+(?B <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandMere> ?B)]
+
+[GrandMereM1:  (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentMaternel> ?B)
+(?B <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandMere> ?B)]
+
+
+
+
+
+[PetitEnfant1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantPaternel> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfant> ?B)]
+
+[PetitEnfant2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantMaternel> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfant> ?B)]
+
+[PetitEnfant3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfant> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpoux> ?C)->
+(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfant> ?B)]
+
+[PetitEnfant4: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParent> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfant> ?A)]
+
+
+
+[PetitEnfantP:(?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantPaternel> ?A)]
+
+[PetitEnfantM:(?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentMaternel> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantMaternel> ?A)]
+
+[PetitEnfantP1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPere> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#>aPourParent> ?C)->
+(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantPaternel> ?A)]
+
+[PetitEnfantM1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourMere> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?C)->
+(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantMaternel> ?A)]
+
+[PetitEnfantP2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantPaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpoux> ?C)->
+(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantPaternel> ?B)]
+
+[PetitEnfantP3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantPaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpouse> ?C)->
+(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantPaternel> ?B)]
+
+[PetitEnfantM2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantMaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpoux> ?C)->
+(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantMaternel> ?B)]
+
+[PetitEnfantM3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantMaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpouse> ?C)->
+(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantMaternel> ?B)]
+
+
+
+
+[PetitFilsP1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantPaternel> ?B)
+(?B <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitFils> ?B)]
+
+[PetitFilsM1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantMaternel> ?B)
+(?B <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#PaPourPetitFils> ?B)]
+
+[PetitFilsP2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantPaternel> ?B)
+(?B <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetiteFille> ?B)]
+
+[PetitFilsM2: (?A  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantMaternel> ?B)
+(?B <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetiteFille> ?B)]
+
+
+[cousin1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinPaternel> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousin> ?B)]
+
+[cousin2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinMaternel> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousin> ?B)]
+
+[CousinP: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils> ?C)
+notEqual(?A,?C)->(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinPaternel> ?C)]
+
+[CousinM: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils> ?C)
+notEqual(?A,?C)->(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48aPourCousinMaternel> ?C)]
+
+[cousinP1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils> ?C)
+notEqual(?A,?C)->(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinPaternel> ?C)]
+
+
+[cousinM1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTanteMaternelle> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils> ?C)
+notEqual(?A,?C)->(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinMaternel> ?C)]
+
+[CousinP2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinPaternel> ?C)
+notEqual(?A,?C)->(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinPaternel> ?C)]
+
+[CousinM2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinMaternel> ?C)
+ notEqual(?A,?C)->(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinMaternel> ?C)]
+
+[CousinP3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinPaternel> ?C) notEqual(?A,?C)->
+(?A  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinPaternel>  ?C)]
+
+[CousinM3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinMaternel> ?C) notEqual(?A,?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinMaternel> ?C)]
+
+
+[CousinP4: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinPaternel> ?B) notEqual(?A,?B)->(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinPaternel> ?A)]
+
+[CousinM4: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinMaternel> ?B)
+notEqual(?A,?B)->(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinMaternel> ?A)]
+
+[CousinP5: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinPaternel> ?A)]
+
+[CousinM5: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousineMaternelle> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinMaternel> ?A)]
+
+[CousinP6: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuPaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils> ?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinPaternel> ?C)]
+
+[CousinM6: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuMaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils> ?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinMaternel> ?C)]
+
+[CousinP7: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNiecePaternelle> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils> ?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinPaternel> ?C)]
+
+[CousinM7: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNieceMaternelle> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFils> ?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinMaternel> ?C)]
+[CousineP: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFille> ?C) notEqual(?A,?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle> ?C)]
+
+[CousineM: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFille> ?C) notEqual(?A,?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousineMaternelle> ?C)]
+
+[CousineP1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFille> ?C) notEqual(?A,?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle> ?C)]
+
+[CousineM1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTanteMaternelle> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFille> ?C) notEqual(?A,?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousineMaternelle> ?C)]
+
+[CousineP2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle> ?C) notEqual(?A,?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle> ?C)]
+
+[CousineM2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousineMaternelle> ?C) notEqual(?A,?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousineMaternelle> ?C)]
+
+[CousineP3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle> ?C) notEqual(?A,?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle> ?C)]
+
+[CousineM3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousineMaternelle> ?C) notEqual(?A,?C)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle> ?C)]
+
+[CousineP4: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle> ?B)->(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle> ?A)]
+
+[CousineM4: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousineMaternelle> ?B)->(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousineMaternelle> ?A)]
+
+[CousineP5: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinPaternel> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle> ?A)]
+
+[CousineM5: (?A rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinMaternel> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle> ?A)]
+
+[CousineP6: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuPaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFille> ?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle> ?C)]
+
+[CousineM6: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuMaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFille> ?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousineMaternelle> ?C)]
+
+[CousineP7: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNiecePaternelle> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFille> ?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle> ?C)]
+
+[CousineM7: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNieceMaternelle> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFille> ?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousineMaternelle> ?C)]
+
+
+[cousine1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousine> ?B)]
+
+[cousine2: (?A  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousineMaternelle> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousine> ?B)]
+
+
+
+[Epouse1: (?A  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?B)
+(?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)
+(?C http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?D)
+(?C <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)
+Equal(?B,?D)->(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpouse> ?B)]
+
+
+[Epouse2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?B)
+(?B <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?D)
+(?D <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpouse> ?D)]
+
+
+[Epouse3:(?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+ (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandPerePaternel> ?B)
+ (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandMerePaternel> ?C)->
+ (?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpouse> ?C)]
+
+[Epouse4:(?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandPereMaternel> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandMereMaternel> ?C)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpouse> ?C)]
+
+[Epouse5: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpoux> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpouse> ?A)]
+
+[Epouse6:(?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel> ?B)
+(?B <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)
+ (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel> ?C)
+ (?C <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpouse> ?C)]
+
+
+
+[Epoux1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpouse> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpoux> ?A)]
+
+[Epoux2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?B)
+(?B  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme> )
+(?A  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?D)
+(?De  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme> )->
+(?D <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpoux> ?B)]
+
+[Epoux3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?B)
+(?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)
+(?C  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?D)
+(?C <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)
+Equal(?B,?D)->(?B  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpoux> ?A)]
+
+[Epoux4:(?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel> ?B)
+(?B <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel> ?C)
+(?C <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>)->
+(?C <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpoux> ?B)]
+
+
+
+
+[ami: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourAmi> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourAmi> ?A)]
+
+[collegue1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCollegue> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCollegue> ?A)]
+
+[collegue2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCollegue> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCollegue> ?C)
+notEqual(?A,?C)->(?A  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCollegue> ?C)]
+
+
+
+[gendre: (?A  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpoux> ?B)
+(?A  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?C) ->
+(?C  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGendre> ?B)]
+
+[bellefille: (?A  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne> )
+(?A  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpouse>  ?B)
+(?A  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent>  ?C) ->
+(?C  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBelleFille> ?B)]
+
+
+[beauParent: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpoux> ?B)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?C) ->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBeauParent> ?C)]
+
+[beauParent1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpouse>  ?B)
+(?A  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent>  ?C) ->
+(?B  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBeauParent>  ?C)]
+
+[beauParent2: (?A  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne> )
+(?A   <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBeauPere>  ?B)->
+(?A   <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBeauParent> ?B)]
+
+[beauParent3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBelleMere> ?B) ->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBeauParent> ?B)]
+
+[beaupere: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBeauParent> ?B)
+(?B <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>) ->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBeauPere> ?B)]
+
+[bellemere: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBeauParent> ?B)
+(?B <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>) ->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBelleMere>  ?B)]
+
+
+
+[beaufrere: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpoux> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C) ->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBeauFrere> ?C)]
+
+[beaufrere1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpouse> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?C)->(?A  <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBeauFrere>  ?C)]
+
+[beaufrere2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBelleSoeur> ?B)
+(?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>)->(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBeauFrere> ?A)]
+
+[beaufrere3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBeauFrere> ?B)
+(?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#homme>) ->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBeauFrere> ?A)]
+
+
+
+
+
+
+
+
+
+[bellesoeur: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+ (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpoux> ?B)
+ (?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?C) ->
+ (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBelleSoeur> ?C)]
+
+
+[bellesoeur1: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpouse> ?B)
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?C) ->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBelleSoeur> ?C)]
+
+
+[bellesoeur2: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBelleSoeur> ?B)
+(?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>) ->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBelleSoeur> ?A)]
+
+
+
+[bellesoeur3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBeauFrere> ?B)
+(?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#femme>) ->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBelleSoeur> ?A)]
+
+
+
+
+
+[relation: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRealtion> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?A)]
+
+[relation21: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEnfant> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+
+[relation23: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourParent> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation3: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOnclePaternel> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation4: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTantePaternelle> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation33: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourOncleMaternel> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation44: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourTanteMaternelle> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation5: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+ (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinPaternel> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation6: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinePaternelle> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation55: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousinMaternel> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation66: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCousineMaternelle> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation7: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+ (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuPaternel> ?B)->
+ (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation8: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNiecePaternelle> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation77: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNeveuMaternel> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation88: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourNieceMaternelle> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation9: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantPaternel> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation99: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+ (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourPetitEnfantMaternel> ?B)->
+ (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation10: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentPaternel> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation100: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGrandParentMaternel> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation11: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+ (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpoux> ?B)->
+ (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation12: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourEpouse> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation150: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+ (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourFrere> ?B)->
+ (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[relation15: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourSoeur> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[ami: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+ (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourAmi> ?B)->
+ (?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?A)]
+
+[collegue: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourCollegue> ?B)->
+(?B <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?A)]
+
+[gendre: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourGendre> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[bellefille: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBelleFille> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[beaupere: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBeauPere> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[bellemere: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBelleMere> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[beaufrere: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBeauFrere> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
+[bellesoeur: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBelleSoeur> ?B)->
+(?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
+
