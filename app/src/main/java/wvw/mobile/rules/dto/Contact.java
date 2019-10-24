@@ -1,15 +1,27 @@
 package wvw.mobile.rules.dto;
 
+import android.graphics.Color;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import wvw.mobile.rules.util.ColorUtils;
 
 public class Contact implements Serializable {
-    String id;
-    String name;
-    String phone;
-    String prenom;
-    String email;
-    String birthday;
-    String sexe;
+    private String id;
+    private String name;
+    private String phone;
+    private String phone2;
+    private String phone3;
+    private String prenom;
+    private String email;
+    private String birthday;
+    private String sexe;
+    //Utiliser dans la metode show pour afficher le liens avec le contact actuel
+    private String relationFind;
+    private List<Contact> contactsLiens=null;
+    private int backgroundColor = Color.BLUE;
 
     public Contact(String name, String phone) {
         this.name = name;
@@ -18,6 +30,7 @@ public class Contact implements Serializable {
         this.email="";
         this.birthday="";
         this.sexe="";
+        this.backgroundColor = ColorUtils.getRandomMaterialColor();
     }
 
     public Contact() {
@@ -25,6 +38,7 @@ public class Contact implements Serializable {
         this.email="";
         this.birthday="";
         this.sexe="";
+        this.backgroundColor = ColorUtils.getRandomMaterialColor();
     }
 
     public String getName() {
@@ -81,5 +95,45 @@ public class Contact implements Serializable {
 
     public void setSexe(String sexe) {
         this.sexe = sexe;
+    }
+
+    public int getBackgroundColor() {
+        return backgroundColor;
+    }
+
+    public String getPhone2() {
+        return phone2;
+    }
+
+    public void setPhone2(String phone2) {
+        this.phone2 = phone2;
+    }
+
+    public String getPhone3() {
+        return phone3;
+    }
+
+    public void setPhone3(String phone3) {
+        this.phone3 = phone3;
+    }
+
+    public void setBackgroundColor(int backgroundColor) {
+        this.backgroundColor = backgroundColor;
+    }
+
+    public List<Contact> getContactsLiens() {
+        return contactsLiens;
+    }
+
+    public void setContactsLiens(List<Contact> contactsLiens) {
+        this.contactsLiens = contactsLiens;
+    }
+
+    public String getRelationFind() {
+        return relationFind;
+    }
+
+    public void setRelationFind(String relationFind) {
+        this.relationFind = relationFind;
     }
 }

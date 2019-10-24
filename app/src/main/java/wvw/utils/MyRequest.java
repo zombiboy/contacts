@@ -26,7 +26,7 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
     public static String mere="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
@@ -41,10 +41,10 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
-    static String fils="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String fils="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -56,10 +56,10 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
-    static String fille="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String fille="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -71,10 +71,10 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
-    static String frere="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String frere="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -86,10 +86,10 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
-    static String soeur="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String soeur="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -101,10 +101,10 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
-    static String epoux="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String epoux="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -119,7 +119,7 @@ public class MyRequest {
             "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
 
 
-    static String epouse="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String epouse="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -134,7 +134,7 @@ public class MyRequest {
             "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
 
 
-    static String oncle="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String oncle="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -149,7 +149,7 @@ public class MyRequest {
             "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
 
 
-    static String tante="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String tante="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -164,7 +164,7 @@ public class MyRequest {
             "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
 
 
-    static String neveu="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String neveu="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -179,7 +179,7 @@ public class MyRequest {
             "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
 
 
-    static String niece="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String niece="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -194,7 +194,7 @@ public class MyRequest {
             "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
 
 
-    static String grandParent="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String grandParent="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -209,7 +209,7 @@ public class MyRequest {
             "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
 
 
-    static String petitEnfant="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String petitEnfant="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -223,7 +223,7 @@ public class MyRequest {
             "?y ns:prenom ?prenom." +
             "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
 
-    static String ami="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String ami="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -238,7 +238,7 @@ public class MyRequest {
             "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
 
 
-    static String collegue="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String collegue="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -253,7 +253,7 @@ public class MyRequest {
             "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
 
 
-    static String cousin="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String cousin="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -268,7 +268,7 @@ public class MyRequest {
             "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
 
 
-    static String cousine="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String cousine="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -284,7 +284,7 @@ public class MyRequest {
 
 
 
-    static String beauParent="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String beauParent="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -300,7 +300,7 @@ public class MyRequest {
 
 
 
-    static String gendre="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String gendre="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -317,7 +317,7 @@ public class MyRequest {
 
 
 
-    static String beauFrere="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String beauFrere="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -334,7 +334,7 @@ public class MyRequest {
 
 
 
-    static String belleSoeur="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String belleSoeur="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -351,7 +351,7 @@ public class MyRequest {
 
 
 
-    static String belleFille="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String belleFille="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -368,7 +368,7 @@ public class MyRequest {
 
 
 
-    static String homme="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+    public static String homme="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -386,7 +386,7 @@ public class MyRequest {
 
 
 
-   static String femme="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+   public static String femme="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -404,7 +404,7 @@ public class MyRequest {
 
 
 
-   static String numero="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+   public static String numero="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -417,7 +417,7 @@ public class MyRequest {
             "?x ns:identifiant ?identif}";
 
 
-static String relation="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+public static String relation="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -443,7 +443,7 @@ static String relation="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#
             "?x ns:prenom ?prenom." +
             "?x ns:numero1 ?numero1."
             + "optional{?x ns:email ?email.}}";
-   static String RechercheContact="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+   public static String RechercheContact="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -470,7 +470,7 @@ static String relation="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#
             "?x ns:nom ?nom." +
             "?x ns:prenom ?prenom.}";
 
-   static String contact="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+   public static String contact="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +

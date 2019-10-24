@@ -14,42 +14,42 @@
     </string-array>
     <string-array name="contacts_relation_types">
         <item>Choisir</item>
-        <item>Ami de </item>
-        <item>Beau frère de </item>
-        <item>Beau père de </item>
-        <item>Belle fille de </item>
-        <item>Belle mère de </item>
-        <item>Belle soeur de </item>
+        <item>Ami de</item>
+        <item>Beau frère de</item>
+        <item>Beau père de</item>
+        <item>Belle fille de</item>
+        <item>Belle mère de</item>
+        <item>Belle soeur de</item>
         <item>Collègue de</item>
-        <item>Cousin maternele de </item>
-        <item>Cousin paternel de </item>
-        <item>Cousine maternelle de </item>
-        <item>Cousine paternelle de </item>
-        <item>Epoux de </item>
-        <item>Epouse de </item>
-        <item>Fille de </item>
-        <item>Fils de </item>
-        <item>Frère de </item>
-        <item>Soeur de </item>
-        <item>Gendre de </item>
-        <item>Grande mère maternelle de </item>
-        <item>Grande mère paternelle de </item>
-        <item>Grand père maternel de </item>
-        <item>Grand père paternel de </item>
-        <item>Neveu maternel de </item>
-        <item>Neveu paternel de </item>
-        <item>Nièce maternelle de </item>
-        <item>Nièce paternelle de </item>
-        <item>Oncle maternel de </item>
-        <item>Oncle paternel de </item>
-        <item>Petit fils maternel de </item>
-        <item>Petit fils paternel de </item>
-        <item>Petite fille maternelle de </item>
-        <item>Petite fille paternelle de </item>
-        <item>Père de </item>
-        <item>Mère de </item>
-        <item>Tante maternelle de </item>
-        <item>Tante paternelle de </item>
+        <item>Cousin maternele de</item>
+        <item>Cousin paternel de</item>
+        <item>Cousine maternelle de</item>
+        <item>Cousine paternelle de</item>
+        <item>Epoux de</item>
+        <item>Epouse de</item>
+        <item>Fille de</item>
+        <item>Fils de</item>
+        <item>Frère de</item>
+        <item>Soeur de</item>
+        <item>Gendre de</item>
+        <item>Grande mère maternelle de</item>
+        <item>Grande mère paternelle de</item>
+        <item>Grand père maternel de</item>
+        <item>Grand père paternel de</item>
+        <item>Neveu maternel de</item>
+        <item>Neveu paternel de</item>
+        <item>Nièce maternelle de</item>
+        <item>Nièce paternelle de</item>
+        <item>Oncle maternel de</item>
+        <item>Oncle paternel de</item>
+        <item>Petit fils maternel de</item>
+        <item>Petit fils paternel de</item>
+        <item>Petite fille maternelle de</item>
+        <item>Petite fille paternelle de</item>
+        <item>Père de</item>
+        <item>Mère de</item>
+        <item>Tante maternelle de</item>
+        <item>Tante paternelle de</item>
     </string-array>
     <string-array name="Search">
         <item>Contact</item>
@@ -59,4 +59,9 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="add_phone_dom">Domicile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_home">HomeActivity</string>
 </resources>

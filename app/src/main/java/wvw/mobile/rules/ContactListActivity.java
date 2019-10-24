@@ -68,7 +68,7 @@ public class ContactListActivity extends AppCompatActivity implements SearchView
         setSupportActionBar(toolbar);
 
         owlFile=new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),""+FILE_NAME_DATABASE);
-        modelOntologie  = Utilite.readModel(getAssets(),getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS));
+        modelOntologie  = Utilite.readModel(owlFile);
         modeleInf= Utilite.inference(modelOntologie,getAssets());
 
         recyclerView = (FastScrollRecyclerView) findViewById(R.id.recycler_view);
@@ -106,10 +106,12 @@ public class ContactListActivity extends AppCompatActivity implements SearchView
             public void onClick(View view, final int position) {
 
                 Contact contact = contacts.get(position);
+                contact=findKnowsPerson(contact);
                 //TODO:contact show
-                Intent intent = new Intent(getBaseContext(), ContactEditActivity.class);
+                Intent intent = new Intent(getBaseContext(), ContactShowActivity.class);
                 intent.putExtra(CONTACT_SELECT, contact);
                 startActivity(intent);
+
 
             }
 
@@ -118,12 +120,42 @@ public class ContactListActivity extends AppCompatActivity implements SearchView
 
                 //Rubrique rubrique = rubriqueList.get(position);
 
-
             }
         }));
 
     }
 
+    private Contact findKnowsPerson(Contact selectContact) {
+
+        List<Contact> contactList = new ArrayList<>();
+        String reqDesPersonneEnRelation=Utilite.gestionRequete(MyRequest.relation, selectContact.getId());
+        Query query1=QueryFactory.create(reqDesPersonneEnRelation);
+        QueryExecution qexec1 = QueryExecutionFactory.create(query1,modeleInf);
+        try  {
+            ResultSet resultat1 = qexec1.execSelect();
+            while (resultat1.hasNext()) {
+                QuerySolution soln1 = resultat1.nextSolution();
+
+                Literal iden = soln1.getLiteral("id");
+                String idTrouver = iden.getString();
+                Literal nom = soln1.getLiteral("nom");
+                String nomTrouver = nom.getString();
+                Literal prenom = soln1.getLiteral("prenom");
+                String prenomTrouver = prenom.getString();
+                //TODO:: ADD
+                System.out.println("RELATION AVEC "+idTrouver+" "+nomTrouver+" "+prenomTrouver);
+                Contact c= new Contact();
+                c.setId(idTrouver);
+                c.setName(nomTrouver);
+                c.setPrenom(prenomTrouver);
+                c.setRelationFind("Ami de");
+                contactList.add(c);
+            }
+        }finally{
+            qexec1.close();}
+            selectContact.setContactsLiens(contactList);
+        return selectContact;
+    }
 
 
     public void remplirCombobox() {

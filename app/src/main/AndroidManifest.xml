@@ -23,8 +23,15 @@
         <activity android:name=".ContactAddActivity" />
         <activity
             android:name=".ContactShowActivity"
-            android:label="@string/title_activity_contact_show" />
-        <activity android:name=".ContactEditActivity"></activity>
+            android:label="@string/title_activity_contact_show"
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ContactEditActivity" />
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

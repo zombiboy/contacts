@@ -45,10 +45,13 @@ import java.io.InputStream;
 import java.util.Calendar;
 import java.util.List;
 
+import wvw.mobile.rules.dto.Contact;
 import wvw.utils.Civilite;
 import wvw.utils.IOUtils;
 import wvw.utils.MyRequest;
 import wvw.utils.wvw.utils.rdf.Namespaces;
+
+import static wvw.mobile.rules.HomeActivity.CONTACT_SELECT;
 
 public class ContactAddActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener,AdapterView.OnItemClickListener {
 
@@ -62,6 +65,8 @@ public class ContactAddActivity extends AppCompatActivity implements AdapterView
     private static String FILE_NAME_DATABASE="ont.owl";
     private File owlFile = null;
     private FileOutputStream out= null;
+    private Contact contact;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -394,28 +399,8 @@ public class ContactAddActivity extends AppCompatActivity implements AdapterView
     }
 
 
-    public void saveContact2(View view){
-        int identifiant=0;
-        identifiant = identifiant()+1;
-
-        creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-        // add the property
-
-        ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", "KABORE");
-        ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-        ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", "KALIFA");
-        ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", "78787878");
-
-        try {
-            out = new FileOutputStream(owlFile);
-            modelOntologie.write(out,"N3");
-            Intent intent = new Intent(this, ContactShowActivity.class);
-            startActivity(intent);
-        } catch (FileNotFoundException e) {Toast.makeText(this, "Echec !!", Toast.LENGTH_LONG).show();e.printStackTrace();}
-
-    }
-
-    public void saveContact(View view) {
+    public void saveContact(View view){
+        contact = new Contact();
         String nom = String.valueOf(txtNom.getText());// Partie declaration et initialisation de variables //
         String prenom = String.valueOf(txtPrenom.getText());
         String numero = String.valueOf(txtTelephone.getText());
@@ -426,1596 +411,173 @@ public class ContactAddActivity extends AppCompatActivity implements AdapterView
 
 
         int identifiant=0;
-
         identifiant = identifiant()+1;
-
-        /**
-         * Partie bloc de contrôle
-         */
-
-        try {
-
-            if (nom.isEmpty() | prenom.isEmpty() | numero.isEmpty()) {
-                Toast.makeText(ContactAddActivity.this, "Impossible d'enregistrer!!", Toast.LENGTH_LONG).show();
-            } else {
-                /**
-                 * Enregistrement d'un homme
-                 */
-
-                //Enregistrement homme sans email ni relation sociale
-                if (email.isEmpty() && sexe.contains("Homme") && b_relation.contains("Choisir")) {
-
-
-                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                    ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                    ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                    ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                    ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                    ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "dateNaissance", naissance);
-
-
-                    out = new FileOutputStream(owlFile);
-                    modelOntologie.write(out,"N3");
-                    //TODO:: Redirigé vers le conatct creer
-                    Toast.makeText(ContactAddActivity.this, "Enregistrer avec succès!!  ", Toast.LENGTH_LONG).show();
-
-                }
-
-                else {
-                    //Enregistrement homme avec email et sans relation sociale
-                    if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Homme") && b_relation.contains("Choisir")) {
-
-                        // Toast.makeText(ContactAddActivity.this, "Enregistrer avec succès!!", Toast.LENGTH_LONG).show();
-                        creerInstanceDeClasse( modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                        ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                        ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                        ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "email", email);
-                        ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                        ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                        ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "dateNaissance", naissance);
-
-                        out = new FileOutputStream(owlFile);
-                        modelOntologie.write(out,"N3");
-                        Toast.makeText(ContactAddActivity.this, "Enregistrer avec succès!!  ", Toast.LENGTH_LONG).show();
-
-                    } else {
-                        /**
-                         * Enregistrement d'une femme
-                         */
-
-                        //Enregistrement femme sans email ni relation sociale
-                        if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Femme") && b_relation.contains("Choisir")) {
-
-                            // Toast.makeText(ContactAddActivity.this, "Enregistrer avec succès!!", Toast.LENGTH_LONG).show();
-                            creerInstanceDeClasse( modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
-                            ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                            ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                            ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                            ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                            ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "dateNaissance", naissance);
-
-                            out = new FileOutputStream(owlFile);
-                            modelOntologie.write(out,"N3");
-                            Toast.makeText(ContactAddActivity.this, "Enregistrer avec succès!!  ", Toast.LENGTH_LONG).show();
-
-                        } else {
-                            //Enregistrement femme avec email et sans relation sociale
-                            if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Femme") && b_relation.contains("Choisir")) {
-
-                                //   Toast.makeText(ContactAddActivity.this, "Enregistrer avec succès!!", Toast.LENGTH_LONG).show();
-                                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
-                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "email", email);
-                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "dateNaissance", naissance);
-
-                                out = new FileOutputStream(owlFile);
-                                modelOntologie.write(out,"N3");
-                                Toast.makeText(ContactAddActivity.this, "Enregistrer avec succès!!  ", Toast.LENGTH_LONG).show();
-
-
-                            }
-
-                            else{
-
-                                String choix_relation=spinPropriete.getSelectedItem().toString();
-                                String id=id_existant(choix_relation);//identifiant de l'enregistrement existant
-                                //TODO::ALGO a revoir en recuperant directement l ID depuis la liste deroulante
-
-                                /**
-                                 * Enregistrement d'un père
-                                 */
-
-
-                                //Enregistrement père sans email
-                                if(!(nom.isEmpty()&&prenom.isEmpty()&&numero.isEmpty())&&email.isEmpty()&&sexe.contains("Homme")&&b_relation.contains("Père")){
-
-                                    //  Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", ""+identifiant);
-                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "aPourEnfant", id);
-                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                }else{
-                                    //Enregistrement père avec email
-                                    if(!(nom.isEmpty()&&prenom.isEmpty()&&numero.isEmpty()&&email.isEmpty())&&sexe.contains("Homme")&&b_relation.contains("Père")){
-
-                                        //     Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                        creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", ""+identifiant);
-                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "email", email);
-                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "aPourEnfant", id);
-                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-                                        System.out.println("SaveToDaron"+identifiant);
-
-                                    }else{
-                                        /**
-                                         * Enregistrement d'une mère
-                                         */
-
-                                        //Enregistrement mère sans email
-                                        if(!(nom.isEmpty()&&prenom.isEmpty()&&numero.isEmpty())&&email.isEmpty()&&sexe.contains("Femme")&&b_relation.contains("Mère")){
-
-                                            //       Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                            creerInstanceDeClasse(modeleInf,Namespaces.nspacePerson, "femme", ""+identifiant);
-                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "aPourEnfant", id);
-                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                        }else{
-                                            //Enregistrement mère avec email
-                                            if(!(nom.isEmpty()&&prenom.isEmpty()&&numero.isEmpty()&&email.isEmpty())&&sexe.contains("Femme")&&b_relation.contains("Mère")){
-
-                                                //      Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", ""+identifiant);
-                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "email", email);
-                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                ajouterValeurObjectProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "aPourEnfant", id);
-                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                            }else{
-                                                //==========================
-                                                //Enregistrement d'un frère//
-                                                //===========================
-
-                                                //Enregistrement frère sans email
-                                                if(!(nom.isEmpty()&&prenom.isEmpty()&&numero.isEmpty())&&email.isEmpty()&&sexe.contains("Homme")&&b_relation.contains("Frère")){
-
-                                                    //       Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", ""+identifiant);
-                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                    ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourFrere", ""+identifiant);
-                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                }else{
-                                                    //Enregistrement frère avec email
-                                                    if(!(nom.isEmpty()&&prenom.isEmpty()&&numero.isEmpty()&&email.isEmpty())&&sexe.contains("Homme")&&b_relation.contains("Frère")){
-
-                                                        //       Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                        creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", ""+identifiant);
-                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "email", email);
-                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourFrere", ""+identifiant);
-                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                    }else{
-                                                        //==========================
-                                                        //Enregistrement d'une soeur//
-                                                        //===========================
-
-                                                        //Enregistrement soeur sans email
-                                                        if(!(nom.isEmpty()&&prenom.isEmpty()&&numero.isEmpty())&&email.isEmpty()&&sexe.contains("Femme")&&b_relation.contains("Soeur")){
-
-                                                            //      Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                            creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", ""+identifiant);
-                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourSoeur", ""+identifiant);
-                                                            ajouterValeurObjectProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                        }else{
-                                                            //Enregistrement soeur avec email
-                                                            if(!(nom.isEmpty()&&prenom.isEmpty()&&numero.isEmpty()&&email.isEmpty())&&sexe.contains("Femme")&&b_relation.contains("Soeur")){
-
-                                                                //        Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", ""+identifiant);
-                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "email", email);
-                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourSoeur", ""+identifiant);
-                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                            }else{
-                                                                //====================================
-                                                                //Enregistrement d'un oncle paternel//
-                                                                //==================================
-
-                                                                //Enregistrement oncle paternel sans email
-                                                                if(!(nom.isEmpty()&&prenom.isEmpty()&&numero.isEmpty())&&email.isEmpty()&&sexe.contains("Homme")&&b_relation.contains("Oncle paternel")){
-
-                                                                    //     Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", ""+identifiant);
-                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourOnclePaternel", ""+identifiant);
-                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                }else{
-                                                                    //Enregistrement oncle paternel avec email
-                                                                    if(!(nom.isEmpty()&&prenom.isEmpty()&&numero.isEmpty()&&email.isEmpty())&&sexe.contains("Homme")&&b_relation.contains("Oncle paternel")){
-
-                                                                        //        Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                        creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", ""+identifiant);
-                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "email", email);
-                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                        ajouterValeurObjectProperty(modelOntologie,Namespaces.nspacePerson, id, "aPourOnclePaternel", ""+identifiant);
-                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                    }else{
-                                                                        //=======================================
-                                                                        //Enregistrement d'une tante paternelle//
-                                                                        //=====================================
-
-                                                                        //Enregistrement tante paternelle sans email
-                                                                        if(!(nom.isEmpty()&&prenom.isEmpty()&&numero.isEmpty())&&email.isEmpty()&&sexe.contains("Femme")&&b_relation.contains("Tante paternelle")){
-
-                                                                            //      Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                            creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", ""+identifiant);
-                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                            ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourTantePaternelle", ""+identifiant);
-                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                        }else{
-                                                                            //Enregistrement tante paternelle avec email
-                                                                            if(!(nom.isEmpty()&&prenom.isEmpty()&&numero.isEmpty()&&email.isEmpty())&&sexe.contains("Femme")&&b_relation.contains("Tante paternelle")){
-
-                                                                                //       Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", ""+identifiant);
-                                                                                ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "email", email);
-                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourTantePaternelle", ""+identifiant);
-                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                            }else{
-
-                                                                                //=========================================
-                                                                                //Enregistrement d'un grand père paternel//
-                                                                                //=======================================
-
-                                                                                //Enregistrement grand père paternel sans email
-
-                                                                                if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Homme") && b_relation.contains("Grand père paternel")) {
-
-                                                                                    //      Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", ""+identifiant);
-                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourGrandParentPaternel", ""+identifiant);
-                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                }else{
-
-                                                                                    //Enregistrement grand père paternel avec email
-                                                                                    if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Homme") && b_relation.contains("Grand père paternel")) {
-
-                                                                                        //         Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                        creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", ""+identifiant);
-                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "email", email);
-                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourGrandParentPaternel", ""+identifiant);
-                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                    }else{
-
-                                                                                        //==============================================
-                                                                                        //Enregistrement d'une grande mère paternelle //
-                                                                                        //=============================================
-
-                                                                                        //Enregistrement grand mère paternelle sans email
-
-                                                                                        if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Femme") && b_relation.contains("Grande mère paternelle")) {
-
-                                                                                            //    Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                            creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", ""+identifiant);
-                                                                                            ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                            ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourGrandParentPaternel", ""+identifiant);
-                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                        }else{
-
-                                                                                            //Enregistrement grand mère avec email
-                                                                                            if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Femme") && b_relation.contains("Grande mère paternelle")) {
-
-                                                                                                //    Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", ""+identifiant);
-                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "email", email);
-                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourGrandParentPaternel", ""+identifiant);
-                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                            }else{
-
-                                                                                                //=====================================
-                                                                                                //Enregistrement d'un cousin paternel//
-                                                                                                //====================================
-
-                                                                                                //Enregistrement cousin paternel sans email
-                                                                                                if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Homme") && b_relation.contains("Cousin paternel")) {
-
-                                                                                                    //     Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", ""+identifiant);
-                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                    ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourCousinPaternel", ""+identifiant);
-                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                } else {
-
-                                                                                                    //Enregistrement cousin paternel avec email
-                                                                                                    if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Homme") && b_relation.contains("Cousin paternel")) {
-
-                                                                                                        //        Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                        creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", ""+identifiant);
-                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "email", email);
-                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourCousinPaternel", ""+identifiant);
-                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                    } else {
-
-                                                                                                        //=========================================
-                                                                                                        //Enregistrement d'une cousine paternelle//
-                                                                                                        //======================================
-
-                                                                                                        //Enregistrement cousine paternelle sans email
-                                                                                                        if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Femme") && b_relation.contains("Cousine paternelle")) {
-
-                                                                                                            //           Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                            creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", ""+identifiant);
-                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourCousinePaternelle", ""+identifiant);
-                                                                                                            ajouterValeurObjectProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                        } else {
-
-                                                                                                            //Enregistrement cousine paternelle avec email
-                                                                                                            if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Femme") && b_relation.contains("Cousine paternelle")) {
-
-                                                                                                                //  Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", ""+identifiant);
-                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "email", email);
-                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                ajouterValeurObjectProperty(modeleInf,Namespaces.nspacePerson, id, "aPourCousinePaternelle", ""+identifiant);
-                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                            }else{
-
-
-                                                                                                                //====================================
-                                                                                                                //Enregistrement d'un neveu paternel//
-                                                                                                                //===================================
-                                                                                                                //Enregistrement neveu paternel sans email
-                                                                                                                if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Homme") && b_relation.contains("Neveu paternel")) {
-
-                                                                                                                    //    Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", ""+identifiant);
-                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourNeveuPaternel", ""+identifiant);
-                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                } else {
-
-                                                                                                                    //Enregistrement neveu paternel avec email
-                                                                                                                    if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Homme") && b_relation.contains("Neveu paternel")) {
-
-                                                                                                                        //  Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                        creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", ""+identifiant);
-                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "email", email);
-                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                        ajouterValeurObjectProperty(modeleInf, Namespaces.nspacePerson, id, "aPourNeveuPaternel", ""+identifiant);
-                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                    } else {
-
-                                                                                                                        //=======================================
-                                                                                                                        //Enregistrement d'une niece paternelle//
-                                                                                                                        //=====================================
-                                                                                                                        //Enregistrement niece paternelle sans email
-                                                                                                                        if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Femme") && b_relation.contains("Nièce paternelle")) {
-
-                                                                                                                            //   Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                            creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", ""+identifiant);
-                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourNiecePaternelle", ""+identifiant);
-                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                        } else {
-
-                                                                                                                            //Enregistrement niece paternelle avec email
-                                                                                                                            if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Femme") && b_relation.contains("Nièce paternelle")) {
-
-                                                                                                                                //     Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", ""+identifiant);
-                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "email", email);
-                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourNiecePaternelle", ""+identifiant);
-                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                            }else{
-
-                                                                                                                                //=========================================
-                                                                                                                                //Enregistrement d'un petit fils paternel//
-                                                                                                                                //=======================================
-
-                                                                                                                                //Enregistrement petit fils paternel sans email
-                                                                                                                                if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Homme") && b_relation.contains("petit fils paternel")) {
-
-                                                                                                                                    //     Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", ""+identifiant);
-                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                    ajouterValeurObjectProperty(modelOntologie,Namespaces.nspacePerson, id, "aPourPetitEnfantPaternel", ""+identifiant);
-                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                } else {
-
-                                                                                                                                    //Enregistrement petit fils paternel avec email
-                                                                                                                                    if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Homme") && b_relation.contains("Petit fils paternel")) {
-
-                                                                                                                                        //    Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                        creerInstanceDeClasse(modeleInf,Namespaces.nspacePerson, "homme", ""+identifiant);
-                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "email", email);
-                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourPetitEnfantPaternel", ""+identifiant);
-                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                    } else {
-
-                                                                                                                                        //==============================================
-                                                                                                                                        //Enregistrement d'une petite fille paternelle//
-                                                                                                                                        //============================================
-
-                                                                                                                                        //Enregistrement petite fille paternelle sans email
-                                                                                                                                        if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Femme") && b_relation.contains("Petite fille paternelle")) {
-
-                                                                                                                                            // Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                            creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", ""+identifiant);
-                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                            ajouterValeurObjectProperty(modelOntologie,Namespaces.nspacePerson, id, "aPourPetitEnfantPaternel", ""+identifiant);
-                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                        } else {
-
-                                                                                                                                            //Enregistrement petite fille paternelle avec email
-                                                                                                                                            if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Femme") && b_relation.contains("Petite fille paternelle")) {
-
-                                                                                                                                                //   Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", ""+identifiant);
-                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "email", email);
-                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourPetitEnfantPaternel", ""+identifiant);
-                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                            }else{
-
-                                                                                                                                                //============================
-                                                                                                                                                //Enregistrement d'un epoux //
-                                                                                                                                                //===========================
-                                                                                                                                                //Enregistrement epoux sans email
-                                                                                                                                                if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Homme") && b_relation.contains("Epoux")) {
-
-                                                                                                                                                    //   Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", ""+identifiant);
-                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourEpoux", ""+identifiant);
-                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                                } else {
-
-                                                                                                                                                    //Enregistrement epoux avec email
-                                                                                                                                                    if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Homme") && b_relation.contains("Epoux")) {
-
-                                                                                                                                                        //    Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                        creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", ""+identifiant);
-                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson,""+identifiant, "email", email);
-                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourEpoux", ""+identifiant);
-                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                                    } else {
-
-                                                                                                                                                        //==============================
-                                                                                                                                                        //Enregistrement d'une epouse //
-                                                                                                                                                        //=============================
-
-                                                                                                                                                        //Enregistrement epouse sans email
-                                                                                                                                                        if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Femme") && b_relation.contains("Epouse")) {
-
-                                                                                                                                                            //       Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                            creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", ""+identifiant);
-                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourEpouse", ""+identifiant);
-                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                                        } else {
-
-                                                                                                                                                            //Enregistrement epouse avec email
-                                                                                                                                                            if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Femme") && b_relation.contains("Epouse")) {
-
-                                                                                                                                                                //        Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", ""+identifiant);
-                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "email", email);
-                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourEpouse", ""+identifiant);
-                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                                            }else{
-
-
-
-                                                                                                                                                                //==========================
-                                                                                                                                                                //Enregistrement d'un ami //
-                                                                                                                                                                //==========================
-
-                                                                                                                                                                //Enregistrement ami sans email
-                                                                                                                                                                if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Homme") && b_relation.contains("Ami")) {
-
-                                                                                                                                                                    //        Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", ""+identifiant);
-                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourAmi", ""+identifiant);
-                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                                                } else {
-
-                                                                                                                                                                    //Enregistrement ami avec email
-                                                                                                                                                                    if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Homme") && b_relation.contains("Ami")) {
-
-                                                                                                                                                                        //      Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                        creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", ""+identifiant);
-                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "email", email);
-                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourAmi", ""+identifiant);
-                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                                                    } else {
-
-                                                                                                                                                                        //==============================
-                                                                                                                                                                        //Enregistrement d'une amie //
-                                                                                                                                                                        //=============================
-                                                                                                                                                                        //Enregistrement amie sans email
-                                                                                                                                                                        if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Femme") && b_relation.contains("Ami")) {
-
-                                                                                                                                                                            //       Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                            creerInstanceDeClasse(modeleInf,Namespaces.nspacePerson, "femme", ""+identifiant);
-                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourAmi", ""+identifiant);
-                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                                                        } else {
-
-                                                                                                                                                                            //Enregistrement amie avec email
-                                                                                                                                                                            if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Femme") && b_relation.contains("Ami")) {
-
-                                                                                                                                                                                //     Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", ""+identifiant);
-                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "email", email);
-                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourAmi", ""+identifiant);
-                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                                                            }else{
-
-
-
-                                                                                                                                                                                //===============================
-                                                                                                                                                                                //Enregistrement d'un Collegue //
-                                                                                                                                                                                //==============================
-
-                                                                                                                                                                                //Enregistrement Collegue sans email
-                                                                                                                                                                                if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Homme") && b_relation.contains("Collègue")) {
-
-                                                                                                                                                                                    //       Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", ""+identifiant);
-                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourCollegue", ""+identifiant);
-                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                } else {
-
-                                                                                                                                                                                    //Enregistrement Collegue avec email
-                                                                                                                                                                                    if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Homme") && b_relation.contains("Collègue")) {
-
-                                                                                                                                                                                        //      Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                        creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", ""+identifiant);
-                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "email", email);
-                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourCollegue", ""+identifiant);
-                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                    } else {
-
-                                                                                                                                                                                        //==============================
-                                                                                                                                                                                        //Enregistrement d'une Collegue //
-                                                                                                                                                                                        //=============================
-
-                                                                                                                                                                                        //Enregistrement Collegue sans email
-                                                                                                                                                                                        if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Femme") && b_relation.contains("Collègue")) {
-
-                                                                                                                                                                                            //     Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                            creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", ""+identifiant);
-                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourCollegue", ""+identifiant);
-                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                        } else {
-
-                                                                                                                                                                                            //Enregistrement Collegue avec email
-                                                                                                                                                                                            if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Femme") && b_relation.contains("Collègue")) {
-
-                                                                                                                                                                                                //    Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", ""+identifiant);
-                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "nom", nom);
-                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "email", email);
-                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "prenom", prenom);
-                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "numero1", numero);
-                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourCollegue", ""+identifiant);
-                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                            }else{
-                                                                                                                                                                                                //===========================
-                                                                                                                                                                                                //Enregistrement d'un fils //
-                                                                                                                                                                                                //==========================
-
-                                                                                                                                                                                                //Enregistrement fils sans email
-                                                                                                                                                                                                if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Homme") && b_relation.contains("Fils")) {
-
-                                                                                                                                                                                                    //  Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourEnfant", "" + identifiant);
-                                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                }else{
-
-
-                                                                                                                                                                                                    //Enregistrement fils avec email
-                                                                                                                                                                                                    if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Homme") && b_relation.contains("Fils")) {
-
-                                                                                                                                                                                                        //    Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                        creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "email", email);
-                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourEnfant", "" + identifiant);
-                                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                    }else{
-
-
-                                                                                                                                                                                                        //==============================
-                                                                                                                                                                                                        //Enregistrement d'une fille //
-                                                                                                                                                                                                        //=============================
-                                                                                                                                                                                                        //Enregistrement fille sans email
-                                                                                                                                                                                                        if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Femme") && b_relation.contains("Fille")) {
-
-                                                                                                                                                                                                            //       Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                            creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
-                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourEnfant", "" + identifiant);
-                                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                        }else{
-
-
-                                                                                                                                                                                                            //Enregistrement fille avec email
-                                                                                                                                                                                                            if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Femme") && b_relation.contains("Fille")) {
-
-                                                                                                                                                                                                                //     Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
-                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "email", email);
-                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourEnfant", "" + identifiant);
-                                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                            }else{
-
-
-                                                                                                                                                                                                                //=====================================
-                                                                                                                                                                                                                //Enregistrement d'un oncle maternel //
-                                                                                                                                                                                                                //====================================
-                                                                                                                                                                                                                //Enregistrement oncle maternel sans email
-                                                                                                                                                                                                                if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Homme") && b_relation.contains("Oncle maternel")) {
-
-                                                                                                                                                                                                                    //   Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourOncleMaternel", "" + identifiant);
-                                                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                } else {
-
-                                                                                                                                                                                                                    //Enregistrement oncle maternel avec email
-                                                                                                                                                                                                                    if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Homme") && b_relation.contains("Oncle maternel")) {
-
-                                                                                                                                                                                                                        //   Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                        creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "email", email);
-                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourOncleMaternel", "" + identifiant);
-                                                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                    } else {
-
-                                                                                                                                                                                                                        //========================================
-                                                                                                                                                                                                                        //Enregistrement d'une tante maternelle //
-                                                                                                                                                                                                                        //======================================
-                                                                                                                                                                                                                        //Enregistrement tante maternelle sans email
-                                                                                                                                                                                                                        if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Femme") && b_relation.contains("Tante maternelle")) {
-
-                                                                                                                                                                                                                            //     Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                            creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
-                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourTanteMaternelle", "" + identifiant);
-                                                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                        } else {
-
-                                                                                                                                                                                                                            //Enregistrement tante maternelle avec email
-                                                                                                                                                                                                                            if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Femme") && b_relation.contains("Tante maternelle")) {
-
-                                                                                                                                                                                                                                //    Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
-                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "email", email);
-                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourTanteMaternelle", "" + identifiant);
-                                                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                            }else{
-
-
-                                                                                                                                                                                                                                //==========================================
-                                                                                                                                                                                                                                //Enregistrement d'un grand père maternel //
-                                                                                                                                                                                                                                //========================================
-                                                                                                                                                                                                                                //Enregistrement grand père maternel sans email
-                                                                                                                                                                                                                                if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Homme") && b_relation.contains("Grand père maternel")) {
-
-                                                                                                                                                                                                                                    //     Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie,Namespaces.nspacePerson, id, "aPourGrandParentMaternel", "" + identifiant);
-                                                                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                } else {
-
-                                                                                                                                                                                                                                    //Enregistrement grand père maternel avec email
-                                                                                                                                                                                                                                    if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Homme") && b_relation.contains("Grand père maternel")) {
-
-                                                                                                                                                                                                                                        //      Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                        creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "email", email);
-                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourGrandParentMaternel", "" + identifiant);
-                                                                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                    } else {
-
-                                                                                                                                                                                                                                        //=============================================
-                                                                                                                                                                                                                                        //Enregistrement d'une grande mère maternelle //
-                                                                                                                                                                                                                                        //============================================
-                                                                                                                                                                                                                                        //Enregistrement grande mère maternelle sans email
-                                                                                                                                                                                                                                        if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Femme") && b_relation.contains("Grande mère maternelle")) {
-
-                                                                                                                                                                                                                                            //     Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                            creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
-                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourGrandParentMaternel", "" + identifiant);
-                                                                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                        } else {
-
-                                                                                                                                                                                                                                            //Enregistrement grande mère maternelle avec email
-                                                                                                                                                                                                                                            if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Femme") && b_relation.contains("Grande mère maternelle")) {
-
-                                                                                                                                                                                                                                                //     Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
-                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "email", email);
-                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourGrandParentMaternel", "" + identifiant);
-                                                                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                            }else{
-
-
-                                                                                                                                                                                                                                                //==========================================
-                                                                                                                                                                                                                                                //Enregistrement d'un petit fils maternel //
-                                                                                                                                                                                                                                                //=========================================
-                                                                                                                                                                                                                                                //Enregistrement petit fils maternel sans email
-                                                                                                                                                                                                                                                if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Homme") && b_relation.contains("Petit fils maternel")) {
-
-                                                                                                                                                                                                                                                    //     Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourPetitEnfantMaternel", ""+identifiant);
-                                                                                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                } else {
-
-                                                                                                                                                                                                                                                    //Enregistrement petit fils maternel avec email
-                                                                                                                                                                                                                                                    if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Homme") && b_relation.contains("Petit fils maternel")) {
-
-                                                                                                                                                                                                                                                        //       Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                        creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "email", email);
-                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson,id, "aPourPetitEnfantMaternel", ""+identifiant);
-                                                                                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                    } else {
-
-                                                                                                                                                                                                                                                        //==============================================
-                                                                                                                                                                                                                                                        //Enregistrement d'une petite fille maternelle //
-                                                                                                                                                                                                                                                        //=============================================
-                                                                                                                                                                                                                                                        //Enregistrement petite fille maternelle sans email
-                                                                                                                                                                                                                                                        if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Femme") && b_relation.contains("Petite fille maternelle")) {
-
-                                                                                                                                                                                                                                                            //     Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                            creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
-                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie,Namespaces.nspacePerson, id, "aPourPetitEnfantMaternel", "" + identifiant);
-                                                                                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                        } else {
-
-                                                                                                                                                                                                                                                            //Enregistrement petite fille maternelle avec email
-                                                                                                                                                                                                                                                            if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Femme") && b_relation.contains("Petite fille maternelle")) {
-
-                                                                                                                                                                                                                                                                //      Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
-                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "email", email);
-                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourPetitEnfantMaternel", "" + identifiant);
-                                                                                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                            }else{
-
-
-                                                                                                                                                                                                                                                                //=======================================
-                                                                                                                                                                                                                                                                //Enregistrement d'un cousin maternel //
-                                                                                                                                                                                                                                                                //=====================================
-                                                                                                                                                                                                                                                                //Enregistrement cousin maternel sans email
-                                                                                                                                                                                                                                                                if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Homme") && b_relation.contains("Cousin maternel")) {
-
-                                                                                                                                                                                                                                                                    //    Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourCousinMaternel", "" + identifiant);
-                                                                                                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                } else {
-
-                                                                                                                                                                                                                                                                    //Enregistrement cousin maternel avec email
-                                                                                                                                                                                                                                                                    if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Homme") && b_relation.contains("Cousin maternel")) {
-
-                                                                                                                                                                                                                                                                        //      Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                        creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "email", email);
-                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourCousinMaternel", "" + identifiant);
-                                                                                                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                    } else {
-
-                                                                                                                                                                                                                                                                        //==========================================
-                                                                                                                                                                                                                                                                        //Enregistrement d'une cousine maternelle //
-                                                                                                                                                                                                                                                                        //=========================================
-                                                                                                                                                                                                                                                                        //Enregistrement cousine maternelle sans email
-                                                                                                                                                                                                                                                                        if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Femme") && b_relation.contains("Cousine maternelle")) {
-
-                                                                                                                                                                                                                                                                            //         Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                            creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
-                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourCousineMaternelle", "" + identifiant);
-                                                                                                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                        } else {
-
-                                                                                                                                                                                                                                                                            //Enregistrement cousine maternelle avec email
-                                                                                                                                                                                                                                                                            if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Femme") && b_relation.contains("Cousine maternelle")) {
-
-                                                                                                                                                                                                                                                                                //      Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
-                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "email", email);
-                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourCousineMaternelle", "" + identifiant);
-                                                                                                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                            }else{
-
-
-                                                                                                                                                                                                                                                                                //=====================================
-                                                                                                                                                                                                                                                                                //Enregistrement d'un neveu maternel //
-                                                                                                                                                                                                                                                                                //====================================
-                                                                                                                                                                                                                                                                                //Enregistrement neveu maternel sans email
-                                                                                                                                                                                                                                                                                if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Homme") && b_relation.contains("Neveu maternel")) {
-
-                                                                                                                                                                                                                                                                                    //  Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourNeveuMaternel", "" + identifiant);
-                                                                                                                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                                } else {
-
-                                                                                                                                                                                                                                                                                    //Enregistrement neveu maternel avec email
-                                                                                                                                                                                                                                                                                    if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Homme") && b_relation.contains("Neveu maternel")) {
-
-                                                                                                                                                                                                                                                                                        //  Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                                        creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "email", email);
-                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourNeveuMaternel", "" + identifiant);
-                                                                                                                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                                    } else {
-
-                                                                                                                                                                                                                                                                                        //========================================
-                                                                                                                                                                                                                                                                                        //Enregistrement d'une nièce maternelle //
-                                                                                                                                                                                                                                                                                        //=======================================
-                                                                                                                                                                                                                                                                                        //Enregistrement nièce maternelle sans email
-                                                                                                                                                                                                                                                                                        if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Femme") && b_relation.contains("Nièce maternelle")) {
-
-                                                                                                                                                                                                                                                                                            //  Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                                            creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
-                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourNieceMaternelle", "" + identifiant);
-                                                                                                                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                                        } else {
-
-                                                                                                                                                                                                                                                                                            //Enregistrement nièce maternelle avec email
-                                                                                                                                                                                                                                                                                            if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Femme") && b_relation.contains("Nièce maternelle")) {
-
-                                                                                                                                                                                                                                                                                                //    Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                                                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
-                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "email", email);
-                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourNieceMaternelle", "" + identifiant);
-                                                                                                                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                                            } else{
-
-                                                                                                                                                                                                                                                                                                //=====================================
-                                                                                                                                                                                                                                                                                                //Enregistrement d'un gendre          //
-                                                                                                                                                                                                                                                                                                //====================================
-                                                                                                                                                                                                                                                                                                //Enregistrement d'un gendre sans email
-                                                                                                                                                                                                                                                                                                if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Homme") && b_relation.contains("Gendre")) {
-
-                                                                                                                                                                                                                                                                                                    //     Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                                                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourGendre", "" + identifiant);
-                                                                                                                                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                                                } else {
-
-                                                                                                                                                                                                                                                                                                    //Enregistrement d'un gendre avec email
-                                                                                                                                                                                                                                                                                                    if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Homme") && b_relation.contains("Gendre")) {
-
-                                                                                                                                                                                                                                                                                                        //   Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                                                        creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "email", email);
-                                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie,Namespaces.nspacePerson, id, "aPourGendre", "" + identifiant);
-                                                                                                                                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                                                    }else{
-
-                                                                                                                                                                                                                                                                                                        //=====================================
-                                                                                                                                                                                                                                                                                                        //Enregistrement d'un Beau père        //
-                                                                                                                                                                                                                                                                                                        //====================================
-                                                                                                                                                                                                                                                                                                        //Enregistrement d'un Beau père sans email
-                                                                                                                                                                                                                                                                                                        if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Homme") && b_relation.contains("Beau père")) {
-
-                                                                                                                                                                                                                                                                                                            //   Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                                                            creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourBeauPere", "" + identifiant);
-                                                                                                                                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                                                        } else {
-
-                                                                                                                                                                                                                                                                                                            //Enregistrement d'un Beau père avec email
-                                                                                                                                                                                                                                                                                                            if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Homme") && b_relation.contains("Beau père")) {
-
-                                                                                                                                                                                                                                                                                                                //     Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                                                                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "email", email);
-                                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourBeauPere", "" + identifiant);
-                                                                                                                                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                                                            }else{
-
-                                                                                                                                                                                                                                                                                                                //=====================================
-                                                                                                                                                                                                                                                                                                                //Enregistrement d'une Belle mère     //
-                                                                                                                                                                                                                                                                                                                //====================================
-                                                                                                                                                                                                                                                                                                                //Enregistrement d'une Belle mère sans email
-                                                                                                                                                                                                                                                                                                                if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Femme") && b_relation.contains("Belle mère")) {
-
-                                                                                                                                                                                                                                                                                                                    //     Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                                                                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
-                                                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie,Namespaces.nspacePerson, id, "aPourbelleMere", "" + identifiant);
-                                                                                                                                                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                                                                } else {
-
-                                                                                                                                                                                                                                                                                                                    //Enregistrement d'une Belle mère avec email
-                                                                                                                                                                                                                                                                                                                    if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Femme") && b_relation.contains("Belle mère")) {
-
-                                                                                                                                                                                                                                                                                                                        //      Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                                                                        creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
-                                                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "email", email);
-                                                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourBelleMere", "" + identifiant);
-                                                                                                                                                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                                                                    }else{
-
-                                                                                                                                                                                                                                                                                                                        //=====================================
-                                                                                                                                                                                                                                                                                                                        //Enregistrement d'une Belle soeur    //
-                                                                                                                                                                                                                                                                                                                        //====================================
-                                                                                                                                                                                                                                                                                                                        //Enregistrement d'une Belle soeur sans email
-                                                                                                                                                                                                                                                                                                                        if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Femme") && b_relation.contains("Belle soeur")) {
-
-                                                                                                                                                                                                                                                                                                                            //       Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                                                                            creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
-                                                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourBelleSoeur", "" + identifiant);
-                                                                                                                                                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                                                                        } else {
-
-                                                                                                                                                                                                                                                                                                                            //Enregistrement d'une Belle soeur avec email
-                                                                                                                                                                                                                                                                                                                            if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Femme") && b_relation.contains("Belle soeur")) {
-
-                                                                                                                                                                                                                                                                                                                                //      Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                                                                                creerInstanceDeClasse(modeleInf,Namespaces.nspacePerson, "femme", "" + identifiant);
-                                                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "email", email);
-                                                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourBelleSoeur", "" + identifiant);
-                                                                                                                                                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                                                                            }else{
-
-                                                                                                                                                                                                                                                                                                                                //=====================================
-                                                                                                                                                                                                                                                                                                                                //Enregistrement d'une Belle fille   //
-                                                                                                                                                                                                                                                                                                                                //====================================
-                                                                                                                                                                                                                                                                                                                                //Enregistrement d'une Belle fille sans email
-                                                                                                                                                                                                                                                                                                                                if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Femme") && b_relation.contains("Belle fille")) {
-
-                                                                                                                                                                                                                                                                                                                                    //        Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                                                                                    creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
-                                                                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                                                                                    ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourBelleFille", "" + identifiant);
-                                                                                                                                                                                                                                                                                                                                    ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                                                                                } else {
-
-                                                                                                                                                                                                                                                                                                                                    //Enregistrement d'une Belle fille avec email
-                                                                                                                                                                                                                                                                                                                                    if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Femme") && b_relation.contains("Belle fille")) {
-
-                                                                                                                                                                                                                                                                                                                                        //     Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                                                                                        creerInstanceDeClasse(modeleInf,Namespaces.nspacePerson, "femme", "" + identifiant);
-                                                                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "email", email);
-                                                                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                                                                                        ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie,Namespaces.nspacePerson, id, "aPourBelleFille", "" + identifiant);
-                                                                                                                                                                                                                                                                                                                                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                                                                                    }else{
-
-                                                                                                                                                                                                                                                                                                                                        //=====================================
-                                                                                                                                                                                                                                                                                                                                        //Enregistrement d'un Beau frère      //
-                                                                                                                                                                                                                                                                                                                                        //====================================
-                                                                                                                                                                                                                                                                                                                                        //Enregistrement d'un Beau frère sans email
-                                                                                                                                                                                                                                                                                                                                        if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty()) && email.isEmpty() && sexe.contains("Homme") && b_relation.contains("Beau frère")) {
-
-                                                                                                                                                                                                                                                                                                                                            //      Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                                                                                            creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                                                                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                                                                                            ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourBeauFrere", "" + identifiant);
-                                                                                                                                                                                                                                                                                                                                            ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                                                                                        } else {
-
-                                                                                                                                                                                                                                                                                                                                            //Enregistrement d'un Beau frère avec email
-                                                                                                                                                                                                                                                                                                                                            if (!(nom.isEmpty() && prenom.isEmpty() && numero.isEmpty() && email.isEmpty()) && sexe.contains("Homme") && b_relation.contains("Beau frère")) {
-
-                                                                                                                                                                                                                                                                                                                                                //      Toast.makeText(ContactAddActivity.this,"Enregistrer avec succès!!",Toast.LENGTH_LONG).show();
-                                                                                                                                                                                                                                                                                                                                                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
-                                                                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", nom);
-                                                                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
-                                                                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "email", email);
-                                                                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "prenom", prenom);
-                                                                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", numero);
-                                                                                                                                                                                                                                                                                                                                                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "dateNaissance", naissance);
-
-                                                                                                                                                                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id, "aPourBeauFrere", "" + identifiant);
-                                                                                                                                                                                                                                                                                                                                                ajouterValeurObjectProperty(modelOntologie,Namespaces.nspacePerson, "" + identifiant, "estEnRelation", id);
-
-                                                                                                                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                                            }
-
-                                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                            }
-
-                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                            }
-
-                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                }
-                                                                                                                                                                                                            }
-                                                                                                                                                                                                        }
-                                                                                                                                                                                                    }
-                                                                                                                                                                                                }
-                                                                                                                                                                                            }
-                                                                                                                                                                                        }
-
-                                                                                                                                                                                    }
-                                                                                                                                                                                }
-                                                                                                                                                                            }
-                                                                                                                                                                        }
-
-                                                                                                                                                                    }
-                                                                                                                                                                }
-                                                                                                                                                            }
-                                                                                                                                                        }
-
-                                                                                                                                                    }
-                                                                                                                                                }
-                                                                                                                                            }
-                                                                                                                                        }
-
-                                                                                                                                    }
-                                                                                                                                }
-                                                                                                                            }
-                                                                                                                        }
-
-                                                                                                                    }
-                                                                                                                }
-                                                                                                            }
-
-                                                                                                        }
-
-                                                                                                    }
-                                                                                                }
-                                                                                            }
-                                                                                        }
-
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    out = new FileOutputStream(owlFile);
-                    modelOntologie.write(out,"N3");
-                    System.out.println("Enregistrement a la fin");
-                    Toast.makeText(ContactAddActivity.this, "Enregistrer avec succès!!  ", Toast.LENGTH_LONG).show();
-                }
+        if (nom.isEmpty() || numero.isEmpty()) {
+            Toast.makeText(ContactAddActivity.this, "Impossible d'enregistrer!!", Toast.LENGTH_LONG).show();
+        }else{
+
+            if (email.isEmpty() && sexe.contains("Homme")) {
+                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
+            }else {
+                creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
+            }
+            // add the property
+            ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "identifiant", identifiant);
+            ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "nom", ""+nom);
+            ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "numero1", ""+numero);
+            contact.setId(""+identifiant);
+            contact.setName(nom);
+            contact.setPhone(numero);
+            //verfier avant d'ajouter la propriete
+            if(!prenom.isEmpty()) {
+                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "prenom", "" + prenom);
+                contact.setPrenom(prenom);
+            }
+            if(!naissance.isEmpty()){
+            ajouterValeurDataTypeProperty( modelOntologie, Namespaces.nspacePerson, "" + identifiant, "dateNaissance", naissance);
+            contact.setBirthday(naissance);
+            }
+            if(!email.isEmpty()) {
+                ajouterValeurDataTypeProperty(modelOntologie, Namespaces.nspacePerson, "" + identifiant, "email", email);
+                contact.setEmail(email);
             }
 
-        }
-        catch(Exception e)
+            //La personne a une relation avec une autre personne , mais on appelera proprieté= personne et relation=relation
+            if (!b_relation.contains("Choisir")) {
+                String choice_person=spinPropriete.getSelectedItem().toString();
+                String id_person_choice=id_existant(choice_person);//identifiant de l'enregistrement existant
 
-        {
-            e.printStackTrace();
+                ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id_person_choice);
+                switch(b_relation)
+                {
+                    case "Père de" :
+                        // Statements
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "aPourEnfant", id_person_choice);
+                        break; // break is optional
+                    case "Mère de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "aPourEnfant", id_person_choice);
+                        break; // break is optional
+                    case "Frère de" :
+                        //TODO:: A Revoir les noms des proprites changé id_person_choice par identifiant et vice versa
+                        System.out.println("Choice frere stich case");
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+id_person_choice, "aPourFrere", ""+identifiant);
+                        break;
+                    case "Soeur de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+id_person_choice, "aPourSoeur", ""+identifiant);
+                        break;
+                    case "Oncle paternel de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+id_person_choice, "aPourOnclePaternel", ""+identifiant);
+                        break;
+                    case "Tante paternelle de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourTantePaternelle", ""+identifiant);
+                        break;
+                    case "Grand père paternel de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourGrandParentPaternel", ""+identifiant);
+                        break;
+                    case "Cousin paternel de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourCousinPaternel", ""+identifiant);
+                        break;
+                    case "Cousine paternelle de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourCousinePaternelle", ""+identifiant);
+                        break;
+                    case "Neveu paternel de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourNeveuPaternel", ""+identifiant);
+                        break;
+                    case "Nièce paternelle de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourNiecePaternelle", ""+identifiant);
+                        break;
+                    case "petit fils paternel de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourPetitEnfantPaternel", ""+identifiant);
+                        break;
+                    case "Petite fille paternelle de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourPetitEnfantPaternel", ""+identifiant);
+                        break;
+                    case "Epoux de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourEpoux", ""+identifiant);
+                        break;
+                    case "Epouse de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourEpouse", ""+identifiant);
+                        break;
+                    case "Ami de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourAmi", ""+identifiant);
+                        break;
+                    case "Collègue de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourCollegue", ""+identifiant);
+                        break;
+                    case "Fils de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourEnfant", ""+identifiant);
+                        break;
+                    case "Fille de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourEnfant", ""+identifiant);
+                        break;
+                    case "Oncle maternel de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourOncleMaternel", ""+identifiant);
+                        break;
+                    case "Tante maternelle de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourTanteMaternelle", ""+identifiant);
+                        break;
+                    case "Grand père maternel de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourGrandParentMaternel", ""+identifiant);
+                        break;
+                    case "Grande mère maternelle de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourGrandParentMaternel", ""+identifiant);
+                        break;
+                    case "Petit fils maternel de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourPetitEnfantMaternel", ""+identifiant);
+                        break;
+                    case "Petite fille maternelle de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourPetitEnfantMaternel", ""+identifiant);
+                        break;
+                    case "Cousin maternel" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourCousinMaternel", ""+identifiant);
+                        break;
+                    case "Cousine maternelle" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourCousineMaternelle", ""+identifiant);
+                        break;
+                    case "Neveu maternel de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourNeveuMaternel", ""+identifiant);
+                        break;
+                    case "Nièce maternelle de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourNieceMaternelle", ""+identifiant);
+                        break;
+                    case "Gendre de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourGendre", ""+identifiant);
+                        break;
+                    case "Beau père de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourBeauPere", ""+identifiant);
+                        break;
+                    case "Belle mère de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourbelleMere", ""+identifiant);
+                        break;
+                    case "Belle soeur de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourBelleSoeur", ""+identifiant);
+                        break;
+                    case "Belle fille de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourBelleFille", ""+identifiant);
+                        break;
+                    case "Beau frère de" :
+                        ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourBeauFrere", ""+identifiant);
+                        break;
+                    default :
+                        // Statements
+                        System.out.println("AUCOUN LIEN TROUVEE");
+                }
+
+            }
+
+            try {
+                out = new FileOutputStream(owlFile);
+                modelOntologie.write(out,"N3");
+                Intent intent = new Intent(this, ContactShowActivity.class);
+                intent.putExtra(CONTACT_SELECT, contact);
+                startActivity(intent);
+            } catch (FileNotFoundException e) {Toast.makeText(this, "Echec !!", Toast.LENGTH_LONG).show();e.printStackTrace();}
         }
 
     }
+
+    private void initContact() {
+    }
+
+
 }

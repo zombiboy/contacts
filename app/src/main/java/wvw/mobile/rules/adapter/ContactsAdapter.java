@@ -16,55 +16,48 @@ import wvw.mobile.rules.R;
 import wvw.mobile.rules.dto.Contact;
 import wvw.mobile.rules.util.RoundLetterView;
 
-public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MyViewHolder> implements FastScroller.SectionIndexer{
-
+public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.MyViewHolder> {
     private List<Contact> contactList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private RoundLetterView vRoundLetterView;
-        public TextView name, phone;
+        public TextView name, lien;
 
         public MyViewHolder(View view) {
             super(view);
-
             name = (TextView) view.findViewById(R.id.name);
-            phone = (TextView) view.findViewById(R.id.phone);
+            lien = (TextView) view.findViewById(R.id.lien);
             this.vRoundLetterView = (RoundLetterView) view.findViewById(R.id.vRoundLetterView);
         }
     }
-
-
-    public ContactAdapter(List<Contact> contacts) {
+    public ContactsAdapter(List<Contact> contacts) {
 
         this.contactList = contacts;
     }
 
     @Override
-    public ContactAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ContactsAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.liste_contacts, parent, false);
+                .inflate(R.layout.liste_contacts_2, parent, false);
 
-        return new ContactAdapter.MyViewHolder(itemView);
+        return new ContactsAdapter.MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(ContactAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(ContactsAdapter.MyViewHolder holder, int position) {
         Contact contact = contactList.get(position);
 
-        holder.name.setText(contact.getName());
-        holder.phone.setText(contact.getPhone());
+        StringBuilder fullName = new StringBuilder("");
+        fullName.append(contact.getName());
+        if(contact.getPrenom() !=null) {
+            fullName.append(" ");
+            fullName.append(contact.getPrenom());
+        }
+        holder.name.setText(fullName);
+        holder.lien.setText(contact.getRelationFind());
         holder.vRoundLetterView.setTitleText(String.valueOf(contact.getName().charAt(0)));
         holder.vRoundLetterView.setBackgroundColor(contact.getBackgroundColor());
-
-        //holder.id.setText(""+Chapitre.getId()); // cela permet de caster le int en String
         holder.itemView.setTag(contact);
-        //if ((position % 2) == 0) {
-        //holder.itemView.setBackgroundResource(R.color.buttonAccentColor);
-
-        /**
-         * Ici on pourra mettre tous type de modification concernant l'affichage d'un  itemview
-         * qui dans notre cas est un
-         */
 
     }
 
@@ -79,10 +72,5 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MyViewHo
         return contactList.size();
     }
 
-    @Override
-    public String getSectionText(int position) {
-        //return getItem(position).getIndex();
-        return contactList.get(position).getName().substring(0,1);
-    }
 
 }

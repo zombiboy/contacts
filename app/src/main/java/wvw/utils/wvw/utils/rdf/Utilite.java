@@ -43,6 +43,23 @@ public class Utilite {
 
     }
 
+    public static Model readModel(File owlFile) {
+        Model model = ModelFactory.createDefaultModel();
+        FileInputStream in = null;
+        try {
+            in= new FileInputStream(owlFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        model.read(in, "","N3");
+        try {
+            in.close();
+        } catch (IOException e) {
+            return null;
+        }
+        return model;
+    }
+
     public static Model readModelWithAsset(AssetManager asset, File parent) {
         //creation d'un model vide
         Model model = ModelFactory.createDefaultModel();
@@ -86,8 +103,14 @@ public class Utilite {
 
     }
 
-    //gestion des requetes
-    public String gestionRequete(String requete, int id){
+    /**
+     * La methode permet de filter les resultats en fonction d'un identifiant
+     *  Semblable de where en Sql
+     * @param requete
+     * @param id
+     * @return
+     */
+    public static String gestionRequete(String requete, String id){
         return requete+" filter (xsd:integer(?identif)="+id+")}";}
 
 
@@ -96,7 +119,7 @@ public class Utilite {
         return requete+" filter (xsd:integer(?identif)="+id+" && xsd:integer(?identi)="+ident+")}";}
 
     //Supprimer toutes les valeurs d'une propriete d'une Instance
-    public boolean supprimerValeurProperty(Model model, String namespace, String nomObjet, String nomPropriete) {
+    public static boolean supprimerValeurProperty(Model model, String namespace, String nomObjet, String nomPropriete) {
         Resource rs = model.getResource(namespace + nomObjet);
         Property p = model.getProperty(namespace + nomPropriete);
         if ((rs != null) && (p != null)) {
@@ -108,7 +131,7 @@ public class Utilite {
     }
 
     //Modifier la valeur d'une propriete objet d'une Instance
-    public boolean modifierValeurObjectProperty(Model model, String namespace, String nomObject1, String nomPropriete, String nomObject2) {
+    public static boolean modifierValeurObjectProperty(Model model, String namespace, String nomObject1, String nomPropriete, String nomObject2) {
         Resource rs1 = model.getResource(namespace + nomObject1);
         Resource rs2 = model.getResource(namespace + nomObject2);
         Property p = model.getProperty(namespace + nomPropriete);
@@ -122,7 +145,7 @@ public class Utilite {
         return false;
     }
     //Modifier la valeur d'une propriete datatype d'une Instance
-    public boolean modifierValeurDataTypeProperty(Model model, String namespace, String nomInstance, String nomPropriete, Object valeur) {
+    public static boolean modifierValeurDataTypeProperty(Model model, String namespace, String nomInstance, String nomPropriete, Object valeur) {
         Resource rs = model.getResource(namespace + nomInstance);
         Property p = model.getProperty(namespace + nomPropriete);
         if ((rs != null) && (p != null)) {

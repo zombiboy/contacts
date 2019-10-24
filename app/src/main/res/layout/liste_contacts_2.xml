@@ -10,38 +10,37 @@
 
     <wvw.mobile.rules.util.RoundLetterView
         android:id="@+id/vRoundLetterView"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_gravity="center_vertical|center_horizontal"
         android:layout_marginTop="4dip"
         android:layout_marginBottom="4dip"
         android:layout_marginRight="8dip"
-        android:layout_marginLeft="35dp"
+        android:layout_marginLeft="5dp"
         rlv:rlv_titleSize="17dp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_marginLeft="3dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
             android:clickable="false"
             android:text="OUATTE"
             android:textStyle="normal"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/phone"
+            android:id="@+id/lien"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:clickable="false"
-            android:text="7645662"
+            android:layout_marginLeft="2dp"
+            android:text="frère"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
     </LinearLayout>
