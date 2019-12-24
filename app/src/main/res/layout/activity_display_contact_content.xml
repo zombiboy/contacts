@@ -84,6 +84,8 @@ tools:showIn="@layout/activity_contact_show">
 
 
             <!--Phone-->
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -103,13 +105,15 @@ tools:showIn="@layout/activity_contact_show">
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/rvNumbers"
+
+                    <TextView
+                        android:id="@+id/txtNumbers01"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
-                        android:layout_marginRight="16dp"
-                        android:minHeight="@dimen/FieldMinHeight" />
+                        android:duplicateParentState="true"
+                        android:minHeight="@dimen/FieldMinHeight"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -140,14 +144,14 @@ tools:showIn="@layout/activity_contact_show">
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/rvEmail"
+                    <TextView
+                        android:id="@+id/txtEmail01"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
-                        android:layout_marginRight="16dp"
-                        android:minHeight="@dimen/FieldMinHeight" />
-
+                        android:duplicateParentState="true"
+                        android:minHeight="@dimen/FieldMinHeight"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -189,13 +193,27 @@ tools:showIn="@layout/activity_contact_show">
                         android:layout_marginRight="15dp"
                         android:queryHint="Search…"/>
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/rvLiens"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="vertical"
                         android:layout_marginBottom="16dp"
                         android:layout_marginRight="16dp"
-                        android:minHeight="@dimen/FieldMinHeight"/>
+                        android:minHeight="@dimen/FieldMinHeight">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rvLiens"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:minHeight="@dimen/FieldMinHeight"/>
+                        <ProgressBar
+                            android:id="@+id/progressBarLiens"
+                            style="?android:attr/progressBarStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"

@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
@@ -48,7 +49,7 @@ import wvw.utils.wvw.utils.rdf.Utilite;
 
 import static wvw.mobile.rules.HomeActivity.CONTACTS_LIST;
 import static wvw.mobile.rules.HomeActivity.CONTACTS_ST_LIST;
-import static wvw.mobile.rules.HomeActivity.CONTACT_SELECT;
+import static wvw.mobile.rules.ContactShowActivity.CONTACT_SELECT;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,10 +63,10 @@ public class RelationFragment extends Fragment implements SearchView.OnQueryText
     private SearchView searchView;
     private ContactsAdapter mAdapter;
     private RecyclerView recyclerView;
+    private ProgressBar progressBarLoad;
     private String[] optionsLiens;
 
     private String selectedLien;
-    private String selectedContact;
     private ImageView imageViewFind;
     private List<String> contactsSequences = new ArrayList<String>();
     private List<Contact> contactsFind = new ArrayList<>();
@@ -88,7 +89,7 @@ public class RelationFragment extends Fragment implements SearchView.OnQueryText
             this.contacts = (List<Contact>) getArguments().getSerializable(CONTACTS_LIST);
         }
 
-        owlFile=new File(getContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),""+FILE_NAME_DATABASE);
+        owlFile=new File(getContext().getExternalFilesDir(null),""+FILE_NAME_DATABASE);
         modelOntologie  = Utilite.readModel(owlFile);
         modeleInf= Utilite.inference(modelOntologie,getContext().getAssets());
 
@@ -100,11 +101,11 @@ public class RelationFragment extends Fragment implements SearchView.OnQueryText
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_relation, container, false);
         Spinner spinnerLiens = (Spinner) view.findViewById(R.id.spinnerLiens);
-        Spinner spinnerContacts = (Spinner) view.findViewById(R.id.spinnerContacts);
 
         searchView=(SearchView)view.findViewById(R.id.search_view);
         searchView.setOnQueryTextListener(this);
         button = (Button) view.findViewById(R.id.buttonShowCustomDialog);
+        progressBarLoad = view.findViewById(R.id.progressBarLoad);
 
 
         recyclerView = (RecyclerView) view.findViewById(R.id.rvLiens);
@@ -126,21 +127,10 @@ public class RelationFragment extends Fragment implements SearchView.OnQueryText
         // Specify layout to be used when list of choices appears
         adapterContact.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Applying the adapter to our spinner
-        spinnerContacts.setAdapter(adapterContact);
+
 
         spinnerLiens.setOnItemSelectedListener(this);
 
-        spinnerContacts.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectedContact = contactsSequences.get(position);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         imageViewFind = view.findViewById(R.id.imageViewFind);
 
@@ -151,8 +141,9 @@ public class RelationFragment extends Fragment implements SearchView.OnQueryText
             public void onClick(View v) {
                 //TODO:: Afficher le recycleview Correspondant
 
-                if(selectedLien!=null && !selectedLien.isEmpty() && selectedContact!=null && !selectedContact.isEmpty())
+                if(selectedLien!=null && !selectedLien.isEmpty() && contactSelected!=null && !contactSelected.getId().isEmpty())
                 {
+                    progressBarLoad.setVisibility(View.VISIBLE);
                     findLinks();
                 }
             }
@@ -183,6 +174,9 @@ public class RelationFragment extends Fragment implements SearchView.OnQueryText
                     @Override
                     public void onClick(View view, final int position) {
                         contactSelected = contacts.get(position);
+                        button.setText(contactSelected.getName());
+                        if(contactSelected.getPrenom() != null)
+                            button.setText(contactSelected.getName()+" "+contactSelected.getPrenom());
                         dialog.dismiss();
                     }
 
@@ -230,142 +224,139 @@ public class RelationFragment extends Fragment implements SearchView.OnQueryText
 
         switch(selectedLien) {
             case "Père de":
-                rechercheLien(selectedContact, MyRequest.requete, MyRequest.pere);
+                rechercheLien(MyRequest.pere);
                 break; // break is optional
             case Namespaces.Contact.Liens.MERE_DE:
-                rechercheLien(selectedContact, MyRequest.requete, MyRequest.mere);
+                rechercheLien(MyRequest.mere);
                 break; // break is optional
             case Namespaces.Contact.Liens.FRERE_DE:
-                rechercheLien(selectedContact, MyRequest.requete, MyRequest.frere);
+                rechercheLien(MyRequest.frere);
                 break;
             case Namespaces.Contact.Liens.SOEUR_DE:
-                rechercheLien(selectedContact, MyRequest.requete, MyRequest.soeur);
+                rechercheLien(MyRequest.soeur);
                 break;
             case Namespaces.Contact.Liens.EPOUX_DE:
-                rechercheLien(selectedContact, MyRequest.requete, MyRequest.epoux);
+                rechercheLien(MyRequest.epoux);
                 break;
             case Namespaces.Contact.Liens.EPOUSE_DE:
-                rechercheLien(selectedContact, MyRequest.requete, MyRequest.epouse);
+                rechercheLien( MyRequest.epouse);
                 break;
             case Namespaces.Contact.Liens.FILS_DE:
-                rechercheLien(selectedContact, MyRequest.requete, MyRequest.fils);
+                rechercheLien( MyRequest.fils);
                 break;
             case Namespaces.Contact.Liens.FILLE_DE:
-                rechercheLien(selectedContact, MyRequest.requete, MyRequest.fille);
+                rechercheLien( MyRequest.fille);
                 break;
             case Namespaces.Contact.Liens.AMI_DE:
-                rechercheLien(selectedContact, MyRequest.requete, MyRequest.ami);
+                rechercheLien( MyRequest.ami);
                 break;
             case Namespaces.Contact.Liens.COLLEGUE_DE:
-                rechercheLien(selectedContact, MyRequest.requete, MyRequest.collegue);
+                rechercheLien( MyRequest.collegue);
                 break;
             case Namespaces.Contact.Liens.ONCLE_DE:
-                rechercheLien(selectedContact, MyRequest.requete, MyRequest.oncle);
+                rechercheLien( MyRequest.oncle);
                 break;
             case Namespaces.Contact.Liens.TANTE_DE:
-                rechercheLien(selectedContact, MyRequest.requete, MyRequest.tante);
+                rechercheLien( MyRequest.tante);
                 break;
             case Namespaces.Contact.Liens.NEVEU_DE:
-                rechercheLien(selectedContact, MyRequest.requete, MyRequest.neveu);
+                rechercheLien( MyRequest.neveu);
                 break;
             case Namespaces.Contact.Liens.NIECE_DE:
-                rechercheLien(selectedContact, MyRequest.requete, MyRequest.niece);
+                rechercheLien( MyRequest.niece);
                 break;
             case Namespaces.Contact.Liens.GRAND_PARENT_DE:
-                rechercheLien(selectedContact, MyRequest.requete, MyRequest.grandParent);
+                rechercheLien( MyRequest.grandParent);
                 break;
             case Namespaces.Contact.Liens.PETIT_ENFANT_DE:
-                rechercheLien(selectedContact, MyRequest.requete, MyRequest.petitEnfant);
+                rechercheLien( MyRequest.petitEnfant);
                 break;
             case Namespaces.Contact.Liens.COUSIN_DE:
-                rechercheLien(selectedContact, MyRequest.requete, MyRequest.cousin);
+                rechercheLien( MyRequest.cousin);
                 break;
             case Namespaces.Contact.Liens.COUSINE_DE:
-                rechercheLien(selectedContact, MyRequest.requete, MyRequest.cousine);
+                rechercheLien( MyRequest.cousine);
+                break;
+            case Namespaces.Contact.Liens.BEAU_PARENT_DE:
+                rechercheLien( MyRequest.beauParent);
+                break;
+            case Namespaces.Contact.Liens.BEAU_FRERE_DE:
+                rechercheLien( MyRequest.beauFrere);
+                break;
+            case Namespaces.Contact.Liens.BELLE_SOEUR_DE:
+                rechercheLien( MyRequest.belleSoeur);
+                break;
+            case Namespaces.Contact.Liens.GENDRE_DE:
+                rechercheLien( MyRequest.gendre);
+                break;
+            case Namespaces.Contact.Liens.BELLE_FILLE_DE:
+                rechercheLien( MyRequest.belleFille);
                 break;
         }
     }
 
-    public void rechercheLien(String lien,String requete1,String requete2){
+    public void rechercheLien(String requete2){
+
         contactsFind.clear();
-        Query query=QueryFactory.create(requete1);
-        QueryExecution qexec = QueryExecutionFactory.create(query,modeleInf);
-        try  {
-            //++++++++++++++++++++DEBUT BLOC A SUPPRIMER+++++++++++++++//
-            ResultSet resultat=qexec.execSelect();
-            while(resultat.hasNext()){
-                QuerySolution soln=resultat.nextSolution();
+        String idContact=contactSelected.getId();
 
-                Literal identifiant=soln.getLiteral("id");
-                String id=identifiant.getString();
-                Literal li_nom=soln.getLiteral("nom");
-                String nom=li_nom.getString();
-                Literal li_prenom=soln.getLiteral("prenom");
-                String prenom=li_prenom.getString();
-                Literal li_numero=soln.getLiteral("numero");
-                String numero=li_numero.getString();
+            //String requet=gestionRequete(requete2, val+"");
+            String requet= Utilite.gestionRequete(requete2, idContact);
 
-                //++++++++++++++++++++FIN BLOC A SUPPRIMER+++++++++++++++//
-                // ICI je devrai passer le parametre lien val directement
-                if((id+" "+nom+"  "+prenom+" "+numero).contains(lien)){
-                    int val=Integer.parseInt(id);
+            Query query1=QueryFactory.create(requet);
+            QueryExecution qexec1 = QueryExecutionFactory.create(query1,modeleInf);
+            try  {
+                ResultSet resultat1=qexec1.execSelect();
+                while(resultat1.hasNext()){
+                    QuerySolution soln1=resultat1.nextSolution();
 
-                    //String requet=gestionRequete(requete2, val+"");
-                    String requet= Utilite.gestionRequete(requete2, String.valueOf(val));
+                    Contact contact = new Contact();
 
-                    Query query1=QueryFactory.create(requet);
-                    QueryExecution qexec1 = QueryExecutionFactory.create(query1,modeleInf);
-                    try  {
-                        ResultSet resultat1=qexec1.execSelect();
-                        while(resultat1.hasNext()){
-                            QuerySolution soln1=resultat1.nextSolution();
+                    //contact.setRelationFind(selectedLien);
+                    contact.setRelationFind(" ");
+                    String numero1="", email1="", prenom1="";
 
-                            Contact contact = new Contact();
-
-                            //contact.setRelationFind(selectedLien);
-                            contact.setRelationFind(" ");
-                            String numero1="", email1="", prenom1="";
-
-                            Literal li_identifiant1=soln1.getLiteral("id");
-                            String id1=li_identifiant1.getString();
-                            contact.setId(id1);
-                            Literal li_nom1=soln1.getLiteral("nom");
-                            String nom1=li_nom1.getString();
-                            contact.setName(nom1);
-                            Literal li_prenom1=soln1.getLiteral("prenom");
-                            if(li_prenom1!=null){
-                                prenom1=li_prenom1.getString();
-                                contact.setPrenom(prenom1);
-                            }
-
-                            Literal li_numero1=soln1.getLiteral("numero1");
-                            if(li_numero1!=null){
-                                 numero1=li_numero1.getString();
-                                contact.setPhone(numero1);
-                            }
-                            Literal li_email1=soln1.getLiteral("email");
-                            if(li_email1!=null){
-                                email1=li_email1.getString();
-                                contact.setEmail(email1);
-                            }
-                            contactsFind.add(contact);
-                            System.out.println("UNE PERSONNE"+ id1+nom1+prenom1+numero1);
-
-                        }
-                    }finally{
-                        qexec1.close();
+                    Literal li_identifiant1=soln1.getLiteral("id");
+                    String id1=li_identifiant1.getString();
+                    contact.setId(id1);
+                    Literal li_nom1=soln1.getLiteral("nom");
+                    String nom1=li_nom1.getString();
+                    contact.setName(nom1);
+                    Literal li_prenom1=soln1.getLiteral("prenom");
+                    if(li_prenom1!=null){
+                        prenom1=li_prenom1.getString();
+                        contact.setPrenom(prenom1);
                     }
+
+                    Literal li_numero1=soln1.getLiteral("numero1");
+                    if(li_numero1!=null){
+                        numero1=li_numero1.getString();
+                        contact.setPhone(numero1);
+                    }
+                    Literal li_email1=soln1.getLiteral("email");
+                    if(li_email1!=null){
+                        email1=li_email1.getString();
+                        contact.setEmail(email1);
+                    }
+
+                    /**
+                     * permet de ne pas ajoute le nom de ka personne dans la liste
+                     */
+                    if(!contactSelected.getId().equals(contact.getId())) {
+                        contactsFind.add(contact);
+                    }
+
+                    System.out.println("UNE PERSONNE"+ id1+nom1+prenom1+numero1);
+
                 }
+            }finally{
+                qexec1.close();
             }
-        }finally{
-            qexec.close();}
+
         mAdapter.notifyDataSetChanged();
+        progressBarLoad.setVisibility(View.INVISIBLE);
     }
 
-    //gestion des requetes
-    public String gestionRequete(String requete,String id){
-        return requete+" filter (xsd:integer(?identif)="+id+")}";
-    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

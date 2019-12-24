@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidRules</string>
+    <string name="app_name">Contacts</string>
     <string name="title_activity_contact_list">ContactListActivity</string>
     <string name="add_name">Nom</string>
     <string name="add_prenom">Prenom</string>
@@ -64,4 +64,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_home">HomeActivity</string>
+    <string name="add_contact">Créer un nouveau contact</string>
+    <string name="edit_contact">Modifier le contact</string>
+
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

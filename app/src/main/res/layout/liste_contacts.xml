@@ -30,8 +30,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
-            android:clickable="false"
+            android:clickable="true"
             android:text="OUATTE"
+            android:textColor="#484141"
+            android:textSize="16dp"
             android:textStyle="normal"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -41,6 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:clickable="false"
+            android:visibility="invisible"
             android:text="7645662"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 

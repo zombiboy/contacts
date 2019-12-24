@@ -12,32 +12,9 @@
         android:ellipsize="marquee"
         android:fadingEdge="horizontal"
         android:singleLine="true"
-        android:textColor="#000000"
+        android:textColor="@color/greymedium"
         android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/tvValue_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:duplicateParentState="true"
-        android:ellipsize="marquee"
-        android:fadingEdge="horizontal"
-        android:singleLine="true"
-        android:textColor="@color/greymediumdark"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/tvValue_3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:duplicateParentState="true"
-        android:ellipsize="marquee"
-        android:fadingEdge="horizontal"
-        android:singleLine="true"
-        android:textColor="@color/greymediumdark"
-        android:textSize="15sp" />
 
 
 </LinearLayout>

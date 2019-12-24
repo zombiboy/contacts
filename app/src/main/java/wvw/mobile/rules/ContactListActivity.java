@@ -46,6 +46,7 @@ import wvw.utils.wvw.utils.rdf.Utilite;
 import xyz.danoz.recyclerviewfastscroller.sectionindicator.title.SectionTitleIndicator;
 import xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScroller;
 
+import static wvw.mobile.rules.ContactShowActivity.CONTACT_SELECT;
 import static wvw.utils.MyRequest.requeteRemplirCombobox;
 
 
@@ -58,7 +59,7 @@ public class ContactListActivity extends AppCompatActivity implements SearchView
     private ContactAdapter mAdapter;
     private List<Contact> contacts = new ArrayList<>();
     private FastScrollRecyclerView recyclerView;
-    public static String CONTACT_SELECT="CONTACT_SELECT";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,8 @@ public class ContactListActivity extends AppCompatActivity implements SearchView
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        owlFile=new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),""+FILE_NAME_DATABASE);
+        owlFile=new File(getExternalFilesDir(null),""+FILE_NAME_DATABASE);
+        //owlFile=new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),""+FILE_NAME_DATABASE);
         modelOntologie  = Utilite.readModel(owlFile);
         modeleInf= Utilite.inference(modelOntologie,getAssets());
 
@@ -111,7 +113,6 @@ public class ContactListActivity extends AppCompatActivity implements SearchView
                 Intent intent = new Intent(getBaseContext(), ContactShowActivity.class);
                 intent.putExtra(CONTACT_SELECT, contact);
                 startActivity(intent);
-
 
             }
 

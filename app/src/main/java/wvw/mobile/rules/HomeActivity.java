@@ -1,6 +1,9 @@
 package wvw.mobile.rules;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
@@ -10,9 +13,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QueryExecution;
@@ -25,9 +35,14 @@ import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 import wvw.mobile.rules.dto.Contact;
 import wvw.mobile.rules.fragment.ContactListFragment;
@@ -35,13 +50,14 @@ import wvw.mobile.rules.fragment.RelationFragment;
 import wvw.utils.MyRequest;
 import wvw.utils.wvw.utils.rdf.Utilite;
 
-import static wvw.mobile.rules.ContactListActivity.CONTACT_SELECT;
+import static wvw.mobile.rules.ContactShowActivity.CONTACT_SELECT;
+
 
 public class HomeActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    public static String CONTACT_SELECT="CONTACT_SELECT";
+
     public static String CONTACTS_ST_LIST="contact_string_list";
     public static String CONTACTS_LIST="contacts_list";
 
@@ -51,6 +67,7 @@ public class HomeActivity extends AppCompatActivity {
     private File owlFile = null;
     private List<Contact> contacts = new ArrayList<>();
     private List<String> contactsSequences = new ArrayList<String>();
+    private ImageView ImageViewSetting;
 
 
     @Override
@@ -62,17 +79,38 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setVisibility(View.INVISIBLE);
          **/
-        owlFile=new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),""+FILE_NAME_DATABASE);
+        if(!isDatabasefileExist()){
+            copyAssets();
+        }
+        owlFile=new File(getExternalFilesDir(null),""+FILE_NAME_DATABASE);
+        //owlFile=new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),""+FILE_NAME_DATABASE);
         modelOntologie  = Utilite.readModel(owlFile);
         modeleInf= Utilite.inference(modelOntologie,getAssets());
-        getContacts();
+
+        /**
+         * Permet de ne pas avoir a faire une requete en quittant d'autres vue
+         */
+        try {
+            Intent intent = getIntent();
+            List<Contact> contactsSave = (List<Contact>) intent.getSerializableExtra(CONTACTS_LIST);
+            if(contactsSave!=null) {
+                this.contacts = contactsSave;
+                System.out.println("Data recevd successfuly");
+            }else {
+                getContacts();
+            }
+
+        } catch (NullPointerException e) {
+            //lancer au demarrage de l'application
+            getContacts();
+        }
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-
+        ImageViewSetting = findViewById(R.id.imag_setting_popup);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -83,6 +121,26 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ImageViewSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Creating the instance of PopupMenu
+                PopupMenu popup = new PopupMenu(HomeActivity.this, ImageViewSetting);
+                //Inflating the Popup using xml file
+                popup.getMenuInflater()
+                        .inflate(R.menu.poupup_menu, popup.getMenu());
+
+                //registering popup with OnMenuItemClickListener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                        return true;
+                    }
+                });
+                popup.show(); //showing popup menu
+            }
+        }); //closing the setOnClickListener method
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -176,6 +234,68 @@ public class HomeActivity extends AppCompatActivity {
             qexec.close();
         }
 
+        //tri par Nom
+        Collections.sort(contacts, Contact.ComparatorName);
+
+    }
+
+    private boolean isDatabasefileExist(){
+
+        File outFile = new File(getExternalFilesDir(null), FILE_NAME_DATABASE);
+        return outFile.exists();
+    }
+
+    private void copyAssets() {
+        AssetManager assetManager = getAssets();
+        String[] files = null;
+        try {
+            files = assetManager.list("");
+        } catch (IOException e) {
+            Log.e("tag", "Failed to get asset file list.", e);
+        }
+        if (files != null) for (String filename : files) {
+            InputStream in = null;
+            OutputStream out = null;
+            try {
+                in = assetManager.open(filename);
+                File outFile = new File(getExternalFilesDir(null), filename);
+                out = new FileOutputStream(outFile);
+                copyFile(in, out);
+            } catch(IOException e) {
+                Log.e("tag", "Failed to copy asset file: " + filename, e);
+            }
+            finally {
+                if (in != null) {
+                    try {
+                        in.close();
+                    } catch (IOException e) {
+                        // NOOP
+                    }
+                }
+                if (out != null) {
+                    try {
+                        out.close();
+                    } catch (IOException e) {
+                        // NOOP
+                    }
+                }
+            }
+        }
+    }
+
+    private void copyFile(InputStream in, OutputStream out) throws IOException {
+        byte[] buffer = new byte[1024];
+        int read;
+        while((read = in.read(buffer)) != -1){
+            out.write(buffer, 0, read);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        moveTaskToBack(true);
+        this.finish();
     }
 
 }

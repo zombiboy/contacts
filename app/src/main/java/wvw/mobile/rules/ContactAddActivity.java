@@ -2,14 +2,21 @@ package wvw.mobile.rules;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Environment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,6 +26,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 
 import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QueryExecution;
@@ -51,7 +60,8 @@ import wvw.utils.IOUtils;
 import wvw.utils.MyRequest;
 import wvw.utils.wvw.utils.rdf.Namespaces;
 
-import static wvw.mobile.rules.HomeActivity.CONTACT_SELECT;
+import static wvw.mobile.rules.ContactShowActivity.CONTACT_SELECT;
+
 
 public class ContactAddActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener,AdapterView.OnItemClickListener {
 
@@ -73,7 +83,17 @@ public class ContactAddActivity extends AppCompatActivity implements AdapterView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_add);
 
-        owlFile=new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),""+FILE_NAME_DATABASE);
+        //this.getSupportActionBar();
+        /**ActionBar actionbar = getSupportActionBar();
+        actionbar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.white)));
+        actionbar.setElevation(1);
+        actionbar.setTitle(Html.fromHtml("<font color='#000'>Créer un nouveau contact</font>"));
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_close_black_24dp);
+         **/
+
+
+
+        owlFile=new File(getExternalFilesDir(null),""+FILE_NAME_DATABASE);
         modelOntologie  = readModel();
         modeleInf= inference(modelOntologie );
 
@@ -308,16 +328,8 @@ public class ContactAddActivity extends AppCompatActivity implements AdapterView
     //Methode pour gerer les nouveaux identifiants
     private int identifiant()  {
 
-        String requete="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
-                "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
-                "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
-                "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
-                "PREFIX ns:<http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#>" +
-                "SELECT ?id" +
-                " where {?x rdf:type ns:Personne." +
-                "?x ns:identifiant ?id.}";
 
-        Query query=QueryFactory.create(requete);
+        Query query=QueryFactory.create(MyRequest.requeteId);
         QueryExecution qexec = QueryExecutionFactory.create(query, modeleInf );
         try  {
             int max=0;
@@ -338,18 +350,7 @@ public class ContactAddActivity extends AppCompatActivity implements AdapterView
     //Methode pour gerer les identifiants existants
     public String id_existant(String str)  {
 
-        String requete="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
-                "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
-                "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
-                "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
-                "PREFIX ns:<http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#>" +
-                "SELECT ?id ?nom ?prenom" +
-                " where {?x rdf:type ns:Personne." +
-                "?x ns:identifiant ?id." +
-                "?x ns:nom ?nom." +
-                "?x ns:prenom ?prenom.}";
-
-        Query query=QueryFactory.create(requete);
+        Query query=QueryFactory.create(MyRequest.requeteIdExistant);
         QueryExecution qexec = QueryExecutionFactory.create(query,modeleInf);
         try  {
             String valeur="";
@@ -416,7 +417,7 @@ public class ContactAddActivity extends AppCompatActivity implements AdapterView
             Toast.makeText(ContactAddActivity.this, "Impossible d'enregistrer!!", Toast.LENGTH_LONG).show();
         }else{
 
-            if (email.isEmpty() && sexe.contains("Homme")) {
+            if (sexe.contains("Homme")) {
                 creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "homme", "" + identifiant);
             }else {
                 creerInstanceDeClasse(modeleInf, Namespaces.nspacePerson, "femme", "" + identifiant);
@@ -448,114 +449,113 @@ public class ContactAddActivity extends AppCompatActivity implements AdapterView
                 String id_person_choice=id_existant(choice_person);//identifiant de l'enregistrement existant
 
                 ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "estEnRelation", id_person_choice);
+
                 switch(b_relation)
                 {
-                    case "Père de" :
+                    case Namespaces.Contact.Liens.PERE_DE :
                         // Statements
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "aPourEnfant", id_person_choice);
                         break; // break is optional
-                    case "Mère de" :
+                    case Namespaces.Contact.Liens.MERE_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+identifiant, "aPourEnfant", id_person_choice);
                         break; // break is optional
-                    case "Frère de" :
-                        //TODO:: A Revoir les noms des proprites changé id_person_choice par identifiant et vice versa
-                        System.out.println("Choice frere stich case");
+                    case Namespaces.Contact.Liens.FRERE_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+id_person_choice, "aPourFrere", ""+identifiant);
                         break;
-                    case "Soeur de" :
+                    case Namespaces.Contact.Liens.SOEUR_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+id_person_choice, "aPourSoeur", ""+identifiant);
                         break;
-                    case "Oncle paternel de" :
+                    case Namespaces.Contact.Liens.ONCLE_PATERNEL_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, ""+id_person_choice, "aPourOnclePaternel", ""+identifiant);
                         break;
-                    case "Tante paternelle de" :
+                    case Namespaces.Contact.Liens.TANTE_PATERNELLE_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourTantePaternelle", ""+identifiant);
                         break;
-                    case "Grand père paternel de" :
+                    case Namespaces.Contact.Liens.GRAND_PERE_PATERNELLE_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourGrandParentPaternel", ""+identifiant);
                         break;
-                    case "Cousin paternel de" :
+                    case Namespaces.Contact.Liens.COUSIN_PATERNEL_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourCousinPaternel", ""+identifiant);
                         break;
-                    case "Cousine paternelle de" :
+                    case Namespaces.Contact.Liens.COUSINE_PATERNELLE_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourCousinePaternelle", ""+identifiant);
                         break;
-                    case "Neveu paternel de" :
+                    case Namespaces.Contact.Liens.NEVEU_PATERNEL_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourNeveuPaternel", ""+identifiant);
                         break;
-                    case "Nièce paternelle de" :
+                    case Namespaces.Contact.Liens.NICE_PATERNELLE_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourNiecePaternelle", ""+identifiant);
                         break;
-                    case "petit fils paternel de" :
+                    case Namespaces.Contact.Liens.PETIT_FILS_PATERNEL_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourPetitEnfantPaternel", ""+identifiant);
                         break;
-                    case "Petite fille paternelle de" :
+                    case Namespaces.Contact.Liens.PETITE_FILLE_PATERNELLE_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourPetitEnfantPaternel", ""+identifiant);
                         break;
-                    case "Epoux de" :
+                    case Namespaces.Contact.Liens.EPOUX_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourEpoux", ""+identifiant);
                         break;
-                    case "Epouse de" :
+                    case Namespaces.Contact.Liens.EPOUSE_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourEpouse", ""+identifiant);
                         break;
-                    case "Ami de" :
+                    case Namespaces.Contact.Liens.AMI_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourAmi", ""+identifiant);
                         break;
-                    case "Collègue de" :
+                    case Namespaces.Contact.Liens.COLLEGUE_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourCollegue", ""+identifiant);
                         break;
-                    case "Fils de" :
+                    case Namespaces.Contact.Liens.FILS_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourEnfant", ""+identifiant);
                         break;
-                    case "Fille de" :
+                    case Namespaces.Contact.Liens.FILLE_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourEnfant", ""+identifiant);
                         break;
-                    case "Oncle maternel de" :
+                    case Namespaces.Contact.Liens.ONCLE_MATERNEL_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourOncleMaternel", ""+identifiant);
                         break;
-                    case "Tante maternelle de" :
+                    case Namespaces.Contact.Liens.TANTE_MATERNELLE_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourTanteMaternelle", ""+identifiant);
                         break;
-                    case "Grand père maternel de" :
+                    case Namespaces.Contact.Liens.GRAND_PERE_MATERNEL_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourGrandParentMaternel", ""+identifiant);
                         break;
-                    case "Grande mère maternelle de" :
+                    case Namespaces.Contact.Liens.GRAND_MERE_MATERNELLE_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourGrandParentMaternel", ""+identifiant);
                         break;
-                    case "Petit fils maternel de" :
+                    case Namespaces.Contact.Liens.PETIT_FILS_MATERNEL_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourPetitEnfantMaternel", ""+identifiant);
                         break;
-                    case "Petite fille maternelle de" :
+                    case Namespaces.Contact.Liens.PETITE_FILLE_MATERNELLE_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourPetitEnfantMaternel", ""+identifiant);
                         break;
-                    case "Cousin maternel" :
+                    case Namespaces.Contact.Liens.COUSIN_MATERNEL_DE:
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourCousinMaternel", ""+identifiant);
                         break;
-                    case "Cousine maternelle" :
+                    case Namespaces.Contact.Liens.COUSINE_MATERNELLE_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourCousineMaternelle", ""+identifiant);
                         break;
-                    case "Neveu maternel de" :
+                    case Namespaces.Contact.Liens.NEVEU_MATERNEL_DE:
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourNeveuMaternel", ""+identifiant);
                         break;
-                    case "Nièce maternelle de" :
+                    case Namespaces.Contact.Liens.NIECE_MATERNELLE_DE:
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourNieceMaternelle", ""+identifiant);
                         break;
-                    case "Gendre de" :
+                    case Namespaces.Contact.Liens.GENDRE_DE:
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourGendre", ""+identifiant);
                         break;
-                    case "Beau père de" :
+                    case Namespaces.Contact.Liens.BEAU_PERE_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourBeauPere", ""+identifiant);
                         break;
-                    case "Belle mère de" :
+                    case Namespaces.Contact.Liens.BELLE_MERE_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourbelleMere", ""+identifiant);
                         break;
-                    case "Belle soeur de" :
+                    case Namespaces.Contact.Liens.BELLE_SOEUR_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourBelleSoeur", ""+identifiant);
                         break;
-                    case "Belle fille de" :
+                    case Namespaces.Contact.Liens.BELLE_FILLE_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourBelleFille", ""+identifiant);
                         break;
-                    case "Beau frère de" :
+                    case Namespaces.Contact.Liens.BEAU_FRERE_DE :
                         ajouterValeurObjectProperty(modelOntologie, Namespaces.nspacePerson, id_person_choice, "aPourBeauFrere", ""+identifiant);
                         break;
                     default :
@@ -577,6 +577,30 @@ public class ContactAddActivity extends AppCompatActivity implements AdapterView
     }
 
     private void initContact() {
+    }
+
+    public void goBack(View view){
+        if(txtNom.getText().toString().isEmpty()){
+            ContactAddActivity.super.onBackPressed();
+        }
+        else {
+            onBackPressed();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Supprimer les modifications")
+                .setMessage("Annuler les modifications ?")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        modelOntologie.close();
+                        ContactAddActivity.super.onBackPressed();
+                    }
+                }).create().show();
     }
 
 

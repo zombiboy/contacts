@@ -4,6 +4,7 @@ import android.graphics.Color;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import wvw.mobile.rules.util.ColorUtils;
@@ -136,4 +137,15 @@ public class Contact implements Serializable {
     public void setRelationFind(String relationFind) {
         this.relationFind = relationFind;
     }
+
+    /*
+     * Comparator pour le tri des contacts par leurs noms
+     */
+    public static Comparator<Contact> ComparatorName = new Comparator<Contact>() {
+
+        @Override
+        public int compare(Contact c1, Contact c2) {
+            return c1.getName().compareTo(c2.getName());
+        }
+    };
 }

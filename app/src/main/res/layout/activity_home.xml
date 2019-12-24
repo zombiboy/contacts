@@ -28,10 +28,11 @@
     <include layout="@layout/content_home" />
 
     <ImageView
+        android:id="@+id/imag_setting_popup"
         android:layout_gravity="bottom|left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="13dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="7dp"
         app:srcCompat="@drawable/ic_more_vert_black_24dp"/>
 

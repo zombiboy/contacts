@@ -52,6 +52,8 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.MyViewHo
         Contact contact = contactList.get(position);
 
         holder.name.setText(contact.getName());
+        if(contact.getPrenom()!=null && !contact.getPrenom().isEmpty())
+            holder.name.setText(contact.getName()+" "+contact.getPrenom());
         holder.phone.setText(contact.getPhone());
         holder.vRoundLetterView.setTitleText(String.valueOf(contact.getName().charAt(0)));
         holder.vRoundLetterView.setBackgroundColor(contact.getBackgroundColor());

@@ -9,29 +9,47 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".MainActivity">
+
+        </activity>
+        <activity
+            android:name=".ContactListActivity"
+            android:label="@string/title_activity_contact_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".ContactAddActivity"
+            android:label="@string/add_contact"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ContactShowActivity"
+            android:label="@string/title_activity_contact_show"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ContactEditActivity"
+            android:label="@string/edit_contact"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SplashActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ContactListActivity"
-            android:label="@string/title_activity_contact_list"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ContactAddActivity" />
-        <activity
-            android:name=".ContactShowActivity"
-            android:label="@string/title_activity_contact_show"
-            android:parentActivityName=".HomeActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ContactEditActivity" />
-        <activity
-            android:name=".HomeActivity"
-            android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

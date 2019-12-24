@@ -27,7 +27,8 @@ import wvw.mobile.rules.dto.Contact;
 import wvw.utils.wvw.utils.rdf.Namespaces;
 import wvw.utils.wvw.utils.rdf.Utilite;
 
-import static wvw.mobile.rules.ContactListActivity.CONTACT_SELECT;
+import static wvw.mobile.rules.ContactShowActivity.CONTACT_SELECT;
+
 
 public class ContactEditActivity extends AppCompatActivity {
 
@@ -52,8 +53,8 @@ public class ContactEditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_edit);
-        owlFile=new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),""+FILE_NAME_DATABASE);
-        modelOntologie = Utilite.readModel(getAssets(),getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS));
+        owlFile=new File(getExternalFilesDir(null),""+FILE_NAME_DATABASE);
+        modelOntologie = Utilite.readModel(getAssets(),getExternalFilesDir(null));
         modeleInf = Utilite.inference(modelOntologie,getAssets());
 
         //Data to Spinner
@@ -62,7 +63,6 @@ public class ContactEditActivity extends AppCompatActivity {
         txtPrenom=(EditText)findViewById(R.id.input_prenom);
         txtTelephone=(EditText)findViewById(R.id.input_telephone);
         txtPhone2=(EditText)findViewById(R.id.input_phone2);
-        txtPhone3=(EditText)findViewById(R.id.input_phone3);
 
         txtEmail=(EditText)findViewById(R.id.input_email);
         txtNaissance =(EditText) findViewById(R.id.input_naissance);
@@ -114,13 +114,11 @@ public class ContactEditActivity extends AppCompatActivity {
         if(contact.getBirthday()!=null) txtNaissance.setText(contact.getBirthday());
         if(contact.getSexe() != null){
             if(contact.getSexe().contentEquals("Homme")){
-                //spinSexe.setSelection(1);
-                System.out.println();
+                spinSexe.setSelection(0);
             }else{
-                //spinSexe.setSelection(2);
+                spinSexe.setSelection(1);
             }
         }
-
 
     }
 

@@ -1,6 +1,27 @@
 package wvw.utils;
 
 public class MyRequest {
+
+    public static String requeteId="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+            "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
+            "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
+            "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
+            "PREFIX ns:<http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#>" +
+            "SELECT ?id" +
+            " where {?x rdf:type ns:Personne." +
+            "?x ns:identifiant ?id.}";
+
+    public static String requeteIdExistant="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+            "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
+            "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
+            "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
+            "PREFIX ns:<http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#>" +
+            "SELECT ?id ?nom ?prenom" +
+            " where {?x rdf:type ns:Personne." +
+            "?x ns:identifiant ?id." +
+            "?x ns:nom ?nom." +
+            "?x ns:prenom ?prenom.}";
+
     public static String requete="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
@@ -73,7 +94,6 @@ public class MyRequest {
             "?y ns:prenom ?prenom." +
             "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
-
     public static String frere="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
@@ -116,7 +136,7 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
     public static String epouse="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
@@ -131,7 +151,7 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
     public static String oncle="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
@@ -143,11 +163,10 @@ public class MyRequest {
             " where {?x rdf:type ns:Personne." +
             "?x ns:identifiant ?identif." +
             "?x ns:aPourOncle ?y." +
-            "?y ns:identifiant ?id."+
+            "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
-
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
     public static String tante="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
@@ -161,7 +180,7 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
     public static String neveu="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
@@ -176,7 +195,7 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
     public static String niece="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
@@ -191,7 +210,7 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
     public static String grandParent="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
@@ -206,7 +225,7 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
     public static String petitEnfant="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
@@ -221,7 +240,7 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
     public static String ami="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
@@ -235,7 +254,7 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
     public static String collegue="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
@@ -250,7 +269,7 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
     public static String cousin="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
@@ -265,7 +284,7 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
     public static String cousine="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
@@ -280,7 +299,7 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
 
@@ -296,8 +315,7 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
-
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
     public static String gendre="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
@@ -312,7 +330,7 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
 
@@ -329,7 +347,7 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
 
@@ -346,7 +364,7 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
 
@@ -363,9 +381,7 @@ public class MyRequest {
             "?y ns:identifiant ?id." +
             "?y ns:nom ?nom." +
             "?y ns:prenom ?prenom." +
-            "?y ns:numero1 ?numero.optional{?y ns:email ?email}}";
-
-
+            "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
 
     public static String homme="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
@@ -443,6 +459,7 @@ public static String relation="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syn
             "?x ns:prenom ?prenom." +
             "?x ns:numero1 ?numero1."
             + "optional{?x ns:email ?email.}}";
+
    public static String RechercheContact="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
@@ -481,4 +498,5 @@ public static String relation="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syn
             "optional{?x ns:numero2 ?numero2.}" +
             "optional{?x ns:numero3 ?numero3.}"+
             "?x ns:identifiant ?identif}";
+
 }
