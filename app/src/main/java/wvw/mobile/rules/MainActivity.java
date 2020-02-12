@@ -72,20 +72,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_main);
         /**
          Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
          setSupportActionBar(toolbar);
          toolbar.setVisibility(View.INVISIBLE);
          **/
-        Log.d("MAINNN","YEAH MAIN");
         if(!isDatabasefileExist()){
             copyAssets();
         }
         owlFile=new File(getExternalFilesDir(null),""+FILE_NAME_DATABASE);
         //owlFile=new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),""+FILE_NAME_DATABASE);
         modelOntologie  = Utilite.readModel(owlFile);
-        modeleInf= Utilite.inference(modelOntologie,getAssets());
+        modeleInf= Utilite.inference(modelOntologie,this);
+        //modeleInf= Utilite.inference(modelOntologie,getAssets());
 
         /**
          * Permet de ne pas avoir a faire une requete en quittant d'autres vue
@@ -117,8 +117,9 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), ContactAddActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(getBaseContext(), ContactAddActivity.class);
+                //startActivity(intent);
+                startActivity(new Intent(getBaseContext(),ContactAddActivity.class).putExtra(CONTACTS_LIST, (Serializable) contacts));
             }
         });
 
@@ -291,6 +292,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
 }

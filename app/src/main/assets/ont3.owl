@@ -1361,61 +1361,61 @@ ns:masculin rdf:type owl:NamedIndividual ,
 
 
 ###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#1
-<http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#1> rdf:type owl:NamedIndividual ,
-                                                                                    ns:homme ;
-                                                                           ns:aPourFrere <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#2> ;
-                                                                           ns:aPourSoeur <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#4> ;
-                                                                           ns:dateNaissance "JourMoisAnnee" ;
-                                                                           ns:numero1 "76824499" ;
-                                                                           ns:identifiant "1"^^xsd:int ;
-                                                                           ns:nom "Traore" ;
-                                                                           ns:prenom "Ibrahim" .
+ns:1 rdf:type owl:NamedIndividual ,
+              ns:homme ;
+     ns:aPourFrere ns:2 ;
+     ns:aPourSoeur ns:4 ;
+     ns:dateNaissance "JourMoisAnnee" ;
+     ns:numero1 "76824499" ;
+     ns:identifiant "1"^^xsd:int ;
+     ns:nom "Traore" ;
+     ns:prenom "Ibrahim" .
 
 
 ###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#2
-<http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#2> rdf:type owl:NamedIndividual ,
-                                                                                    ns:homme ;
-                                                                           ns:aPourFrere <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#3> ;
-                                                                           ns:estEnRelation <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#1> ;
-                                                                           ns:dateNaissance "JourMoisAnnee" ;
-                                                                           ns:numero1 "600000000" ;
-                                                                           ns:identifiant "2"^^xsd:int ;
-                                                                           ns:nom "Traore" ;
-                                                                           ns:prenom "Oumarou" .
+ns:2 rdf:type owl:NamedIndividual ,
+              ns:homme ;
+     ns:aPourFrere ns:3 ;
+     ns:estEnRelation ns:1 ;
+     ns:dateNaissance "JourMoisAnnee" ;
+     ns:numero1 "600000000" ;
+     ns:identifiant "2"^^xsd:int ;
+     ns:nom "Traore" ;
+     ns:prenom "Oumarou" .
 
 
 ###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#3
-<http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#3> rdf:type owl:NamedIndividual ,
-                                                                                    ns:homme ;
-                                                                           ns:estEnRelation <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#2> ;
-                                                                           ns:dateNaissance "JourMoisAnnee" ;
-                                                                           ns:numero1 "700000000" ;
-                                                                           ns:identifiant "3"^^xsd:int ;
-                                                                           ns:nom "Traore" ;
-                                                                           ns:prenom "Moussa" .
+ns:3 rdf:type owl:NamedIndividual ,
+              ns:homme ;
+     ns:estEnRelation ns:2 ;
+     ns:dateNaissance "JourMoisAnnee" ;
+     ns:numero1 "700000000" ;
+     ns:identifiant "3"^^xsd:int ;
+     ns:nom "Traore" ;
+     ns:prenom "Moussa" .
 
 
 ###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#4
-<http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#4> rdf:type owl:NamedIndividual ,
-                                                                                    ns:femme ;
-                                                                           ns:estEnRelation <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#1> ;
-                                                                           ns:dateNaissance "JourMoisAnnee" ;
-                                                                           ns:numero1 "5000000" ;
-                                                                           ns:identifiant "4"^^xsd:int ;
-                                                                           ns:nom "Traore" ;
-                                                                           ns:prenom "Adjara" .
+ns:4 rdf:type owl:NamedIndividual ,
+              ns:femme ;
+     ns:estEnRelation ns:1 ;
+     ns:dateNaissance "JourMoisAnnee" ;
+     ns:numero1 "5000000" ;
+     ns:identifiant "4"^^xsd:int ;
+     ns:nom "Traore" ;
+     ns:prenom "Adjara" .
 
 
 ###  http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#5
-<http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#5> rdf:type owl:NamedIndividual ,
-                                                                                    ns:femme ;
-                                                                           ns:aPourEnfant <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#4> ;
-                                                                           ns:estEnRelation <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#4> ;
-                                                                           ns:dateNaissance "JourMoisAnnee" ;
-                                                                           ns:numero1 "40000000" ;
-                                                                           ns:identifiant "5"^^xsd:int ;
-                                                                           ns:nom "Ouattara" ;
-                                                                           ns:prenom "Bintou" .
+ns:5 rdf:type owl:NamedIndividual ,
+              ns:femme ;
+     ns:aPourEnfant ns:4 ;
+     ns:estEnRelation ns:4 ;
+     ns:dateNaissance "JourMoisAnnee" ;
+     ns:numero1 "40000000" ;
+     ns:identifiant "5"^^xsd:int ;
+     ns:nom "Ouattara" ;
+     ns:prenom "Bintou" .
 
 
 [ ns:nom ""
@@ -1654,4 +1654,4 @@ ns:masculin rdf:type owl:NamedIndividual ,
 ] .
 
 
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi

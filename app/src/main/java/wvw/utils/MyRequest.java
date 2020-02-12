@@ -49,6 +49,18 @@ public class MyRequest {
             "?y ns:prenom ?prenom." +
             "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
+    public static String pere_2="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+            "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
+            "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
+            "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
+            "PREFIX ns:<http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#>" +
+            "SELECT ?nom" +
+            " where {?x rdf:type ns:Personne." +
+            "?x ns:aPourPere ?y." +
+            "?y ns:identifiant ?identif." +
+            "?y ns:nom ?nom." +
+            "?x ns:identifiant ?identi";
+
 
     public static String mere="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
@@ -64,6 +76,17 @@ public class MyRequest {
             "?y ns:prenom ?prenom." +
             "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
+    public static String mere_2="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+            "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
+            "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
+            "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
+            "PREFIX ns:<http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#>" +
+            "SELECT ?nom" +
+            " where {?x rdf:type ns:Personne." +
+            "?x ns:aPourMere ?y." +
+            "?y ns:identifiant ?identif." +
+            "?y ns:nom ?nom." +
+            "?x ns:identifiant ?identi";
 
     public static String fils="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
@@ -79,6 +102,17 @@ public class MyRequest {
             "?y ns:prenom ?prenom." +
             "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
+    public static String fils_2="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+            "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
+            "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
+            "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
+            "PREFIX ns:<http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#>" +
+            "SELECT ?nom" +
+            " where {?x rdf:type ns:Personne." +
+            "?x ns:aPourFils ?y." +
+            "?y ns:identifiant ?identif." +
+            "?y ns:nom ?nom." +
+            "?x ns:identifiant ?identi";
 
     public static String fille="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
@@ -94,6 +128,18 @@ public class MyRequest {
             "?y ns:prenom ?prenom." +
             "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
+    public static String fille_2="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+            "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
+            "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
+            "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
+            "PREFIX ns:<http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#>" +
+            "SELECT ?nom" +
+            " where {?x rdf:type ns:Personne." +
+            "?x ns:aPourFille ?y." +
+            "?y ns:identifiant ?identif." +
+            "?y ns:nom ?nom." +
+            "?x ns:identifiant ?identi";
+
     public static String frere="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
@@ -108,6 +154,17 @@ public class MyRequest {
             "?y ns:prenom ?prenom." +
             "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
+    public static String frere_2="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+            "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
+            "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
+            "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
+            "PREFIX ns:<http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#>" +
+            "SELECT ?nom" +
+            " where {?x rdf:type ns:Personne." +
+            "?x ns:aPourFrere ?y." +
+            "?y ns:identifiant ?identif." +
+            "?y ns:nom ?nom." +
+            "?x ns:identifiant ?identi";
 
     public static String soeur="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
@@ -123,6 +180,18 @@ public class MyRequest {
             "?y ns:prenom ?prenom." +
             "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
+
+    public static String soeur_2="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+            "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
+            "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
+            "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
+            "PREFIX ns:<http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#>" +
+            "SELECT ?nom" +
+            " where {?x rdf:type ns:Personne." +
+            "?x ns:aPourSoeur ?y." +
+            "?y ns:identifiant ?identif." +
+            "?y ns:nom ?nom." +
+            "?x ns:identifiant ?identi";
 
     public static String epoux="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
@@ -256,6 +325,17 @@ public class MyRequest {
             "?y ns:prenom ?prenom." +
             "?y ns:numero1 ?numero.optional{?y ns:email ?email}";
 
+    public static String ami_2="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+            "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
+            "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
+            "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
+            "PREFIX ns:<http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#>" +
+            "SELECT ?nom" +
+            " where {?x rdf:type ns:Personne." +
+            "?x ns:aPourAmi ?y." +
+            "?y ns:identifiant ?identif." +
+            "?y ns:nom ?nom." +
+            "?x ns:identifiant ?identi";
 
     public static String collegue="PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +

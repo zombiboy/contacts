@@ -2,6 +2,7 @@ package wvw.utils.wvw.utils.rdf;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.net.Uri;
 
 import com.hp.hpl.jena.rdf.model.InfModel;
 import com.hp.hpl.jena.rdf.model.Model;
@@ -89,18 +90,27 @@ public class Utilite {
 
     public static InfModel inference(Model model, AssetManager asset)  {
 
-
+        List<Rule> rules = null;
         try {
-            List<Rule> rules = Rule.parseRules(IOUtils.read(asset.open("regles.jena")));
-            GenericRuleReasoner reasoner = new GenericRuleReasoner(rules);
-            InfModel infModel = ModelFactory.createInfModel(reasoner, model);
-
-            return infModel;
+            rules = Rule.parseRules(IOUtils.read(asset.open("regles.jena")));
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
         }
+        GenericRuleReasoner reasoner = new GenericRuleReasoner(rules);
+        InfModel infModel = ModelFactory.createInfModel(reasoner, model);
+        return infModel;
 
+    }
+
+    public static InfModel inference(Model model, Context context)  {
+        File rfile =new File(context.getExternalFilesDir(null),"regles.jena");
+        List rules = Rule.rulesFromURL(rfile.getAbsolutePath());
+        GenericRuleReasoner reasoner = new GenericRuleReasoner(rules);
+        reasoner.setDerivationLogging(true);
+        reasoner.setOWLTranslation(true);               // not needed in RDFS case
+        reasoner.setTransitiveClosureCaching(true);
+        InfModel inf = ModelFactory.createInfModel(reasoner, model);
+        return inf;
     }
 
     /**
@@ -110,8 +120,9 @@ public class Utilite {
      * @param id
      * @return
      */
-    public static String gestionRequete(String requete, String id){
-        return requete+" filter (xsd:integer(?identif)="+id+")}";}
+    public static String gestionRequete(String requete, int id){
+        return requete+" filter (xsd:integer(?identif)="+id+")}";
+    }
 
 
         //gestion des requetes

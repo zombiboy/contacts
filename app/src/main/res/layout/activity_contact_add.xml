@@ -173,12 +173,13 @@
 
                 />
 
-            <Spinner
-                android:layout_weight="1"
-                android:id="@+id/spinner_propriete"
+            <Button
+                android:id="@+id/buttonShowCustomDialog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                />
+                android:background="@color/grey"
+                android:layout_weight="1"
+                android:text="Choisir" />
 
         </LinearLayout>
 

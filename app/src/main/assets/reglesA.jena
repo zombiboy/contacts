@@ -1109,4 +1109,3 @@ notEqual(?A,?C)->(?A  <http://www.semanticweb.org/amed/ontologies/2017/4/untitle
 [bellesoeur: (?A <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#Personne>)
 (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#aPourBelleSoeur> ?B)->
 (?A <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#estEnRelation> ?B)]
-

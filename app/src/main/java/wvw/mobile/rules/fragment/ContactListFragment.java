@@ -2,55 +2,35 @@ package wvw.mobile.rules.fragment;
 
 
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.hp.hpl.jena.query.Query;
-import com.hp.hpl.jena.query.QueryExecution;
-import com.hp.hpl.jena.query.QueryExecutionFactory;
-import com.hp.hpl.jena.query.QueryFactory;
-import com.hp.hpl.jena.query.QuerySolution;
-import com.hp.hpl.jena.query.ResultSet;
-import com.hp.hpl.jena.rdf.model.InfModel;
-import com.hp.hpl.jena.rdf.model.Literal;
-import com.hp.hpl.jena.rdf.model.Model;
 import com.l4digital.fastscroll.FastScrollRecyclerView;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import wvw.mobile.rules.ContactEditActivity;
-import wvw.mobile.rules.ContactListActivity;
 import wvw.mobile.rules.ContactShowActivity;
+import wvw.mobile.rules.MainActivity;
 import wvw.mobile.rules.R;
 import wvw.mobile.rules.adapter.ContactAdapter;
 import wvw.mobile.rules.dto.Contact;
 import wvw.mobile.rules.util.RecyclerTouchListener;
-import wvw.utils.MyRequest;
-import wvw.utils.wvw.utils.rdf.Utilite;
 
 import static wvw.mobile.rules.ContactShowActivity.CONTACT_SELECT;
-import static wvw.mobile.rules.HomeActivity.CONTACTS_LIST;
-import static wvw.utils.MyRequest.requeteRemplirCombobox;
+import static wvw.mobile.rules.MainActivity.CONTACTS_LIST;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -105,7 +85,6 @@ public class ContactListFragment extends Fragment implements SearchView.OnQueryT
                 intent.putExtra(CONTACT_SELECT, contact);
                 intent.putExtra(CONTACTS_LIST, (Serializable) contacts);
                 startActivity(intent);
-
 
             }
 

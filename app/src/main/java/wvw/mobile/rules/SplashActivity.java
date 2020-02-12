@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.support.v7.app.ActionBar;
@@ -24,6 +25,9 @@ import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.rdf.model.InfModel;
 import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.reasoner.rulesys.GenericRuleReasoner;
+import com.hp.hpl.jena.reasoner.rulesys.Rule;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -39,7 +43,7 @@ import wvw.mobile.rules.dto.Contact;
 import wvw.utils.MyRequest;
 import wvw.utils.wvw.utils.rdf.Utilite;
 
-import static wvw.mobile.rules.HomeActivity.CONTACTS_LIST;
+import static wvw.mobile.rules.MainActivity.CONTACTS_LIST;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -73,6 +77,8 @@ public class SplashActivity extends AppCompatActivity {
         }
 
         progressBar = findViewById(R.id.progress_bar);
+        progressBar.getProgressDrawable().setColorFilter(
+                Color.BLUE, android.graphics.PorterDuff.Mode.SRC_IN);
 
         SplashActivity.LoadContactTask task = new SplashActivity.LoadContactTask();
         task.execute(new String[] { "Nikiss" });
@@ -219,13 +225,16 @@ public class SplashActivity extends AppCompatActivity {
             String response = "Nikiss";
 
             if(!isDatabasefileExist()){
-                //copyAssets();
-                copyDatabase();
+                copyAssets();
+                //copyDatabase();
             }
             owlFile=new File(getExternalFilesDir(null),""+FILE_NAME_DATABASE);
             //owlFile=new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),""+FILE_NAME_DATABASE);
             modelOntologie  = Utilite.readModel(owlFile);
-            modeleInf= Utilite.inference(modelOntologie,getAssets());
+
+            //modeleInf= Utilite.inference(modelOntologie,getAssets());
+            modeleInf= Utilite.inference(modelOntologie,getApplicationContext());
+            System.out.println("Resolu");
             getContacts();
             return response;
         }
@@ -236,7 +245,7 @@ public class SplashActivity extends AppCompatActivity {
          */
         @Override
         protected void onPostExecute(String result) {
-            startActivity(new Intent(getBaseContext(),HomeActivity.class).putExtra(CONTACTS_LIST, (Serializable) contacts));
+            startActivity(new Intent(getBaseContext(),MainActivity.class).putExtra(CONTACTS_LIST, (Serializable) contacts));
             finish();
         }
     }

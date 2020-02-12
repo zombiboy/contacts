@@ -13,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -45,7 +46,7 @@ import wvw.utils.wvw.utils.rdf.Namespaces;
 import wvw.utils.wvw.utils.rdf.Utilite;
 
 
-import static wvw.mobile.rules.HomeActivity.CONTACTS_LIST;
+import static wvw.mobile.rules.MainActivity.CONTACTS_LIST;
 
 public class ContactShowActivity extends AppCompatActivity implements SearchView.OnQueryTextListener{
 
@@ -78,14 +79,15 @@ public class ContactShowActivity extends AppCompatActivity implements SearchView
         setContentView(R.layout.activity_contact_show);
 
         owlFile=new File(getExternalFilesDir(null),""+FILE_NAME_DATABASE);
-        //owlFile=new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),""+FILE_NAME_DATABASE);
-        modelOntologie = Utilite.readModel(getAssets(),getExternalFilesDir(null));
-        modeleInf = Utilite.inference(modelOntologie,getAssets());
+
+        modelOntologie  = Utilite.readModel(owlFile);
+        //modelOntologie = Utilite.readModel(getAssets(),getExternalFilesDir(null));
+        modeleInf= Utilite.inference(modelOntologie,this);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         appBar = (AppBarLayout) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false); //cache le button pour retourne depuis le actionBar
 
         searchView=(SearchView)findViewById(R.id.search_view);
         searchView.setOnQueryTextListener(this);
@@ -98,6 +100,7 @@ public class ContactShowActivity extends AppCompatActivity implements SearchView
             Intent intent = getIntent();
             this.contact= (Contact) intent.getSerializableExtra(CONTACT_SELECT);
             this.contactsSave= (List<Contact>) intent.getSerializableExtra(CONTACTS_LIST);
+
             System.out.println("Contact receved");
         } catch (NullPointerException e) {
             System.out.println("Fragment Parent non trouvee");
@@ -216,7 +219,7 @@ public class ContactShowActivity extends AppCompatActivity implements SearchView
             }
 
             modelOntologie.write(outputStream,"N3");
-            Intent intent = new Intent(getBaseContext(), HomeActivity.class);
+            Intent intent = new Intent(getBaseContext(), MainActivity.class);
             startActivity(intent);
 
         } catch (FileNotFoundException e) {
@@ -293,8 +296,12 @@ public class ContactShowActivity extends AppCompatActivity implements SearchView
          * l'envoi de la liste permettra de ne pas refaire une requete dans la base de
          * donnees ,Attention le finish permet de supprimer l'activity creer
          */
-        startActivity(new Intent(getBaseContext(),MainActivity.class).putExtra(CONTACTS_LIST, (Serializable) contactsSave));
+        Intent intent = new Intent(this, MainActivity.class).putExtra(CONTACTS_LIST, (Serializable) contactsSave);// New activity
+        //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
         finish();
+
     }
 
     @Override
@@ -354,7 +361,7 @@ public class ContactShowActivity extends AppCompatActivity implements SearchView
     private Contact findKnowsPerson(Contact selectContact) {
 
         List<Contact> contactList = new ArrayList<>();
-        String reqDesPersonneEnRelation=Utilite.gestionRequete(MyRequest.relation, selectContact.getId());
+        String reqDesPersonneEnRelation=Utilite.gestionRequete(MyRequest.relation, Integer.parseInt(selectContact.getId()));
         Query query1=QueryFactory.create(reqDesPersonneEnRelation);
         QueryExecution qexec1 = QueryExecutionFactory.create(query1,modeleInf);
         try  {
@@ -369,13 +376,14 @@ public class ContactShowActivity extends AppCompatActivity implements SearchView
                 Literal prenom = soln1.getLiteral("prenom");
                 String prenomTrouver = prenom.getString();
                 //TODO:: ADD
-                System.out.println("RELATION AVEC "+idTrouver+" "+nomTrouver+" "+prenomTrouver);
+                System.out.println("RELATION AVEC id: "+idTrouver+" "+nomTrouver+" "+prenomTrouver);
                 Contact c= new Contact();
                 c.setId(idTrouver);
                 c.setName(nomTrouver);
                 c.setPrenom(prenomTrouver);
-                c.setRelationFind("Fils de");
-                
+                //c.setRelationFind("Fils de");
+                String lien=findRelationType(idTrouver,selectContact.getId());
+                c.setRelationFind(lien);
                 if(!idTrouver.equals(contact.getId())) {
                     contactList.add(c);
                 }
@@ -384,6 +392,75 @@ public class ContactShowActivity extends AppCompatActivity implements SearchView
             qexec1.close();}
         selectContact.setContactsLiens(contactList);
         return selectContact;
+    }
+
+    private String findRelationType(String idTrouver,String idContactSelected){
+        String relationFind= " ";
+
+        // idContactSelected aPourPere idContactTemp
+
+        String relation=relationType(idTrouver, idContactSelected, MyRequest.pere_2);
+        if(!relation.contains(""+"null")){   //relationFind="est le père de";
+            relationFind="Père";
+        }else {
+            relation = relationType(idTrouver, idContactSelected, MyRequest.mere_2);
+            if(!relation.contains(""+"null")){
+                relationFind="Mère";
+            }else {
+                relation = relationType(idTrouver, idContactSelected, MyRequest.fille_2);
+                if(!relation.contains(""+"null")){
+                    relationFind="Fille";
+                }else {
+                    relation = relationType(idTrouver, idContactSelected, MyRequest.fils_2);
+                    if(!relation.contains(""+"null")){
+                        relationFind="Fils";
+                    }else {
+                        relation = relationType(idTrouver, idContactSelected, MyRequest.frere_2);
+                        if(!relation.contains(""+"null")){
+                            relationFind="Frère";
+                        }else {
+                            relation = relationType(idTrouver, idContactSelected, MyRequest.soeur_2);
+                            if(!relation.contains(""+"null")){
+                                relationFind="Soeur";
+                            }else {
+                                //relation = relationType(idTrouver, idContactSelected, MyRequest.soeur_2);
+                                relationFind="En relation";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return relationFind;
+    }
+
+    public String relationType(String idTrouver,String idContactSelected,String reque){
+
+        int id_trouver=Integer.parseInt(idTrouver);
+        int id_selected=Integer.parseInt(idContactSelected);
+
+        String req=gestionRequeteRelationType(reque, id_trouver, id_selected);
+        String nom="";
+        Query query=QueryFactory.create(req);
+        QueryExecution qexec = QueryExecutionFactory.create(query,modeleInf);
+        try  {
+            ResultSet resultat=qexec.execSelect();
+            while(resultat.hasNext()){
+
+                QuerySolution soln=resultat.nextSolution();
+                Literal nom_li=soln.getLiteral("nom");
+                nom=""+nom_li;
+                return nom;
+            }
+        }finally{
+            qexec.close();}
+        return ("null");
+
+    }
+
+    public String gestionRequeteRelationType(String requete,int id_trouver,int id_selected){
+        return requete+" filter (xsd:integer(?identif)="+id_trouver+" && xsd:integer(?identi)="+id_selected+")}";
     }
 
 }

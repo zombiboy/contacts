@@ -1,0 +1,580 @@
+@prefix ns: <http://www.semanticweb.org/amed/ontologies/2017/4/untitled-ontology-48#>.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+
+[rule1: (?A rdf:type ns:homme)->(?A rdf:type ns:Personne)]
+
+[rule2: (?A rdf:type ns:femme)->(?A rdf:type ns:Personne)]
+
+
+[Enfant1: (?A rdf:type ns:Personne) (?A ns:aPourGrandParentPaternel ?B) (?A ns:aPourGrandParentPaternel ?C) (?B ns:aPourEnfant ?D)
+
+notEqual(?B,?C)->(?C ns:aPourEnfant ?D)]
+
+[Enfant2: (?A rdf:type ns:Personne) (?A ns:aPourGrandParentMaternel ?B) (?A ns:aPourGrandParentMaternel ?C) (?B ns:aPourEnfant ?D)
+
+notEqual(?B,?C)->(?C ns:aPourEnfant ?D)]
+
+[Enfant3: (?A rdf:type ns:Personne) (?A ns:aPourEpoux ?B) (?B ns:aPourEnfant ?C)->(?A ns:aPourEnfant ?C)]
+
+[Enfant4: (?A rdf:type ns:Personne) (?A ns:aPourEpouse ?B) (?B ns:aPourEnfant ?C)->(?A ns:aPourEnfant ?C)]
+
+[Enfant5: (?A rdf:type ns:Personne) (?A ns:aPourParent ?B)->(?B ns:aPourEnfant ?A)]
+
+
+
+[Fils1: (?A rdf:type ns:Personne) (?A ns:aPourEnfant ?B) (?B rdf:type ns:homme)->(?A ns:aPourFils ?B)]
+
+[Fils2: (?A rdf:type ns:Personne) (?A ns:aPourParent ?B) (?A rdf:type ns:homme)->(?B ns:aPourFils ?A)]
+
+[Fille1: (?A rdf:type ns:Personne) (?A ns:aPourEnfant ?B) (?B rdf:type ns:femme)->(?A ns:aPourFille ?B)]
+
+[Fille2: (?A rdf:type ns:Personne) (?A ns:aPourParent ?B) (?A rdf:type ns:femme)->(?B ns:aPourFille ?A)]
+
+
+
+
+[Mere1: (?A rdf:type ns:Personne) (?A ns:aPourParent ?B) (?B rdf:type ns:femme)->(?A ns:aPourMere ?B)]
+
+[Mere2: (?A rdf:type ns:Personne) (?A ns:aPourEnfant ?B) (?A rdf:type ns:femme)->(?B ns:aPourMere ?A)]
+
+[Pere1: (?A rdf:type ns:Personne) (?A ns:aPourParent ?B) (?B rdf:type ns:homme)->(?A ns:aPourPere ?B)]
+
+[Pere2: (?A rdf:type ns:Personne) (?A ns:aPourEnfant ?B) (?A rdf:type ns:homme)->(?B ns:aPourPere ?A)]
+
+
+[Parent1:  (?A rdf:type ns:Personne) (?A ns:aPourGrandParentPaternel ?B) (?A ns:aPourPere ?C)->(?C ns:aPourParent ?B)]
+
+[Parent2:  (?A rdf:type ns:Personne) (?A ns:aPourGrandParentMaternel ?B) (?A ns:aPourMere ?C) ->(?C ns:aPourParent ?B)]
+
+[Parent3: (?A rdf:type ns:Personne) (?A ns:aPourFrere ?B) (?B ns:aPourParent ?C)->(?A ns:aPourParent ?C)]
+
+[Parent4: (?A rdf:type ns:Personne) (?A ns:aPourEnfant ?B)->(?B ns:aPourParent ?A)]
+
+[Parent5: (?A rdf:type ns:Personne) (?A ns:aPourSoeur ?B) (?B ns:aPourParent ?C)->(?A ns:aPourParent ?C)]
+
+
+
+[Frere1: (?A rdf:type ns:Personne) (?A ns:aPourEnfant ?B) (?A ns:aPourEnfant ?C) (?C rdf:type ns:homme) notEqual(?B,?C)->(?B ns:aPourFrere ?C)]
+
+[Frere2: (?A rdf:type ns:Personne) (?A ns:aPourParent ?B) (?C ns:aPourParent ?B) (?C rdf:type ns:homme) notEqual(?A,?C)->(?A ns:aPourFrere ?C)]
+
+[Frere3: (?A rdf:type ns:Personne) (?A ns:aPourFrere ?B) (?B ns:aPourFrere ?C) notEqual(?A,?C)->(?A ns:aPourFrere ?C)]
+
+[Frere4: (?A rdf:type ns:homme) (?A ns:aPourSoeur ?B)->(?B ns:aPourFrere ?A)]
+
+[Frere5: (?A rdf:type ns:homme) (?A ns:aPourFrere ?B)->(?B ns:aPourFrere ?A)]
+
+[Frere6: (?A rdf:type ns:Personne) (?A ns:aPourOnclePaternel ?B) (?A ns:aPourOnclePaternel ?C) notEqual(?B,?C)-> (?B ns:aPourFrere ?C)]
+
+[Frere7: (?A rdf:type ns:Personne) (?A ns:aPourOncleMaternel ?B) (?A ns:aPourOncleMaternel ?C) notEqual(?B,?C)-> (?B ns:aPourFrere ?C)]
+
+[Frere8: (?A rdf:type ns:Personne) (?A ns:aPourPere ?B) (?A ns:aPourOnclePaternel ?C)  notEqual(?B,?C)-> (?B ns:aPourFrere ?C)]
+
+[Frere9: (?A rdf:type ns:Personne) (?A ns:aPourPere ?C) (?A ns:aPourTantePaternelle ?B)-> (?B ns:aPourFrere ?C)]
+
+[Frere10: (?A rdf:type ns:Personne) (?A ns:aPourTantePaternelle ?B) (?A ns:aPourOnclePaternel ?C) notEqual(?B,?C)-> (?B ns:aPourFrere ?C)]
+
+[Frere11: (?A rdf:type ns:Personne) (?A ns:aPourTanteMaternelle ?B) (?A ns:aPourOncleMaternel ?C) notEqual(?B,?C)-> (?B ns:aPourFrere ?C)]
+
+[Frere12: (?A rdf:type ns:Personne) (?A ns:aPourNiecePaternelle ?B) (?B ns:aPourPere ?C)->(?A ns:aPourFrere ?C)]
+
+[Frere13: (?A rdf:type ns:Personne) (?A ns:aPourNeveuPaternel ?B) (?B ns:aPourPere ?C)->(?A ns:aPourFrere ?C)]
+
+[Soeur1: (?A rdf:type ns:femme) (?A ns:aPourFrere ?B)->(?B ns:aPourSoeur ?A)]
+
+[Soeur2: (?A rdf:type ns:Personne) (?A ns:aPourEnfant ?B) (?A ns:aPourEnfant ?C) (?C rdf:type ns:femme) notEqual(?B,?C)->(?B ns:aPourSoeur ?C)]
+
+[Soeur3: (?A rdf:type ns:Personne) (?A ns:aPourParent ?B) (?C ns:aPourParent ?B) (?C rdf:type ns:femme) notEqual(?A,?C)->(?A ns:aPourSoeur ?C)]
+
+[Soeur4: (?A rdf:type ns:Personne) (?A ns:aPourSoeur ?B) (?B ns:aPourSoeur ?C)  notEqual(?A,?C)->(?A ns:aPourSoeur ?C)]
+
+[Soeur5: (?A rdf:type ns:femme) (?A ns:aPourSoeur ?B)->(?B ns:aPourSoeur ?A)]
+
+[Soeur6: (?A rdf:type ns:Personne) (?A ns:aPourMere ?C) (?A ns:aPourOncleMaternel ?B)-> (?B ns:aPourSoeur ?C)]
+
+[Soeur7: (?A rdf:type ns:Personne) (?A ns:aPourOnclePaternel ?B) (?A ns:aPourTantePaternelle ?C) notEqual(?B,?C)-> (?B ns:aPourSoeur ?C)]
+
+[Soeur8: (?A rdf:type ns:Personne) (?A ns:aPourOncleMaternel ?B) (?A ns:aPourTanteMaternelle ?C) notEqual(?B,?C)-> (?B ns:aPourSoeur ?C)]
+
+[Soeur9: (?A rdf:type ns:Personne) (?A ns:aPourTantePaternelle ?B) (?A ns:aPourTantePaternelle ?C) notEqual(?B,?C)-> (?B ns:aPourSoeur ?C)]
+
+[Soeur10: (?A rdf:type ns:Personne) (?A ns:aPourTanteMaternelle ?B) (?A ns:aPourTanteMaternelle ?C) notEqual(?B,?C)-> (?B ns:aPourSoeur ?C)]
+
+[Soeur11: (?A rdf:type ns:Personne) (?A ns:aPourMere ?C) (?A ns:aPourTanteMaternelle ?B) notEqual (?B,?C)-> (?B ns:aPourSoeur ?C)]
+
+[Soeur12: (?A rdf:type ns:Personne) (?A ns:aPourNieceMaternelle ?B) (?B ns:aPourMere ?C)->(?A ns:aPourSoeur ?C)]
+
+[Soeur13: (?A rdf:type ns:Personne) (?A ns:aPourNeveuMaternel ?B) (?B ns:aPourMere ?C)->(?A ns:aPourSoeur ?C)]
+
+
+[oncle1: (?A ns:aPourOnclePaternel ?B)->(?A ns:aPourOncle ?B)]
+
+[oncle2: (?A ns:aPourOncleMaternel ?B)->(?A ns:aPourOncle ?B)]
+
+[oncleP: (?A rdf:type ns:homme) (?A ns:aPourEnfant ?B) (?A ns:aPourFrere ?C)-> (?B ns:aPourOnclePaternel ?C)]
+
+[oncleM: (?A rdf:type ns:femme) (?A ns:aPourEnfant ?B) (?A ns:aPourFrere ?C)-> (?B ns:aPourOncleMaternel ?C)]
+
+[OncleP1: (?A rdf:type ns:Personne) (?A ns:aPourFrere ?B) (?B ns:aPourOnclePaternel ?C)-> (?A ns:aPourOnclePaternel ?C)]
+
+[OncleM1: (?A rdf:type ns:Personne) (?A ns:aPourFrere ?B) (?B ns:aPourOncleMaternel ?C)-> (?A ns:aPourOncleMaternel ?C)]
+
+[OncleP2: (?A rdf:type ns:Personne) (?A ns:aPourSoeur ?B) (?B ns:aPourOnclePaternel ?C)-> (?A ns:aPourOnclePaternel ?C)]
+
+[OncleM2: (?A rdf:type ns:Personne) (?A ns:aPourSoeur ?B) (?B ns:aPourOncleMaternel ?C)-> (?A ns:aPourOncleMaternel ?C)]
+
+[OncleM3: (?A rdf:type ns:Personne) (?A ns:aPourTanteMaternelle ?B) (?B ns:aPourFrere ?C)-> (?A ns:aPourOncleMaternel ?C)]
+
+[OncleP3: (?A rdf:type ns:Personne) (?A ns:aPourTantePaternelle ?B) (?B ns:aPourFrere ?C) (?A ns:aPourPere ?D) notEqual(?C,?D)-> (?A ns:aPourOnclePaternel ?C)]
+
+[OncleM4: (?A rdf:type ns:Personne) (?A ns:aPourOncleMaternel ?B) (?B ns:aPourFrere ?C)-> (?A ns:aPourOncleMaternel ?C)]
+
+[OncleP4: (?A rdf:type ns:Personne) (?A ns:aPourOnclePaternel ?B) (?B ns:aPourFrere ?C) (?A ns:aPourPere ?D) notEqual(?C,?D)-> (?A ns:aPourOnclePaternel ?C)]
+
+[OncleP8: (?A rdf:type ns:Personne) (?A ns:aPourCousinPaternel ?B) (?B ns:aPourPere ?C) (?C ns:aPourFrere ?D)-> (?B ns:aPourOnclePaternel ?D)]
+
+[OncleM8: (?A rdf:type ns:Personne) (?A ns:aPourCousinMaternel ?B) (?B ns:aPourMere ?C) (?C ns:aPourFrere ?D)-> (?B ns:aPourOncleMaternel ?D)]
+
+[OncleP9: (?A rdf:type ns:Personne) (?A ns:aPourCousinePaternelle ?B) (?B ns:aPourPere ?C) (?C ns:aPourFrere ?D)-> (?B ns:aPourOnclePaternel ?D)]
+
+[OncleM9: (?A rdf:type ns:Personne) (?A ns:aPourCousineMaternelle ?B) (?B ns:aPourMere ?C) (?C ns:aPourFrere ?D)-> (?B ns:aPourOncleMaternel ?D)]
+
+[OncleP10: (?A rdf:type ns:Personne) (?A ns:aPourPetitEnfantPaternel ?B) (?A ns:aPourFils ?C) (?B ns:aPourPere ?D) notEqual(?C,?D)->(?B ns:aPourOnclePaternel ?C)]
+
+[OncleM10: (?A rdf:type ns:Personne) (?A ns:aPourPetitEnfantMaternel ?B) (?A ns:aPourFils ?C)->(?B ns:aPourOncleMaternel ?C)]
+
+[OncleP11: (?A rdf:type ns:Personne) (?A ns:aPourNeveuPaternel ?B) (?A ns:aPourFrere ?C) (?B ns:aPourPere ?D) notEqual(?C,?D)->(?B ns:aPourOnclePaternel ?C)]
+
+[OncleM11: (?A rdf:type ns:Personne) (?A ns:aPourNeveuMaternel ?B) (?A ns:aPourFrere ?C)->(?B ns:aPourOncleMaternel ?C)]
+
+[OncleP12: (?A rdf:type ns:Personne) (?A ns:aPourNiecePaternelle ?B) (?A ns:aPourFrere ?C) (?B ns:aPourPere ?D) notEqual(?C,?D)->(?B ns:aPourOnclePaternel ?C)]
+
+[OncleM12: (?A rdf:type ns:Personne) (?A ns:aPourNieceMaternelle ?B) (?A ns:aPourFrere ?C)->(?B ns:aPourOncleMaternel ?C)]
+
+
+
+[tante1: (?A ns:aPourTantePaternelle ?B)->(?A ns:aPourTante ?B)]
+
+[tante2: (?A ns:aPourTanteMaternelle ?B)->(?A ns:aPourTante ?B)]
+
+[tanteP: (?A rdf:type ns:homme) (?A ns:aPourEnfant ?B) (?A ns:aPourSoeur ?C)-> (?B ns:aPourTantePaternelle ?C)]
+
+[tanteM: (?A rdf:type ns:femme) (?A ns:aPourEnfant ?B) (?A ns:aPourSoeur ?C)-> (?B ns:aPourTanteMaternelle ?C)]
+
+[TanteP1: (?A rdf:type ns:Personne) (?A ns:aPourFrere ?B) (?B ns:aPourTantePaternelle ?C)-> (?A ns:aPourTantePaternelle ?C)]
+
+[TanteM1: (?A rdf:type ns:Personne) (?A ns:aPourFrere ?B) (?B ns:aPourTanteMaternelle ?C)-> (?A ns:aPourTanteMaternelle ?C)]
+
+[TanteP2: (?A rdf:type ns:Personne) (?A ns:aPourSoeur ?B) (?B ns:aPourTantePaternelle ?C)-> (?A ns:aPourTantePaternelle ?C)]
+
+[TanteM2: (?A rdf:type ns:Personne) (?A ns:aPourSoeur ?B) (?B ns:aPourTanteMaternelle ?C)-> (?A ns:aPourTanteMaternelle ?C)]
+
+[TanteP3: (?A rdf:type ns:Personne) (?A ns:aPourTantePaternelle ?B) (?B ns:aPourSoeur ?C)-> (?A ns:aPourTantePaternelle ?C)]
+
+[TanteM3: (?A rdf:type ns:Personne) (?A ns:aPourTanteMaternelle ?B) (?B ns:aPourSoeur ?C) (?A ns:aPourMere ?D) notEqual(?C,?D)-> (?A ns:aPourTanteMaternelle ?C)]
+
+[TanteP4: (?A rdf:type ns:Personne) (?A ns:aPourOnclePaternel ?B) (?B ns:aPourSoeur ?C)-> (?A ns:aPourTantePaternelle ?C)]
+
+[TanteM4: (?A rdf:type ns:Personne) (?A ns:aPourOncleMaternel ?B) (?B ns:aPourSoeur ?C) (?A ns:aPourMere ?D) notEqual(?C,?D)-> (?A ns:aPourTanteMaternelle ?C)]
+
+[TanteM8: (?A rdf:type ns:Personne) (?A ns:aPourCousinMaternel ?B) (?B ns:aPourMere ?C) (?C ns:aPourSoeur ?D)-> (?B ns:aPourTanteMaternelle ?D)]
+
+[TanteP8: (?A rdf:type ns:Personne) (?A ns:aPourCousinPaternel ?B) (?B ns:aPourPere ?C) (?C ns:aPourSoeur ?D)-> (?B ns:aPourTantePaternelle ?D)]
+
+[TanteP9: (?A rdf:type ns:Personne) (?A ns:aPourCousinePaternelle ?B) (?B ns:aPourPere ?C) (?C ns:aPourSoeur ?D)-> (?B ns:aPourTantePaternelle ?D)]
+
+[TanteM9: (?A rdf:type ns:Personne) (?A ns:aPourCousineMaternelle ?B) (?B ns:aPourMere ?C) (?C ns:aPourSoeur ?D)-> (?B ns:aPourTanteMaternelle ?D)]
+
+[TanteP10: (?A rdf:type ns:Personne) (?A ns:aPourPetitEnfantPaternel ?B) (?A ns:aPourFille ?C)->(?B ns:aPourTantePaternelle ?C)]
+
+[TanteM10: (?A rdf:type ns:Personne) (?A ns:aPourPetitEnfantMaternel ?B) (?A ns:aPourFille ?C) (?B ns:aPourMere ?D) notEqual(?C,?D)->(?B ns:aPourTanteMaternelle ?C)]
+
+[TanteP11: (?A rdf:type ns:Personne) (?A ns:aPourNeveuPaternel ?B) (?A ns:aPourSoeur ?C)->(?B ns:aPourTantePaternelle ?C)]
+
+[TanteM11: (?A rdf:type ns:Personne) (?A ns:aPourNeveuMaternel ?B) (?A ns:aPourSoeur ?C) (?B ns:aPourMere ?D) notEqual(?C,?D)->(?B ns:aPourTanteMaternelle ?C)]
+
+[TanteP12: (?A rdf:type ns:Personne) (?A ns:aPourNiecePaternelle ?B) (?A ns:aPourSoeur ?C)->(?B ns:aPourTantePaternelle ?C)]
+
+[TanteM12: (?A rdf:type ns:Personne) (?A ns:aPourNieceMaternelle ?B) (?A ns:aPourSoeur ?C) (?B ns:aPourMere ?D) notEqual(?C,?D)->(?B ns:aPourTanteMaternelle ?C)]
+
+
+
+
+[neveu1: (?A rdf:type ns:Personne) (?A ns:aPourNeveuPaternel ?B)->(?A ns:aPourNeveu ?B)]
+
+[neveu2: (?A rdf:type ns:Personne) (?A ns:aPourNeveuMaternel ?B)->(?A ns:aPourNeveu ?B)]
+
+[neveuP: (?A rdf:type ns:Personne) (?A ns:aPourFrere ?B) (?B ns:aPourFils ?C)-> (?A ns:aPourNeveuPaternel ?C)]
+
+[neveuM: (?A rdf:type ns:Personne) (?A ns:aPourSoeur ?B) (?B ns:aPourFils ?C)-> (?A ns:aPourNeveuMaternel ?C)]
+
+[neveuP1: (?A rdf:type ns:homme) (?A ns:aPourOnclePaternel ?B)-> (?B ns:aPourNeveuPaternel ?A)]
+
+[neveuP2: (?A rdf:type ns:homme) (?A ns:aPourTantePaternelle ?B)-> (?B ns:aPourNeveuPaternel ?A)]
+
+[neveuM1: (?A rdf:type ns:homme) (?A ns:aPourOncleMaternel ?B)-> (?B ns:aPourNeveuMaternel ?A)]
+
+[neveuM2: (?A rdf:type ns:homme) (?A ns:aPourTanteMaternelle ?B)-> (?B ns:aPourNeveuMaternel ?A)]
+
+
+[neveuP3: (?A rdf:type ns:Personne) (?A ns:aPourFrere ?B) (?A ns:aPourFils ?D) (?B ns:aPourNeveuPaternel ?C) Equal(?E,notEqual(?C,?D))->
+
+ (?A ns:aPourNeveuPaternel ?E )]
+
+[neveuM3: (?A rdf:type ns:Personne) (?A ns:aPourFrere ?B) (?A ns:aPourFils ?D) (?B ns:aPourNeveuMaternel ?C) Equal(?E,notEqual(?C,?D))->
+
+ (?A ns:aPourNeveuMaternel ?E )]
+
+[neveuP4: (?A rdf:type ns:Personne) (?A ns:aPourSoeur ?B) (?A ns:aPourFils ?D) (?B ns:aPourNeveuPaternel ?C)  Equal(?E,notEqual(?C,?D))->
+
+ (?A ns:aPourNeveuPaternel ?E)]
+
+[neveuM4: (?A rdf:type ns:Personne) (?A ns:aPourSoeur ?B) (?A ns:aPourFils ?D) (?B ns:aPourNeveuMaternel ?C)  Equal(?E,notEqual(?C,?D))->
+
+(?A ns:aPourNeveuMaternel ?E)]
+
+
+
+[niece1: (?A rdf:type ns:Personne) (?A ns:aPourNiecePaternelle ?B)->(?A ns:aPourNiece ?B)]
+
+[niece2: (?A rdf:type ns:Personne) (?A ns:aPourNieceMaternelle ?B)->(?A ns:aPourNiece ?B)]
+
+[nieceP: (?A rdf:type ns:Personne) (?A ns:aPourFrere ?B) (?B ns:aPourFille ?C)-> (?A ns:aPourNiecePaternelle ?C)]
+
+[nieceM: (?A rdf:type ns:Personne) (?A ns:aPourSoeur ?B) (?B ns:aPourFille ?C)-> (?A ns:aPourNieceMaternelle ?C)]
+
+[nieceP1: (?A rdf:type ns:femme) (?A ns:aPourOnclePaternel ?B)-> (?B ns:aPourNiecePaternelle ?A)]
+
+[nieceM1: (?A rdf:type ns:femme) (?A ns:aPourTanteMaternelle ?B)-> (?B ns:aPourNieceMaternelle ?A)]
+
+[nieceM2: (?A rdf:type ns:femme) (?A ns:aPourOncleMaternel ?B)-> (?B ns:aPourNieceMaternelle ?A)]
+
+[nieceP2: (?A rdf:type ns:femme) (?A ns:aPourTantePaternelle ?B)-> (?B ns:aPourNiecePaternelle ?A)]
+
+(?A rdf:type ns:Personne) (?A ns:aPourFrere ?B) (?A ns:aPourFille ?D) (?B ns:aPourNiecePaternelle ?C) Equal(?E,notEqual(?C,?D))->
+
+ (?A ns:aPourNiecePaternelle ?E)]
+
+[nieceM3: (?A rdf:type ns:Personne) (?A ns:aPourFrere ?B) (?A ns:aPourFille ?D) (?B ns:aPourNieceMaternelle ?C) Equal(?E,notEqual(?C,?D))->
+
+(?A ns:aPourNieceMaternelle ?E)]
+
+[nieceP4: (?A rdf:type ns:Personne) (?A ns:aPourSoeur ?B) (?A ns:aPourFille ?D) (?B ns:aPourNiecePaternelle ?C) Equal(?E,notEqual(?C,?D))->
+
+ (?A ns:aPourNiecePaternelle ?E)]
+
+[nieceM4: (?A rdf:type ns:Personne) (?A ns:aPourSoeur ?B) (?A ns:aPourFille ?D) (?B ns:aPourNieceMaternelle ?C) Equal(?E,notEqual(?C,?D))->
+
+(?A ns:aPourNieceMaternelle ?E)]
+
+
+
+
+
+
+
+[GrandParent1: (?A rdf:type nsPersonne) (?A ns:aPourGrandParentPaternel ?B)->(?A ns:aPourGrandParent ?B)]
+
+[GrandParent2: (?A rdf:type nsPersonne) (?A ns:aPourGrandParentMaternel ?B)->(?A ns:aPourGrandParent ?B)]
+
+[GrandParent3: (?A rdf:type ns:Personne) (?A ns:aPourGrandParent ?B) (?B ns:aPourEpoux ?C)->(?A ns:aPourGrandParent ?C)]
+
+[GrandParent4: (?A rdf:type ns:Personne) (?A ns:aPourPetitEnfant ?B)->(?B ns:aPourGrandParent ?A)]
+
+
+[GrandParentP:(?A rdf:type ns:Personne) (?A ns:aPourPetitEnfantPaternel ?B)->(?B ns:aPourGrandParentPaternel ?A)]
+
+[GrandParentM:(?A rdf:type ns:Personne) (?A ns:aPourPetitEnfantMaternel ?B)->(?B ns:aPourGrandParentMaternel ?A)]
+
+[GrandParentP1: (?A rdf:type ns:Personne) (?A ns:aPourPere ?B) (?B ns:aPourParent ?C)->(?A ns:aPourGrandParentPaternel ?C)]
+
+[GrandParentM1: (?A rdf:type ns:Personne) (?A ns:aPourMere ?B) (?B ns:aPourParent ?C)->(?A ns:aPourGrandParentMaternel ?C)]
+
+[GrandParentP2: (?A rdf:type ns:Personne) (?A ns:aPourFrere ?B) (?B ns:aPourGrandParentPaternel ?C)->(?A ns:aPourGrandParentPaternel ?C)]
+
+[GrandParentM2: (?A rdf:type ns:Personne) (?A ns:aPourFrere ?B) (?B ns:aPourGrandParentMaternel ?C)->(?A ns:aPourGrandParentMaternel ?C)]
+
+[GrandParentP3: (?A rdf:type ns:Personne) (?A ns:aPourSoeur ?B) (?B ns:aPourGrandParentPaternel ?C)->(?A ns:aPourGrandParentPaternel ?C)]
+
+[GrandParentM3: (?A rdf:type ns:Personne) (?A ns:aPourSoeur ?B) (?B ns:aPourGrandParentMaternel ?C)->(?A ns:aPourGrandParentMaternel ?C)]
+
+
+
+
+[GrandPereP1:  (?A rdf:type ns:Personne) (?A ns:aPourGrandParentPaternel ?B) (?B rdf:type ns:homme)->(?A ns:aPourGrandPere ?B)]
+
+[GrandPereM1:  (?A rdf:type ns:Personne) (?A ns:aPourGrandParentMaternel ?B) (?B rdf:type ns:homme)->(?A ns:aPourGrandPere ?B)]
+
+[GrandMereP1:  (?A rdf:type ns:Personne) (?A ns:aPourGrandParentPaternel ?B) (?B rdf:type ns:femme)->(?A ns:aPourGrandMere ?B)]
+
+[GrandMereM1:  (?A rdf:type ns:Personne) (?A ns:aPourGrandParentMaternel ?B) (?B rdf:type ns:femme)->(?A ns:aPourGrandMere ?B)]
+
+
+
+
+
+[PetitEnfant1: (?A rdf:type ns:Personne) (?A ns:aPourPetitEnfantPaternel ?B)->(?A ns:aPourPetitEnfant ?B)]
+
+[PetitEnfant2: (?A rdf:type ns:Personne) (?A ns:aPourPetitEnfantMaternel ?B)->(?A ns:aPourPetitEnfant ?B)]
+
+[PetitEnfant3: (?A rdf:type ns:Personne) (?A ns:aPourPetitEnfant ?B) (?B ns:aPourEpoux ?C)->(?C ns:aPourPetitEnfant ?B)]
+
+[PetitEnfant4: (?A rdf:type ns:Personne) (?A ns:aPourGrandParent ?B)->(?B ns:aPourPetitEnfant ?A)]
+
+
+
+[PetitEnfantP:(?A rdf:type ns:Personne) (?A ns:aPourGrandParentPaternel ?B)->(?B ns:aPourPetitEnfantPaternel ?A)]
+
+[PetitEnfantM:(?A rdf:type ns:Personne) (?A ns:aPourGrandParentMaternel ?B)->(?B ns:aPourPetitEnfantMaternel ?A)]
+
+[PetitEnfantP1: (?A rdf:type ns:Personne) (?A ns:aPourPere ?B) (?B ns:aPourParent ?C)->(?C ns:aPourPetitEnfantPaternel ?A)]
+
+[PetitEnfantM1: (?A rdf:type ns:Personne) (?A ns:aPourMere ?B) (?B ns:aPourParent ?C)->(?C ns:aPourPetitEnfantMaternel ?A)]
+
+[PetitEnfantP2: (?A rdf:type ns:Personne) (?A ns:aPourPetitEnfantPaternel ?B) (?A ns:aPourEpoux ?C)->(?C ns:aPourPetitEnfantPaternel ?B)]
+
+[PetitEnfantP3: (?A rdf:type ns:Personne) (?A ns:aPourPetitEnfantPaternel ?B) (?A ns:aPourEpouse ?C)->(?C ns:aPourPetitEnfantPaternel ?B)]
+
+[PetitEnfantM2: (?A rdf:type ns:Personne) (?A ns:aPourPetitEnfantMaternel ?B) (?A ns:aPourEpoux ?C)->(?C ns:aPourPetitEnfantMaternel ?B)]
+
+[PetitEnfantM3: (?A rdf:type ns:Personne) (?A ns:aPourPetitEnfantMaternel ?B) (?A ns:aPourEpouse ?C)->(?C ns:aPourPetitEnfantMaternel ?B)]
+
+
+
+
+[PetitFilsP1: (?A rdf:type ns:Personne) (?A ns:aPourPetitEnfantPaternel ?B) (?B rdf:type ns:homme)->(?A ns:aPourPetitFils ?B)]
+
+[PetitFilsM1: (?A rdf:type ns:Personne) (?A ns:aPourPetitEnfantMaternel ?B) (?B rdf:type ns:homme)->(?A ns:aPourPetitFils ?B)]
+
+[PetitFilsP2: (?A rdf:type ns:Personne) (?A ns:aPourPetitEnfantPaternel ?B) (?B rdf:type ns:femme)->(?A ns:aPourPetiteFille ?B)]
+
+[PetitFilsM2: (?A rdf:type ns:Personne) (?A ns:aPourPetitEnfantMaternel ?B) (?B rdf:type ns:femme)->(?A ns:aPourPetiteFille ?B)]
+
+
+
+
+
+[cousin1: (?A rdf:type ns:Personne) (?A ns:aPourCousinPaternel ?B)->(?A ns:aPourCousin ?B)]
+
+[cousin2: (?A rdf:type ns:Personne) (?A ns:aPourCousinMaternel ?B)->(?A ns:aPourCousin ?B)]
+
+[CousinP: (?A rdf:type ns:Personne)  (?A ns:aPourOnclePaternel ?B) (?B ns:aPourFils ?C) notEqual(?A,?C)->(?A ns:aPourCousinPaternel ?C)]
+
+[CousinM: (?A rdf:type ns:Personne)  (?A ns:aPourOncleMaternel ?B) (?B ns:aPourFils ?C) notEqual(?A,?C)->(?A ns:aPourCousinMaternel ?C)]
+
+[cousinP1: (?A rdf:type ns:Personne) (?A ns:aPourTantePaternelle ?B) (?B ns:aPourFils ?C) notEqual(?A,?C)->(?A ns:aPourCousinPaternel ?C)]
+
+[cousinM1: (?A rdf:type ns:Personne) (?A ns:aPourTanteMaternelle ?B) (?B ns:aPourFils ?C) notEqual(?A,?C)->(?A ns:aPourCousinMaternel ?C)]
+
+[CousinP2: (?A rdf:type ns:Personne) (?A ns:aPourFrere ?B) (?B ns:aPourCousinPaternel ?C) notEqual(?A,?C)->(?A ns:aPourCousinPaternel ?C)]
+
+[CousinM2: (?A rdf:type ns:Personne) (?A ns:aPourFrere ?B) (?B ns:aPourCousinMaternel ?C) notEqual(?A,?C)->(?A ns:aPourCousinMaternel ?C)]
+
+[CousinP3: (?A rdf:type ns:Personne) (?A ns:aPourSoeur ?B) (?B ns:aPourCousinPaternel ?C) notEqual(?A,?C)->(?A ns:aPourCousinPaternel ?C)]
+
+[CousinM3: (?A rdf:type ns:Personne) (?A ns:aPourSoeur ?B) (?B ns:aPourCousinMaternel ?C) notEqual(?A,?C)->(?A ns:aPourCousinMaternel ?C)]
+
+[CousinP4: (?A rdf:type ns:homme) (?A ns:aPourCousinPaternel ?B) notEqual(?A,?B)->(?B ns:aPourCousinPaternel ?A)]
+
+[CousinM4: (?A rdf:type ns:homme) (?A ns:aPourCousinMaternel ?B) notEqual(?A,?B)->(?B ns:aPourCousinMaternel ?A)]
+
+[CousinP5: (?A rdf:type ns:homme) (?A ns:aPourCousinePaternelle ?B)->(?B ns:aPourCousinPaternel ?A)]
+
+[CousinM5: (?A rdf:type ns:homme) (?A ns:aPourCousineMaternelle ?B)->(?B ns:aPourCousinMaternel ?A)]
+
+[CousinP6: (?A rdf:type ns:Personne) (?A ns:aPourNeveuPaternel ?B) (?A ns:aPourFils ?C)->(?B ns:aPourCousinPaternel ?C)]
+
+[CousinM6: (?A rdf:type ns:Personne) (?A ns:aPourNeveuMaternel ?B) (?A ns:aPourFils ?C)->(?B ns:aPourCousinMaternel ?C)]
+
+[CousinP7: (?A rdf:type ns:Personne) (?A ns:aPourNiecePaternelle ?B) (?A ns:aPourFils ?C)->(?B ns:aPourCousinPaternel ?C)]
+
+[CousinM7: (?A rdf:type ns:Personne) (?A ns:aPourNieceMaternelle ?B) (?A ns:aPourFils ?C)->(?B ns:aPourCousinMaternel ?C)]
+
+
+
+
+[cousine1: (?A rdf:type ns:Personne) (?A ns:aPourCousinePaternelle ?B)->(?A ns:aPourCousine ?B)]
+
+[cousine2: (?A rdf:type ns:Personne) (?A ns:aPourCousineMaternelle ?B)->(?A ns:aPourCousine ?B)]
+
+[CousineP: (?A rdf:type ns:Personne)  (?A ns:aPourOnclePaternel ?B) (?B ns:aPourFille ?C) notEqual(?A,?C)->(?A ns:aPourCousinePaternelle ?C)]
+
+[CousineM: (?A rdf:type ns:Personne)  (?A ns:aPourOncleMaternel ?B) (?B ns:aPourFille ?C) notEqual(?A,?C)->(?A ns:aPourCousineMaternelle ?C)]
+
+[CousineP1: (?A rdf:type ns:Personne)  (?A ns:aPourTantePaternelle ?B) (?B ns:aPourFille ?C) notEqual(?A,?C)->(?A ns:aPourCousinePaternelle ?C)]
+
+[CousineM1: (?A rdf:type ns:Personne)  (?A ns:aPourTanteMaternelle ?B) (?B ns:aPourFille ?C) notEqual(?A,?C)->(?A ns:aPourCousineMaternelle ?C)]
+
+[CousineP2: (?A rdf:type ns:Personne) (?A ns:aPourFrere ?B) (?B ns:aPourCousinePaternelle ?C) notEqual(?A,?C)->(?A ns:aPourCousinePaternelle ?C)]
+
+[CousineM2: (?A rdf:type ns:Personne) (?A ns:aPourFrere ?B) (?B ns:aPourCousineMaternelle ?C) notEqual(?A,?C)->(?A ns:aPourCousineMaternelle ?C)]
+
+[CousineP3: (?A rdf:type ns:Personne) (?A ns:aPourSoeur ?B) (?B ns:aPourCousinePaternelle ?C) notEqual(?A,?C)->(?A ns:aPourCousinePaternelle ?C)]
+
+[CousineM3: (?A rdf:type ns:Personne) (?A ns:aPourSoeur ?B) (?B ns:aPourCousineMaternelle ?C) notEqual(?A,?C)->(?A ns:aPourCousinePaternelle ?C)]
+
+[CousineP4: (?A rdf:type ns:femme) (?A ns:aPourCousinePaternelle ?B)->(?B ns:aPourCousinePaternelle ?A)]
+
+[CousineM4: (?A rdf:type ns:femme) (?A ns:aPourCousineMaternelle ?B)->(?B ns:aPourCousineMaternelle ?A)]
+
+[CousineP5: (?A rdf:type ns:femme) (?A ns:aPourCousinPaternel ?B)->(?B ns:aPourCousinePaternelle ?A)]
+
+[CousineM5: (?A rdf:type ns:femme) (?A ns:aPourCousinMaternel ?B)->(?B ns:aPourCousinePaternelle ?A)]
+
+[CousineP6: (?A rdf:type ns:Personne) (?A ns:aPourNeveuPaternel ?B) (?A ns:aPourFille ?C)->(?B ns:aPourCousinePaternelle ?C)]
+
+[CousineM6: (?A rdf:type ns:Personne) (?A ns:aPourNeveuMaternel ?B) (?A ns:aPourFille ?C)->(?B ns:aPourCousineMaternelle ?C)]
+
+[CousineP7: (?A rdf:type ns:Personne) (?A ns:aPourNiecePaternelle ?B) (?A ns:aPourFille ?C)->(?B ns:aPourCousinePaternelle ?C)]
+
+[CousineM7: (?A rdf:type ns:Personne) (?A ns:aPourNieceMaternelle ?B) (?A ns:aPourFille ?C)->(?B ns:aPourCousineMaternelle ?C)]
+
+
+
+[Epouse1: (?A rdf:type ns:Personne) (?A ns:aPourEnfant ?B) (?A rdf:type ns:homme) (?C ns:aPourEnfant ?D) (?C rdf:type ns:femme) Equal(?B,?D)->(?A ns:aPourEpouse ?B)]
+
+[Epouse2: (?A rdf:type ns:Personne) (?A ns:aPourParent ?B) (?B rdf:type ns:homme) (?A ns:aPourParent ?D) (?D rdf:type ns:femme)->(?B ns:aPourEpouse ?D)]
+
+[Epouse3:(?A rdf:type ns:Personne) (?A ns:aPourGrandPerePaternel ?B) (?A ns:aPourGrandMerePaternel ?C)->(?B ns:aPourEpouse ?C)]
+
+[Epouse4:(?A rdf:type ns:Personne) (?A ns:aPourGrandPereMaternel ?B) (?A ns:aPourGrandMereMaternel ?C)->(?B ns:aPourEpouse ?C)]
+
+[Epouse5: (?A rdf:type ns:Personne) (?A ns:aPourEpoux ?B)->(?B ns:aPourEpouse ?A)]
+
+[Epouse6:(?A rdf:type ns:Personne) (?A ns:aPourGrandParentPaternel ?B) (?B rdf:type ns:homme) (?A ns:aPourGrandParentPaternel ?C) (?C rdf:type ns:femme)->
+
+(?B ns:aPourEpouse ?C)]
+
+
+
+
+
+
+[Epoux1: (?A rdf:type ns:Personne) (?A ns:aPourEpouse ?B)->(?B ns:aPourEpoux ?A)]
+
+[Epoux2: (?A rdf:type ns:Personne) (?A ns:aPourParent ?B) (?B rdf:type ns:homme) (?A ns:aPourParent ?D) (?D rdf:type ns:femme)->(?D ns:aPourEpoux ?B)]
+
+[Epoux3: (?A rdf:type ns:Personne) (?A ns:aPourEnfant ?B) (?A rdf:type ns:homme) (?C ns:aPourEnfant ?D) (?C rdf:type ns:femme) Equal(?B,?D)->(?B ns:aPourEpoux ?A)]
+
+[Epoux4:(?A rdf:type ns:Personne) (?A ns:aPourGrandParentPaternel ?B) (?B rdf:type ns:homme) (?A ns:aPourGrandParentPaternel ?C) (?C rdf:type ns:femme)->
+
+(?C ns:aPourEpoux ?B)]
+
+
+
+
+[ami: (?A rdf:type ns:Personne) (?A ns:aPourAmi ?B)->(?B ns:aPourAmi ?A)]
+
+[collegue1: (?A rdf:type ns:Personne) (?A ns:aPourCollegue ?B)->(?B ns:aPourCollegue ?A)]
+
+[collegue2: (?A rdf:type ns:Personne) (?A ns:aPourCollegue ?B) (?B ns:aPourCollegue ?C) notEqual(?A,?C)->(?A ns:aPourCollegue ?C)]
+
+
+
+[gendre: (?A rdf:type ns:Personne) (?A ns:aPourEpoux ?B) (?A ns:aPourParent ?C) -> (?C ns:aPourGendre ?B)]
+
+[bellefille: (?A rdf:type ns:Personne) (?A ns:aPourEpouse ?B) (?A ns:aPourParent ?C) -> (?C ns:aPourBelleFille ?B)]
+
+
+[beauParent: (?A rdf:type ns:Personne) (?A ns:aPourEpoux ?B) (?A ns:aPourParent ?C) -> (?B ns:aPourBeauParent ?C)]
+
+[beauParent1: (?A rdf:type ns:Personne) (?A ns:aPourEpouse ?B) (?A ns:aPourParent ?C) -> (?B ns:aPourBeauParent ?C)]
+[beauParent2: (?A rdf:type ns:Personne) (?A ns:aPourBeauPere ?B) -> (?A ns:aPourBeauParent ?B)]
+[beauParent3: (?A rdf:type ns:Personne) (?A ns:aPourBelleMere ?B) -> (?A ns:aPourBeauParent ?B)]
+
+[beaupere: (?A rdf:type ns:Personne) (?A ns:aPourBeauParent ?B) (?B rdf:type ns:homme) -> (?A ns:aPourBeauPere ?B)]
+
+[bellemere: (?A rdf:type ns:Personne) (?A ns:aPourBeauParent ?B) (?B rdf:type ns:femme) -> (?A ns:aPourBelleMere ?B)]
+
+
+
+[beaufrere: (?A rdf:type ns:Personne) (?A ns:aPourEpoux ?B) (?B ns:aPourFrere ?C) -> (?A ns:aPourBeauFrere ?C)]
+
+[beaufrere1: (?A rdf:type ns:Personne) (?A ns:aPourEpouse ?B) (?B ns:aPourFrere ?C) -> (?A ns:aPourBeauFrere ?C)]
+
+[beaufrere2: (?A rdf:type ns:Personne) (?A ns:aPourBelleSoeur ?B) (?A rdf:type ns:homme) -> (?B ns:aPourBeauFrere ?A)]
+
+[beaufrere3: (?A rdf:type ns:Personne) (?A ns:aPourBeauFrere ?B) (?A rdf:type ns:homme) -> (?B ns:aPourBeauFrere ?A)]
+
+[bellesoeur: (?A rdf:type ns:Personne) (?A ns:aPourEpoux ?B) (?B ns:aPourSoeur ?C) -> (?A ns:aPourBelleSoeur ?C)]
+
+[bellesoeur1: (?A rdf:type ns:Personne) (?A ns:aPourEpouse ?B) (?B ns:aPourSoeur ?C) -> (?A ns:aPourBelleSoeur ?C)]
+
+[bellesoeur2: (?A rdf:type ns:Personne) (?A ns:aPourBelleSoeur ?B) (?A rdf:type ns:femme) -> (?B ns:aPourBelleSoeur ?A)]
+
+[bellesoeur3: (?A rdf:type ns:Personne) (?A ns:aPourBeauFrere ?B) (?A rdf:type ns:femme) -> (?B ns:aPourBelleSoeur ?A)]
+
+
+
+
+
+[relation: (?A rdf:type ns:Personne) (?A ns:estEnRealtion ?B)->(?B ns:estEnRelation ?A)]
+
+[relation21: (?A rdf:type ns:Personne) (?A ns:aPourEnfant ?B)->(?A ns:estEnRelation ?B)]
+
+[relation23: (?A rdf:type ns:Personne) (?A ns:aPourParent ?B)->(?A ns:estEnRelation ?B)]
+
+[relation3: (?A rdf:type ns:Personne) (?A ns:aPourOnclePaternel ?B)->(?A ns:estEnRelation ?B)]
+
+[relation4: (?A rdf:type ns:Personne) (?A ns:aPourTantePaternelle ?B)->(?A ns:estEnRelation ?B)]
+
+[relation33: (?A rdf:type ns:Personne) (?A ns:aPourOncleMaternel ?B)->(?A ns:estEnRelation ?B)]
+
+[relation44: (?A rdf:type ns:Personne) (?A ns:aPourTanteMaternelle ?B)->(?A ns:estEnRelation ?B)]
+
+[relation5: (?A rdf:type ns:Personne) (?A ns:aPourCousinPaternel ?B)->(?A ns:estEnRelation ?B)]
+
+[relation6: (?A rdf:type ns:Personne) (?A ns:aPourCousinePaternelle ?B)->(?A ns:estEnRelation ?B)]
+
+[relation55: (?A rdf:type ns:Personne) (?A ns:aPourCousinMaternel ?B)->(?A ns:estEnRelation ?B)]
+
+[relation66: (?A rdf:type ns:Personne) (?A ns:aPourCousineMaternelle ?B)->(?A ns:estEnRelation ?B)]
+
+[relation7: (?A rdf:type ns:Personne) (?A ns:aPourNeveuPaternel ?B)->(?A ns:estEnRelation ?B)]
+
+[relation8: (?A rdf:type ns:Personne) (?A ns:aPourNiecePaternelle ?B)->(?A ns:estEnRelation ?B)]
+
+[relation77: (?A rdf:type ns:Personne) (?A ns:aPourNeveuMaternel ?B)->(?A ns:estEnRelation ?B)]
+
+[relation88: (?A rdf:type ns:Personne) (?A ns:aPourNieceMaternelle ?B)->(?A ns:estEnRelation ?B)]
+
+[relation9: (?A rdf:type ns:Personne) (?A ns:aPourPetitEnfantPaternel ?B)->(?A ns:estEnRelation ?B)]
+
+[relation99: (?A rdf:type ns:Personne) (?A ns:aPourPetitEnfantMaternel ?B)->(?A ns:estEnRelation ?B)]
+
+[relation10: (?A rdf:type ns:Personne) (?A ns:aPourGrandParentPaternel ?B)->(?A ns:estEnRelation ?B)]
+
+[relation100: (?A rdf:type ns:Personne) (?A ns:aPourGrandParentMaternel ?B)->(?A ns:estEnRelation ?B)]
+
+[relation11: (?A rdf:type ns:Personne) (?A ns:aPourEpoux ?B)->(?A ns:estEnRelation ?B)]
+
+[relation12: (?A rdf:type ns:Personne) (?A ns:aPourEpouse ?B)->(?A ns:estEnRelation ?B)]
+
+[relation150: (?A rdf:type ns:Personne) (?A ns:aPourFrere ?B)->(?A ns:estEnRelation ?B)]
+
+[relation15: (?A rdf:type ns:Personne) (?A ns:aPourSoeur ?B)->(?A ns:estEnRelation ?B)]
+
+[ami: (?A rdf:type ns:Personne) (?A ns:aPourAmi ?B)->(?B ns:estEnRelation ?A)]
+
+[collegue: (?A rdf:type ns:Personne) (?A ns:aPourCollegue ?B)->(?B ns:estEnRelation ?A)]
+
+[gendre: (?A rdf:type ns:Personne) (?A ns:aPourGendre ?B)->(?A ns:estEnRelation ?B)]
+
+[bellefille: (?A rdf:type ns:Personne) (?A ns:aPourBelleFille ?B)->(?A ns:estEnRelation ?B)]
+
+[beaupere: (?A rdf:type ns:Personne) (?A ns:aPourBeauPere ?B)->(?A ns:estEnRelation ?B)]
+
+[bellemere: (?A rdf:type ns:Personne) (?A ns:aPourBelleMere ?B)->(?A ns:estEnRelation ?B)]
+
+[beaufrere: (?A rdf:type ns:Personne) (?A ns:aPourBeauFrere ?B)->(?A ns:estEnRelation ?B)]
+
+[bellesoeur: (?A rdf:type ns:Personne) (?A ns:aPourBelleSoeur ?B)->(?A ns:estEnRelation ?B)]
+
