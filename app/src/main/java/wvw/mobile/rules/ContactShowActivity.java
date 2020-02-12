@@ -463,4 +463,5 @@ public class ContactShowActivity extends AppCompatActivity implements SearchView
         return requete+" filter (xsd:integer(?identif)="+id_trouver+" && xsd:integer(?identi)="+id_selected+")}";
     }
 
+
 }
