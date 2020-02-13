@@ -47,6 +47,7 @@ import wvw.utils.wvw.utils.rdf.Utilite;
 
 
 import static wvw.mobile.rules.MainActivity.CONTACTS_LIST;
+import static wvw.mobile.rules.util.Constant.FILE_ONTOLOGY_NAME;
 
 public class ContactShowActivity extends AppCompatActivity implements SearchView.OnQueryTextListener{
 
@@ -63,7 +64,6 @@ public class ContactShowActivity extends AppCompatActivity implements SearchView
     private String smsCmdArr[] = {"New", "Delete", "Settings", "BookMark", "Block"};
     private Model modelOntologie  ;
     private InfModel modeleInf;
-    private static String FILE_NAME_DATABASE="ont.owl";
     private File owlFile = null;
     private FileOutputStream outputStream= null;
     private FileInputStream in=null;
@@ -78,10 +78,8 @@ public class ContactShowActivity extends AppCompatActivity implements SearchView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_show);
 
-        owlFile=new File(getExternalFilesDir(null),""+FILE_NAME_DATABASE);
-
+        owlFile=new File(getExternalFilesDir(null),""+FILE_ONTOLOGY_NAME);
         modelOntologie  = Utilite.readModel(owlFile);
-        //modelOntologie = Utilite.readModel(getAssets(),getExternalFilesDir(null));
         modeleInf= Utilite.inference(modelOntologie,this);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);

@@ -44,6 +44,7 @@ import wvw.utils.MyRequest;
 import wvw.utils.wvw.utils.rdf.Utilite;
 
 import static wvw.mobile.rules.MainActivity.CONTACTS_LIST;
+import static wvw.mobile.rules.util.Constant.FILE_ONTOLOGY_NAME;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -228,13 +229,12 @@ public class SplashActivity extends AppCompatActivity {
                 copyAssets();
                 //copyDatabase();
             }
-            owlFile=new File(getExternalFilesDir(null),""+FILE_NAME_DATABASE);
-            //owlFile=new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),""+FILE_NAME_DATABASE);
-            modelOntologie  = Utilite.readModel(owlFile);
 
-            //modeleInf= Utilite.inference(modelOntologie,getAssets());
+
+            owlFile=new File(getExternalFilesDir(null),""+FILE_ONTOLOGY_NAME);
+            modelOntologie  = Utilite.readModel(owlFile);
             modeleInf= Utilite.inference(modelOntologie,getApplicationContext());
-            System.out.println("Resolu");
+            //owlFile=new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),""+FILE_NAME_DATABASE);
             getContacts();
             return response;
         }

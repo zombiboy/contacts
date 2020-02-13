@@ -28,6 +28,7 @@ import wvw.utils.wvw.utils.rdf.Namespaces;
 import wvw.utils.wvw.utils.rdf.Utilite;
 
 import static wvw.mobile.rules.ContactShowActivity.CONTACT_SELECT;
+import static wvw.mobile.rules.util.Constant.FILE_ONTOLOGY_NAME;
 
 
 public class ContactEditActivity extends AppCompatActivity {
@@ -53,10 +54,11 @@ public class ContactEditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_edit);
-        owlFile=new File(getExternalFilesDir(null),""+FILE_NAME_DATABASE);
-        modelOntologie = Utilite.readModel(getAssets(),getExternalFilesDir(null));
-        modeleInf = Utilite.inference(modelOntologie,getAssets());
 
+        owlFile=new File(getExternalFilesDir(null),""+FILE_ONTOLOGY_NAME);
+        modelOntologie  = Utilite.readModel(owlFile);
+        modeleInf= Utilite.inference(modelOntologie,this);
+        //modeleInf = Utilite.inference(modelOntologie,getAssets());
         //Data to Spinner
         spinSexe =findViewById(R.id.spinner_sexe);
         txtNom=findViewById(R.id.input_nom);

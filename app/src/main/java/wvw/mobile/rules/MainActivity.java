@@ -51,6 +51,7 @@ import wvw.utils.MyRequest;
 import wvw.utils.wvw.utils.rdf.Utilite;
 
 import static wvw.mobile.rules.ContactShowActivity.CONTACT_SELECT;
+import static wvw.mobile.rules.util.Constant.FILE_ONTOLOGY_NAME;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -62,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Model modelOntologie  ;
     private InfModel modeleInf;
-    private static String FILE_NAME_DATABASE="ont.owl";
     private File owlFile = null;
     private List<Contact> contacts = new ArrayList<>();
     private List<String> contactsSequences = new ArrayList<String>();
@@ -78,14 +78,11 @@ public class MainActivity extends AppCompatActivity {
          setSupportActionBar(toolbar);
          toolbar.setVisibility(View.INVISIBLE);
          **/
-        if(!isDatabasefileExist()){
-            copyAssets();
-        }
-        owlFile=new File(getExternalFilesDir(null),""+FILE_NAME_DATABASE);
-        //owlFile=new File(getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),""+FILE_NAME_DATABASE);
+
+
+        owlFile=new File(getExternalFilesDir(null),""+FILE_ONTOLOGY_NAME);
         modelOntologie  = Utilite.readModel(owlFile);
         modeleInf= Utilite.inference(modelOntologie,this);
-        //modeleInf= Utilite.inference(modelOntologie,getAssets());
 
         /**
          * Permet de ne pas avoir a faire une requete en quittant d'autres vue
@@ -95,13 +92,11 @@ public class MainActivity extends AppCompatActivity {
             List<Contact> contactsSave = (List<Contact>) intent.getSerializableExtra(CONTACTS_LIST);
             if(contactsSave!=null) {
                 this.contacts = contactsSave;
-                System.out.println("Data recevd successfuly");
             }else {
                 getContacts();
             }
 
         } catch (NullPointerException e) {
-            //lancer au demarrage de l'application
             getContacts();
         }
 
@@ -238,58 +233,6 @@ public class MainActivity extends AppCompatActivity {
         //tri par Nom
         Collections.sort(contacts, Contact.ComparatorName);
 
-    }
-
-    private boolean isDatabasefileExist(){
-
-        File outFile = new File(getExternalFilesDir(null), FILE_NAME_DATABASE);
-        return outFile.exists();
-    }
-
-    private void copyAssets() {
-        AssetManager assetManager = getAssets();
-        String[] files = null;
-        try {
-            files = assetManager.list("");
-        } catch (IOException e) {
-            Log.e("tag", "Failed to get asset file list.", e);
-        }
-        if (files != null) for (String filename : files) {
-            InputStream in = null;
-            OutputStream out = null;
-            try {
-                in = assetManager.open(filename);
-                File outFile = new File(getExternalFilesDir(null), filename);
-                out = new FileOutputStream(outFile);
-                copyFile(in, out);
-            } catch(IOException e) {
-                Log.e("tag", "Failed to copy asset file: " + filename, e);
-            }
-            finally {
-                if (in != null) {
-                    try {
-                        in.close();
-                    } catch (IOException e) {
-                        // NOOP
-                    }
-                }
-                if (out != null) {
-                    try {
-                        out.close();
-                    } catch (IOException e) {
-                        // NOOP
-                    }
-                }
-            }
-        }
-    }
-
-    private void copyFile(InputStream in, OutputStream out) throws IOException {
-        byte[] buffer = new byte[1024];
-        int read;
-        while((read = in.read(buffer)) != -1){
-            out.write(buffer, 0, read);
-        }
     }
 
     @Override

@@ -50,6 +50,7 @@ import wvw.utils.wvw.utils.rdf.Utilite;
 import static wvw.mobile.rules.MainActivity.CONTACTS_LIST;
 import static wvw.mobile.rules.MainActivity.CONTACTS_ST_LIST;
 import static wvw.mobile.rules.ContactShowActivity.CONTACT_SELECT;
+import static wvw.mobile.rules.util.Constant.FILE_ONTOLOGY_NAME;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -89,9 +90,8 @@ public class RelationFragment extends Fragment implements SearchView.OnQueryText
             this.contacts = (List<Contact>) getArguments().getSerializable(CONTACTS_LIST);
         }
 
-        owlFile=new File(getContext().getExternalFilesDir(null),""+FILE_NAME_DATABASE);
+        owlFile=new File(getContext().getExternalFilesDir(null),""+FILE_ONTOLOGY_NAME);
         modelOntologie  = Utilite.readModel(owlFile);
-        //modeleInf= Utilite.inference(modelOntologie,getContext().getAssets());
         modeleInf= Utilite.inference(modelOntologie,getContext());
 
     }

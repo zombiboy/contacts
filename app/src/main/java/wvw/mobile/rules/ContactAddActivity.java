@@ -56,9 +56,11 @@ import wvw.mobile.rules.util.RecyclerTouchListener;
 import wvw.utils.IOUtils;
 import wvw.utils.MyRequest;
 import wvw.utils.wvw.utils.rdf.Namespaces;
+import wvw.utils.wvw.utils.rdf.Utilite;
 
 import static wvw.mobile.rules.ContactShowActivity.CONTACT_SELECT;
 import static wvw.mobile.rules.MainActivity.CONTACTS_LIST;
+import static wvw.mobile.rules.util.Constant.FILE_ONTOLOGY_NAME;
 
 
 public class ContactAddActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener,AdapterView.OnItemClickListener {
@@ -92,10 +94,9 @@ public class ContactAddActivity extends AppCompatActivity implements AdapterView
          **/
 
 
-
-        owlFile=new File(getExternalFilesDir(null),""+FILE_NAME_DATABASE);
-        modelOntologie  = readModel();
-        modeleInf= inference(modelOntologie );
+        owlFile=new File(getExternalFilesDir(null),""+FILE_ONTOLOGY_NAME);
+        modelOntologie  = Utilite.readModel(owlFile);
+        modeleInf= Utilite.inference(modelOntologie,this);
 
         try {
             Intent intent = getIntent();
@@ -247,46 +248,9 @@ public class ContactAddActivity extends AppCompatActivity implements AdapterView
 
     }
 
-    //Lecture du fichier owl
-    public Model readModel() {
-        //creation d'un model vide
-        Model model = ModelFactory.createDefaultModel();
-        // utilisation de FileManager pour trouver le fichier owl
-        FileInputStream in = null;
-        try {
-            in= new FileInputStream(owlFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        // lecture du fichier RDF/XML
-        model.read(in, "","N3");
-        try {
-            in.close();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            return null;
-        }
-        return model;
-
-    }
 
 
-    //Gestion des inferences
-    private InfModel inference(Model model)  {
-        AssetManager asset=getAssets();
 
-        try {
-            List<Rule> rules = Rule.parseRules(IOUtils.read(asset.open("regles.jena")));
-            GenericRuleReasoner reasoner = new GenericRuleReasoner(rules);
-            InfModel infModel = ModelFactory.createInfModel(reasoner, model);
-
-            return infModel;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-
-    }
 
 
     //Creation d'instance de classe
